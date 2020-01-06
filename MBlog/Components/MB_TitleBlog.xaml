@@ -14,9 +14,9 @@
                 </Grid.ColumnDefinitions>
                 <Frame Grid.Column="0"  HasShadow="True" 
                        IsClippedToBounds="True"                  
-                            CornerRadius="45" 
-                            HeightRequest="90" 
-                            WidthRequest="50"
+                       CornerRadius="45" 
+                       HeightRequest="90" 
+                       WidthRequest="50"
                        BorderColor="LightGray"
                        Padding="0" >                    
                     <Image BackgroundColor="Aquamarine"                           

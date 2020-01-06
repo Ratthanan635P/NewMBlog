@@ -7,24 +7,63 @@
              x:Class="MBlog.Components.MB_SubscribeBlog">
   <ContentView.Content>
         <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
-            BorderColor="{StaticResource primaryColor}" HasShadow="False"
-            Padding="0">
-            <StackLayout Margin="5" Spacing="0">
-                <StackLayout Orientation="Horizontal">
-                    <Frame>
-                        <Image BackgroundColor="Aquamarine"/>
-                    </Frame>
-                    <StackLayout>
-                        <Label Text="sdfghjk" VerticalOptions="Start" />
-                        <Label Text="sdfghjsdfghjdfghjfghjfghj"
+             HasShadow="True"
+            Padding="0" Margin="8">
+            <StackLayout HorizontalOptions="End" Padding="10">
+                <Grid RowSpacing="0" ColumnSpacing="10"                       
+                      Padding="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Image 
+                            Grid.Column="0"
+                           Grid.RowSpan="3"
+                            Source="javascript96crop.png"                            
+                            Aspect="AspectFill"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            />
+                    <Label 
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"
+                           Grid.Row="0"
+                           Text="sdfghjkdfghjklsdfghjksdfghjksdfghjkdfghjksdfghjk" MaxLines="2" 
+                           LineBreakMode="TailTruncation"
+                           FontSize="Medium"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           VerticalOptions="Start" />
+                    <Label Grid.Column="1"
+                          Grid.ColumnSpan="3"
+                           Grid.Row="1"
+                           Text="sdfghdfghjssrdtyudfghjdfghdfghjdfghjdfghjsdfghjdfghjfghjfghjsdfghjkl;sdfghjklsdfghjkl"
                            MaxLines="2"
-                           TextColor="LightGray"
-                           VerticalOptions="StartAndExpand"/>
-                    </StackLayout>
-                    <Button Text="Following" 
-                            BackgroundColor="DarkGreen"
-                            CornerRadius="5"/>
-                </StackLayout>
+                           TextColor="Gray"
+                           FontSize="Small"
+                           Margin="0,0,5,0"
+                           />
+                    <StackLayout Orientation="Horizontal" 
+                                 VerticalOptions="End"
+                                Grid.Column="1"
+                                Grid.Row="2">
+                        <Label Text="sadfghj"/>
+                        <Label Text="sadfghj"/>
+                    </StackLayout>                
+                           <Image Grid.Column="3"
+                            Grid.Row="2"
+                            Source="bookmarkFill.png" Aspect="AspectFill"/>
+                            <Image Grid.Column="3"
+                            Grid.Row="2"                         
+                            Source="bookmark.png" Aspect="AspectFill"/>                                     
+                </Grid>
             </StackLayout>
         </Frame>
     </ContentView.Content>

@@ -10,6 +10,8 @@
         <StackLayout Spacing="0">
             <compotent:MB_TitleBlog TxTitle="Ratthanan Poulai" TxDetail="qwesrdtfyguhjklkaaasdfghjklasdfghjkasdfghjkl;sdfghjklsdfghjk" TxButtom="following"/>
             <compotent:MB_TitleBlog TxTitle="Ratthanan Poulai" TxDetail="qwesrdtfyguhjklkaaasdfghjklasdfghjkasdfghjkl;sdfghjklsdfghjk" TxButtom="following"/>
+            <compotent:MB_SubscribeBlog />
+            <compotent:MB_SubscribeBlog />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
