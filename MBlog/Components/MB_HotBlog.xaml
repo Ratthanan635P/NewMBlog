@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Name="rootView"
+             x:Class="MBlog.Components.MB_HotBlog">
+    <ContentView.Content>
+        <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
+            BorderColor="LightGray" HasShadow="False"
+            Padding="15">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal"  HeightRequest="65">
+                    <Image                           
+                           Source="javascript96crop.png"
+                           Aspect="AspectFit"
+                           WidthRequest="60"
+                           HeightRequest="45"
+                                   />
+                    <Label Text="Ratthanan Poulaisdfgyhujikldfghj" 
+                               LineBreakMode="TailTruncation"
+                               TextColor="Black"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               MaxLines="3"                           
+                               Padding="0,0,0,0"/>
+                </StackLayout>
+                <StackLayout >
+                    <Label Text="erdtfgyuhjiokolsdfghjklsdfghjkl;dxfggtyhjklhjkl;dfghjklsfdghjklhsdfghjkljkhgfdsdfghjkl;sdfghjkldfghjkldfghjkl;dfghjkl;dfghjkldfghjkl"
+                               MaxLines="8"
+                               FontSize="Small"
+                               FontAttributes="Bold"
+                               TextColor="Silver"
+                               VerticalOptions="StartAndExpand"
+                               LineBreakMode="TailTruncation"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" 
+                                VerticalOptions="End"
+                             HeightRequest="35"
+                               >
+                    <Label Text="sadfghj" HorizontalOptions="Start" VerticalOptions="End"/>
+                    <Label Text="sadfghj" HorizontalOptions="Start" VerticalOptions="End"/>
+
+                    <Grid WidthRequest="30"
+                          HorizontalOptions="EndAndExpand"
+                           VerticalOptions="End">
+                        <Image 
+                            Source="bookmarkFill.png" Aspect="AspectFill"/>
+                        <Image                        
+                            Source="bookmark.png" Aspect="AspectFill"/>
+                    </Grid>                    
+                </StackLayout>
+               
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

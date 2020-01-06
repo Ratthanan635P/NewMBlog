@@ -9,9 +9,14 @@
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <compotent:MB_TitleBlog TxTitle="Ratthanan Poulai" TxDetail="qwesrdtfyguhjklkaaasdfghjklasdfghjkasdfghjkl;sdfghjklsdfghjk" TxButtom="following"/>
-            <!--<compotent:MB_TitleBlog TxTitle="Ratthanan Poulai" TxDetail="qwesrdtfyguhjklkaaasdfghjklasdfghjkasdfghjkl;sdfghjklsdfghjk" TxButtom="following"/>-->
-            <compotent:MB_SubscribeBlog />
+            <!--<compotent:MB_TitleBlog TxTitle="Ratthanan Poulai" TxDetail="qwesrdtfyguhjklkaaasdfghjklasdfghjkasdfghjkl;sdfghjklsdfghjk" TxButtom="following"/>
+            <compotent:MB_SubscribeBlog />-->
             <compotent:MB_Latest />
+            <StackLayout Orientation="Horizontal" Padding="10">
+
+                <compotent:MB_HotBlog />
+                <compotent:MB_HotBlog />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

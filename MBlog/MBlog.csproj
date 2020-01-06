@@ -22,6 +22,9 @@
     <Compile Update="Components\MB_Latest.xaml.cs">
       <DependentUpon>MB_Latest.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Components\MB_HotBlog.xaml.cs">
+      <DependentUpon>MB_HotBlog.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Components\MB_SubscribeBlog.xaml">

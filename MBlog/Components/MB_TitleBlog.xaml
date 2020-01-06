@@ -5,7 +5,8 @@
     <ContentView.Content>
         <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
             BorderColor="LightGray" HasShadow="False"
-            Padding="15">
+            Padding="15"
+               >
             <Grid ColumnSpacing="15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
