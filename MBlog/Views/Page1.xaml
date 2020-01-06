@@ -7,16 +7,20 @@
              mc:Ignorable="d"
              x:Class="MBlog.Views.Page1">
     <ContentPage.Content>
-        <StackLayout Spacing="0">
-            <compotent:MB_TitleBlog TxTitle="Ratthanan Poulai" TxDetail="qwesrdtfyguhjklkaaasdfghjklasdfghjkasdfghjkl;sdfghjklsdfghjk" TxButtom="following"/>
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="40">
+
+            <Button Text="Title blog"     x:Name="BtnTitle"     Clicked="BtnTitle_Clicked" />
+            <Button Text="Subscribe blog" x:Name="BtnSubscribe" Clicked="BtnSubscribe_Clicked" />
+            <Button Text="Latest  blog"   x:Name="BtnLatest"    Clicked="BtnLatest_Clicked" />
+            <Button Text="Hot blog"       x:Name="BtnHot"       Clicked="BtnHot_Clicked"  />
             <!--<compotent:MB_TitleBlog TxTitle="Ratthanan Poulai" TxDetail="qwesrdtfyguhjklkaaasdfghjklasdfghjkasdfghjkl;sdfghjklsdfghjk" TxButtom="following"/>
-            <compotent:MB_SubscribeBlog />-->
+            --><!--<compotent:MB_TitleBlog TxTitle="Ratthanan Poulai" TxDetail="qwesrdtfyguhjklkaaasdfghjklasdfghjkasdfghjkl;sdfghjklsdfghjk" TxButtom="following"/>
+            <compotent:MB_SubscribeBlog />--><!--
             <compotent:MB_Latest />
             <StackLayout Orientation="Horizontal" Padding="10">
-
                 <compotent:MB_HotBlog />
                 <compotent:MB_HotBlog />
-            </StackLayout>
+            </StackLayout>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

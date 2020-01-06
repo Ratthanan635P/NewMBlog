@@ -2,6 +2,17 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Name="rootView"
              x:Class="MBlog.Components.MB_TitleBlog">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Color x:Key="P_BookMarkFill">#005B56</Color>
+            <Color x:Key="P_TimeText">#206F6D</Color>
+            <Color x:Key="P_HeadTitle">#1A6B69</Color>
+            <Color x:Key="P_DetailTitle">#B4B4B4</Color>
+            <Color x:Key="P_NavBartext">#1A6B69</Color>
+            <Color x:Key="P_BlackgroudBtn">#1A6B69</Color>
+            <Color x:Key="P_Buttomtext">#FFFFFF</Color>
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
         <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
             BorderColor="LightGray" HasShadow="False"
@@ -20,24 +31,25 @@
                        WidthRequest="50"
                        BorderColor="LightGray"
                        Padding="0" >                    
-                    <Image BackgroundColor="Aquamarine"                           
-                               Source="duck.jpg"
+                    <Image                          
+                               Source="{Binding ImageTitle}"
                                Aspect="AspectFit"                                        
                                />
                 </Frame>
                 <StackLayout Grid.Column="1" Spacing="2">
-                    <Label Text="Ratthanan Poulaisdfgyhujikldfghj" 
+                    <Label Text="{Binding TxTitle}" 
                            LineBreakMode="TailTruncation"
                            FontSize="Medium"
                            FontAttributes="Bold"
                            MaxLines="1"
                            VerticalOptions="Start"
-                           Padding="0,5,0,0"/>
+                           Padding="0,5,0,0"
+                           TextColor="{StaticResource P_HeadTitle}"/>
                     <Label Text="{Binding TxDetail}"
                            MaxLines="2"
                            FontSize="Medium"
                            FontAttributes="Bold"
-                           TextColor="Gray"
+                           TextColor="{StaticResource P_DetailTitle}"
                            VerticalOptions="StartAndExpand"/>
                 </StackLayout>
                 <StackLayout  Grid.Column="2"  Padding="5,0,0,0">
@@ -48,9 +60,12 @@
                             HeightRequest="32"
                             VerticalOptions="StartAndExpand"                           
                             CornerRadius="5"
+                            TextColor="{StaticResource P_Buttomtext}"
+                            BackgroundColor="{StaticResource P_BlackgroudBtn}"                          
+                            Command="{Binding CommandBtn}"
+                            CommandParameter="{Binding CommandBtnParameter}"
                             />
                 </StackLayout>
-                
             </Grid>
         </Frame>
     </ContentView.Content>

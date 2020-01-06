@@ -16,5 +16,25 @@ namespace MBlog.Views
 		{
 			InitializeComponent();
 		}
+
+		private void BtnTitle_Clicked(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new ListTitlePage());
+		}
+
+		private void BtnSubscribe_Clicked(object sender, EventArgs e)
+		{
+
+		}
+
+		private void BtnLatest_Clicked(object sender, EventArgs e)
+		{
+
+		}
+
+		private void BtnHot_Clicked(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

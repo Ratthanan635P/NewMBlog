@@ -66,23 +66,34 @@ namespace MBlog.Components
 		//public static readonly BindableProperty ColorBtnProperty =
 		//				  BindableProperty.Create(nameof(ColorBtn),
 		//										  typeof(Color),
-		//										  typeof(MB_TitleBlog),
-		//										  string.Empty);
+		//										  typeof(MB_TitleBlog)
+		//										 );
 		//public Color ColorBtn
 		//{
 		//	get { return (Color)GetValue(ColorBtnProperty); }
 		//	set { SetValue(ColorBtnProperty, value); }
 		//}
-		//public static readonly BindableProperty CommandBtnProperty =
-		//				  BindableProperty.Create(nameof(CommandBtn),
-		//										  typeof(Command),
-		//										  typeof(MB_TitleBlog),
-		//										  string.Empty);
-		//public Command CommandBtn
-		//{
-		//	get { return (Command)GetValue(CommandBtnProperty); }
-		//	set { SetValue(CommandBtnProperty, value); }
-		//}
+		public static readonly BindableProperty CommandBtnProperty =
+						  BindableProperty.Create(nameof(CommandBtn),
+												  typeof(Command),
+												  typeof(MB_TitleBlog)
+												 );
+		public Command CommandBtn
+		{
+			get { return (Command)GetValue(CommandBtnProperty); }
+			set { SetValue(CommandBtnProperty, value); }
+		}
+		public static readonly BindableProperty CommandBtnParameterProperty =
+						  BindableProperty.Create(nameof(CommandBtnParameter),
+												  typeof(object),
+												  typeof(MB_TitleBlog)
+												 );
+		public object CommandBtnParameter
+		{
+			get { return (object)GetValue(CommandBtnParameterProperty); }
+			set { SetValue(CommandBtnParameterProperty, value); }
+		}
+		//CommandBtnParameter
 		public MB_TitleBlog()
 		{
 			InitializeComponent();
