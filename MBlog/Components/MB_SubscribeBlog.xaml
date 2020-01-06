@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Name="rootView"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MBlog.Components.MB_SubscribeBlog">
+  <ContentView.Content>
+        <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
+            BorderColor="{StaticResource primaryColor}" HasShadow="False"
+            Padding="0">
+            <StackLayout Margin="5" Spacing="0">
+                <StackLayout Orientation="Horizontal">
+                    <Frame>
+                        <Image BackgroundColor="Aquamarine"/>
+                    </Frame>
+                    <StackLayout>
+                        <Label Text="sdfghjk" VerticalOptions="Start" />
+                        <Label Text="sdfghjsdfghjdfghjfghjfghj"
+                           MaxLines="2"
+                           TextColor="LightGray"
+                           VerticalOptions="StartAndExpand"/>
+                    </StackLayout>
+                    <Button Text="Following" 
+                            BackgroundColor="DarkGreen"
+                            CornerRadius="5"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:conponents="clr-namespace:MBlog.Components"
+        xmlns:viewmodels="clr-namespace:MBlog.ViewModels"
+        xmlns:nav="clr-namespace:MBlog.Navigators"
+        NavigationPage.HasNavigationBar="False"
+        x:Class="MBlog.Views.RegisterPage">
+
+    <ContentPage.BindingContext>
+        <viewmodels:RegisterViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <nav:ViewNavigator x:Key="nav" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <StackLayout Margin="30" x:Name="loginFormStackLayout"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <Image x:Name="logoImage" HeightRequest="150" WidthRequest="150"
+                    Source="logotrans" HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand" />
+            <conponents:MB_Entry MB_EntryLabel="EMAIL" MB_EntryTabIndex="1"
+                    MB_EntryMaxLength="100" MB_Keyboard="Email"
+                    MB_ReturnType="Next" MB_EntryText="{Binding Email}" />
+            <conponents:MB_Entry MB_EntryLabel="PASSWORD" MB_EntryTabIndex="2"
+                    MB_EntryIsPassword="True" MB_ReturnType="Next"
+                    MB_EntryMaxLength="100" MB_EntryText="{Binding NewPassword}" />
+            <conponents:MB_Entry MB_EntryLabel="PASSWORD" MB_EntryTabIndex="3"
+                    MB_EntryIsPassword="True" MB_ReturnType="Next"
+                    MB_EntryMaxLength="100"
+                    MB_EntryText="{Binding ConfirmPassword}" />
+            <Button x:Name="loginButton" Text="LOG IN" TabIndex="4"
+                    Command="{Binding LoginCommand}" />
+        </StackLayout>
+
+        <Label Text="LOG IN" Margin="0, 0, 0, 10" FontSize="Medium"
+                FontAttributes="Bold" VerticalOptions="EndAndExpand"
+                HorizontalOptions="CenterAndExpand">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding PopNav, Source={x:StaticResource nav}}" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <conponents:MB_Loading IsVisible="{Binding IsBusy}"
+                IsPlaying="{Binding IsBusy}" />
+    </Grid>
+</ContentPage>

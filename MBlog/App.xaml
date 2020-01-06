@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" x:Class="MBlog.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primaryColor">#1A6B69</Color>
+            <Color x:Key="primaryLightColor">#4bdbd8</Color>
+
+            <x:Int16 x:Key="heightButton">60</x:Int16>
+            <x:Int16 x:Key="heightEntry">50</x:Int16>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="{x:StaticResource primaryColor}" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource primaryColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HeightRequest"
+                        Value="{StaticResource heightButton}" />
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="HeightRequest"
+                        Value="{StaticResource heightEntry}" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

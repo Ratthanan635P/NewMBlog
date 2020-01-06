@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+        x:Name="rootPage" x:Class="MBlog.Components.MB_Loading">
+    <Grid BindingContext="{x:Reference rootPage}">
+        <BoxView BackgroundColor="Gray" Opacity="0.4" />
+        <forms:AnimationView Animation="lottie_loading.json" AutoPlay="True"
+                HeightRequest="300" WidthRequest="300" Loop="true"
+                IsPlaying="{Binding IsPlaying}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand" />
+    </Grid>
+</ContentView>

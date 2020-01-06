@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.0.1" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.3" />
+    <PackageReference Include="Castle.Core" Version="4.4.0" />
+    <PackageReference Include="Moq" Version="4.13.1" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\AuthServiceTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MBlog.Api\MBlog.Domain\MBlog.Domain.csproj" />
+    <ProjectReference Include="..\..\MBlog.Api\MBlog.Data\MBlog.Data.csproj" />
+    <ProjectReference Include="..\..\MBlog.Api\MBlog.IoC\MBlog.IoC.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="dookdiktest\Coverage.xml" />
+    <None Remove="dookdiktest\Results.trx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Repositories\UserRepositoryTest.cs" />
+  </ItemGroup>
+</Project>

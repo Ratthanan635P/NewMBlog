@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MBlog.Views.Page1">
+    <ContentPage.Content>
+        <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
+            BorderColor="{StaticResource primaryColor}" HasShadow="False"
+            Padding="5">
+            <StackLayout Margin="5" Spacing="0">
+                <StackLayout Orientation="Horizontal">
+                    <Frame  BorderColor="Black" IsClippedToBounds="True"
+                            CornerRadius="45" 
+                            HeightRequest="50" WidthRequest="50"
+                            
+                            >
+                        <Image BackgroundColor="Aquamarine"
+                               Source="logotrans.png"
+                               Aspect="Fill"                              
+                               />
+                    </Frame>
+                    <StackLayout>
+                        <Label Text="sdfghjk" VerticalOptions="Start" />
+                        <Label Text="sdfghjsdfghjdfghjfghjfghj"
+                           MaxLines="2"
+                           TextColor="LightGray"
+                           VerticalOptions="StartAndExpand"/>
+                    </StackLayout>
+                    <Button Text="Following" 
+                            FontSize="Micro"
+                            HeightRequest="35"
+                            VerticalOptions="Center"
+                            BackgroundColor="DarkGreen"
+                            CornerRadius="5"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>
