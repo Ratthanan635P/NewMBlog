@@ -49,15 +49,18 @@
                     <Label Text="{Binding TxName}" 
                            TextColor="{StaticResource P_TimeText}" 
                            HorizontalOptions="Start" VerticalOptions="End"
-                           FontSize="Micro"/>
+                           FontSize="Micro"
+                           FontAttributes="Bold"/>
                     <Label Text="•" 
                            TextColor="{StaticResource P_TimeText}"
                             FontSize="Micro"
+                           FontAttributes="Bold"
                             HorizontalOptions="Start" VerticalOptions="End"/>
                     <Label Text="{Binding TxTimeAgo}" 
                            TextColor="{StaticResource P_TimeText}" 
                            HorizontalOptions="Start" VerticalOptions="End"
-                            FontSize="Micro"/>
+                            FontSize="Micro"
+                           FontAttributes="Bold"/>
                     <StackLayout  Grid.Column="3"
                                   Grid.Row="2" 
                                   HorizontalOptions="EndAndExpand"
@@ -72,7 +75,7 @@
                                 Text="&#xf02e;"                                     
                                    IsVisible="{Binding IsOff}"
                                    FontSize="Large"
-                                FontFamily="{StaticResource AwesomeFontFamily}"/>
+                                FontFamily="{StaticResource AwesomeRegularFontFamily}"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                         </StackLayout.GestureRecognizers>

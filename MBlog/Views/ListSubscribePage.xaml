@@ -23,7 +23,7 @@
                                 TxDetail="{Binding Detail}"
                                 BookMarkVisible="{Binding BookmarkShow}"
                                 TxName="Dookdik"
-                                TxTimeAgo="5 MinuteAgo"
+                                TxTimeAgo="5 min ago"
                           />
                 </ViewCell>
             </DataTemplate>

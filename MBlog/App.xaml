@@ -30,7 +30,7 @@
                         Value="{StaticResource heightEntry}" />
                 <Setter Property="FontSize" Value="Large" />
             </Style>
-            <OnPlatform x:Key="AwesomeFontFamily"
+            <OnPlatform x:Key="AwesomeRegularFontFamily"
             x:TypeArguments="x:String"
             Android="Font Awesome 5 Free-Regular-400.otf#Font Awesome 5 Free Regular"
             iOS="FontAwesome5FreeRegular" />

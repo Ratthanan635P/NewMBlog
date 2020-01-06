@@ -46,11 +46,14 @@
                                 Grid.Column="0"                                
                                 Grid.Row="1">
                         <Label Text="{Binding TxName}" 
-                               TextColor="{StaticResource P_TimeText}"/>
+                               TextColor="{StaticResource P_TimeText}"
+                                FontAttributes="Bold"/>
                         <Label Text="•" 
-                               TextColor="{StaticResource P_TimeText}"/>
+                               TextColor="{StaticResource P_TimeText}"
+                                FontAttributes="Bold"/>
                         <Label Text="{Binding TxTimeAgo}" 
-                               TextColor="{StaticResource P_TimeText}"/>
+                               TextColor="{StaticResource P_TimeText}"
+                                FontAttributes="Bold"/>
                     </StackLayout>
                     <Image 
                             Grid.Column="2"

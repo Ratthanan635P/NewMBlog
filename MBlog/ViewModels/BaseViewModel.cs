@@ -72,7 +72,7 @@ namespace MBlog.ViewModels
               {
                       new DataTest
                       {
-                          Title = "American Black Bear",
+                          Title = "American Black Bear ttttttttttttttttttt",
                           BookmarkShow=true,
                           Expire= DateTime.Now,
                           Detail = "The American black bear is a medium-sized bear native to North America. It is the continent's smallest and most widely distributed bear species. American black bears are omnivores, with their diets varying greatly depending on season and Expire. They typically live in largely forested areas, but do leave forests in search of food. Sometimes they become attracted to human communities because of the immediate availability of food. The American black bear is the world's most common bear species.",
