@@ -26,6 +26,9 @@
     <Compile Update="Views\ListLatestPage.xaml.cs">
       <DependentUpon>ListLatestPagexaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ListSubscribePage.xaml.cs">
+      <DependentUpon>ListSubscribePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Components\MB_SubscribeBlog.xaml">

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:compotent="clr-namespace:MBlog.Components"
+             xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
+             mc:Ignorable="d"
+             x:Class="MBlog.Views.ListSubscribePage">
+    <ContentPage.BindingContext>
+        <viewmodel:ListTitleViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout x:Name="ListTitle">
+        <ListView x:Name="MyListView" 
+                  ItemsSource="{Binding ListData}" 
+                  HasUnevenRows="true"
+                  >
+            <ListView.ItemTemplate >
+            <DataTemplate >
+                <ViewCell >
+                        <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
+                                TxTitle="{Binding Title}" 
+                                TxDetail="{Binding Detail}"
+                                BookMarkVisible="{Binding BookmarkShow}"
+                                TxName="Dookdik"
+                                TxTimeAgo=". 5 MinuteAgo"
+                          />
+                </ViewCell>
+            </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

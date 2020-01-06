@@ -10,6 +10,7 @@ namespace MBlog.Models
 		public string Title { get; set; }
 		public DateTime Expire { get; set; }
 		public string Detail { get; set; }
+		public bool	BookmarkShow { get; set; }
 		public ImageSource Image { get; set; }
 	}
 }

@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:compotent="clr-namespace:MBlog.Components"
              mc:Ignorable="d"
-             x:Class="MBlog.Views.Page1">
+             x:Class="MBlog.Views.Page1"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" Padding="40">
 

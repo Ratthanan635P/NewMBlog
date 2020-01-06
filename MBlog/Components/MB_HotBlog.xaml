@@ -36,6 +36,8 @@
                              HeightRequest="35"
                                >
                     <Label Text="sadfghj" HorizontalOptions="Start" VerticalOptions="End"/>
+                    <Label Text="•" 
+                               TextColor="{StaticResource P_TimeText}"/>
                     <Label Text="sadfghj" HorizontalOptions="Start" VerticalOptions="End"/>
 
                     <Grid WidthRequest="30"

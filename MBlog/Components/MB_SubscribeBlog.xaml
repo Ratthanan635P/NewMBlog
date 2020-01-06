@@ -5,10 +5,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="MBlog.Components.MB_SubscribeBlog">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Color x:Key="P_BookMarkFill">#005B56</Color>
+            <Color x:Key="P_TimeText">#206F6D</Color>
+            <Color x:Key="P_HeadTitle">#000000</Color>
+            <Color x:Key="P_DetailTitle">#B4B4B4</Color>
+            <Color x:Key="P_NavBartext">#1A6B69</Color>
+            <Color x:Key="P_BlackgroudBtn">#1A6B69</Color>
+            <Color x:Key="P_Buttomtext">#FFFFFF</Color>
+        </ResourceDictionary>
+    </ContentView.Resources>
   <ContentView.Content>
         <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
-             HasShadow="True"
-            Padding="0" Margin="8">
+               HasShadow="True"
+               Padding="0" Margin="8">
             <StackLayout HorizontalOptions="End" Padding="10">
                 <Grid RowSpacing="0" ColumnSpacing="10"                       
                       Padding="0">
@@ -25,9 +36,9 @@
                     </Grid.RowDefinitions>
                     <Image 
                             Grid.Column="0"
-                           Grid.RowSpan="3"
-                            Source="javascript96crop.png"                            
-                            Aspect="AspectFill"
+                            Grid.RowSpan="3"
+                            Source="{Binding ImageTitle}"                          
+                            Aspect="AspectFit"
                             WidthRequest="100"
                             HeightRequest="100"
                             />
@@ -35,35 +46,51 @@
                            Grid.Column="1"
                            Grid.ColumnSpan="3"
                            Grid.Row="0"
-                           Text="sdfghjkdfghjklsdfghjksdfghjksdfghjkdfghjksdfghjk" MaxLines="2" 
+                           Text="{Binding TxTitle}" 
+                           MaxLines="2" 
                            LineBreakMode="TailTruncation"
                            FontSize="Medium"
-                           TextColor="Black"
+                           TextColor="{StaticResource P_HeadTitle}"
                            FontAttributes="Bold"
                            VerticalOptions="Start" />
                     <Label Grid.Column="1"
-                          Grid.ColumnSpan="3"
+                           Grid.ColumnSpan="3"
                            Grid.Row="1"
-                           Text="sdfghdfghjssrdtyudfghjdfghdfghjdfghjdfghjsdfghjdfghjfghjfghjsdfghjkl;sdfghjklsdfghjkl"
+                           Text="{Binding TxDetail}"   
                            MaxLines="2"
-                           TextColor="Gray"
+                           TextColor="{StaticResource P_DetailTitle}"
                            FontSize="Small"
                            Margin="0,0,5,0"
                            />
                     <StackLayout Orientation="Horizontal" 
                                  VerticalOptions="End"
-                                Grid.Column="1"
-                                Grid.Row="2">
-                        <Label Text="sadfghj"/>
-                        <Label Text="sadfghj"/>
-                    </StackLayout>                
-                           <Image Grid.Column="3"
-                            Grid.Row="2"
-                            Source="bookmarkFill.png" Aspect="AspectFill"/>
-                            <Image Grid.Column="3"
-                            Grid.Row="2"                         
-                            Source="bookmark.png" Aspect="AspectFill"/>                                     
-                </Grid>
+                                 Grid.Column="1"
+                                 Grid.Row="2">
+                        <Label Text="{Binding TxName}" 
+                               TextColor="{StaticResource P_TimeText}"/>
+                        <Label Text="•" 
+                               TextColor="{StaticResource P_TimeText}"/>
+                        <Label Text="{Binding TxTimeAgo}" 
+                               TextColor="{StaticResource P_TimeText}"/>
+                    </StackLayout>                                         
+                    <StackLayout  Grid.Column="3"
+                                  Grid.Row="2" 
+                                  IsVisible="{Binding BookMarkVisible}">
+                        <Label x:Name="BookmarkOn"
+                                Text="&#xf02e;" 
+                                   IsVisible="{Binding IsOn}"
+                                FontSize="Large"
+                                FontFamily="{StaticResource AwesomeSolidFontFamily}"/>
+                        <Label x:Name="BookmarkOff"
+                                Text="&#xf02e;"                                     
+                                   IsVisible="{Binding IsOff}"
+                                   FontSize="Large"
+                                FontFamily="{StaticResource AwesomeFontFamily}"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Grid> <!--f02e-->
             </StackLayout>
         </Frame>
     </ContentView.Content>

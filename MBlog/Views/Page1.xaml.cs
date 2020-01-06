@@ -23,8 +23,8 @@ namespace MBlog.Views
 		}
 
 		private void BtnSubscribe_Clicked(object sender, EventArgs e)
-		{
-
+		{			
+				Navigation.PushAsync(new ListSubscribePage());
 		}
 
 		private void BtnLatest_Clicked(object sender, EventArgs e)
