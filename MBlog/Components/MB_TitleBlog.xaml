@@ -1,40 +1,56 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Name="rootView"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
              x:Class="MBlog.Components.MB_TitleBlog">
     <ContentView.Content>
         <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
-            BorderColor="{StaticResource primaryColor}" HasShadow="False"
-            Padding="5">
-            <StackLayout Margin="5" Spacing="0">
-                <StackLayout Orientation="Horizontal">
-                    <Frame  BorderColor="Black" IsClippedToBounds="True"
+            BorderColor="LightGray" HasShadow="False"
+            Padding="15">
+            <Grid ColumnSpacing="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="0"  HasShadow="True" 
+                       IsClippedToBounds="True"                  
                             CornerRadius="45" 
-                            HeightRequest="50" WidthRequest="50"                            
-                            >
-                        <Image BackgroundColor="Aquamarine"
-                               Source="logotrans.png"
-                               Aspect="Fill"                              
+                            HeightRequest="90" 
+                            WidthRequest="50"
+                       BorderColor="LightGray"
+                       Padding="0" >                    
+                    <Image BackgroundColor="Aquamarine"                           
+                               Source="duck.jpg"
+                               Aspect="AspectFit"                                        
                                />
-                    </Frame>
-                    <StackLayout>
-                        <Label Text="sdfghjk" VerticalOptions="Start" />
-                        <Label Text="sdfghjsdfghjdfghjfghjfghj"
+                </Frame>
+                <StackLayout Grid.Column="1" Spacing="2">
+                    <Label Text="Ratthanan Poulaisdfgyhujikldfghj" 
+                           LineBreakMode="TailTruncation"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           MaxLines="1"
+                           VerticalOptions="Start"
+                           Padding="0,5,0,0"/>
+                    <Label Text="{Binding TxDetail}"
                            MaxLines="2"
-                           TextColor="LightGray"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           TextColor="Gray"
                            VerticalOptions="StartAndExpand"/>
-                    </StackLayout>
-                    <Button Text="Following" 
-                            FontSize="Micro"
-                            HeightRequest="35"
-                            VerticalOptions="Center"
-                            BackgroundColor="DarkGreen"
-                            CornerRadius="5"/>
                 </StackLayout>
-            </StackLayout>
+                <StackLayout  Grid.Column="2"  Padding="5,0,0,0">
+                    <Button    
+                            Margin="0,5,0,0"
+                            Text="{Binding TxButtom}"                             
+                            FontSize="Micro"
+                            HeightRequest="32"
+                            VerticalOptions="StartAndExpand"                           
+                            CornerRadius="5"
+                            />
+                </StackLayout>
+                
+            </Grid>
         </Frame>
     </ContentView.Content>
 </ContentView>

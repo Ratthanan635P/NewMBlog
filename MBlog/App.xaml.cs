@@ -10,7 +10,7 @@ namespace MBlog
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Views.LoginPage());
+            MainPage = new NavigationPage(new Views.Page1());
         }
 
         protected override void OnStart()
