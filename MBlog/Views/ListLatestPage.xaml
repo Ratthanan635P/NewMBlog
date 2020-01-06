@@ -21,7 +21,7 @@
                         <compotent:MB_Latest ImageTitle="{Binding Image}"
                                 TxTitle="{Binding Title}"
                                 TxName="Dookdik"
-                                TxTimeAgo=". 5 MinuteAgo"
+                                TxTimeAgo="5 MinuteAgo"
                           />
                 </ViewCell>
             </DataTemplate>
