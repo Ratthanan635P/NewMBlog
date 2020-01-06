@@ -17,25 +17,25 @@
     <Folder Include="Navigators\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Components\MB_Latest.xaml.cs">
-      <DependentUpon>MB_Latest.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Components\MB_HotBlog.xaml.cs">
-      <DependentUpon>MB_HotBlog.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\ListLatestPage.xaml.cs">
       <DependentUpon>ListLatestPagexaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ListSubscribePage.xaml.cs">
-      <DependentUpon>ListSubscribePage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Components\MB_HotBlog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Components\MB_Latest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Components\MB_SubscribeBlog.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Components\MB_TitleBlog.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ListSubscribePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ListTitlePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
