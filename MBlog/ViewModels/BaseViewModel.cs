@@ -76,7 +76,7 @@ namespace MBlog.ViewModels
                           BookmarkShow=true,
                           Expire= DateTime.Now,
                           Detail = "The American black bear is a medium-sized bear native to North America. It is the continent's smallest and most widely distributed bear species. American black bears are omnivores, with their diets varying greatly depending on season and Expire. They typically live in largely forested areas, but do leave forests in search of food. Sometimes they become attracted to human communities because of the immediate availability of food. The American black bear is the world's most common bear species.",
-                          Image ="duck.jpg"
+                          Image ="javascript96crop.png"
                           //Image = "https://upload.wikimedia.org/wikipedia/commons/0/08/01_Schwarzbär.jpg"
                       },
                       new DataTest
@@ -121,7 +121,7 @@ namespace MBlog.ViewModels
                           BookmarkShow=true,
                           Expire = DateTime.Now,
                           Detail = "The sun bear is a bear species occurring in tropical forest habitats of Southeast Asia. It is listed as Vulnerable on the IUCN Red List. The global population is thought to have declined by more than 30% over the past three bear generations. Suitable habitat has been dramatically reduced due to the large-scale deforestation that has occurred throughout Southeast Asia over the past three decades. The sun bear is also known as the honey bear, which refers to its voracious appetite for honeycombs and honey.",
-                           Image ="duck.jpg"
+                           Image ="javascript96crop.png"
                           //Image = ImageSource.FromUri(new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Sitting_sun_bear.jpg/319px-Sitting_sun_bear.jpg"))
                       },
                       new DataTest

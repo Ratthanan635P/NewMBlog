@@ -34,7 +34,7 @@ namespace MBlog.Views
 
 		private void BtnHot_Clicked(object sender, EventArgs e)
 		{
-
+			Navigation.PushAsync(new ListHotBlogPage());
 		}
 	}
 }
