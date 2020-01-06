@@ -5,6 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="MBlog.Components.MB_Latest">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Color x:Key="P_BookMarkFill">#005B56</Color>
+            <Color x:Key="P_TimeText">#206F6D</Color>
+            <Color x:Key="P_HeadTitle">#000000</Color>
+            <Color x:Key="P_DetailTitle">#B4B4B4</Color>
+            <Color x:Key="P_NavBartext">#1A6B69</Color>
+            <Color x:Key="P_BlackgroudBtn">#1A6B69</Color>
+            <Color x:Key="P_Buttomtext">#FFFFFF</Color>
+        </ResourceDictionary>
+    </ContentView.Resources>
   <ContentView.Content>
         <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
              HasShadow="True"
@@ -24,23 +35,25 @@
                     <Label 
                            Grid.Column="0"                           
                            Grid.Row="0"
-                           Text="sdfghjkdfghjklsdfghjksdfghjksdfghjkdfghjksdfghjk" MaxLines="2" 
+                           Text="{Binding TxTitle}" 
                            LineBreakMode="TailTruncation"
                            FontSize="Medium"
-                           TextColor="Black"
+                           TextColor="{StaticResource P_HeadTitle}"
                            FontAttributes="Bold"
                            VerticalOptions="Start" />
                     <StackLayout Orientation="Horizontal" 
                                  VerticalOptions="End"
                                 Grid.Column="0"                                
                                 Grid.Row="1">
-                        <Label Text="sadfghj"/>
-                        <Label Text="sadfghj"/>
+                        <Label Text="{Binding TxName}" 
+                               TextColor="{StaticResource P_TimeText}"/>
+                        <Label Text="{Binding TxTimeAgo}" 
+                               TextColor="{StaticResource P_TimeText}"/>
                     </StackLayout>
                     <Image 
                             Grid.Column="2"
                            Grid.RowSpan="3"
-                            Source="javascript96crop.png"                            
+                            Source="{Binding ImageTitle}"                            
                             Aspect="AspectFit"
                             WidthRequest="60"
                             HeightRequest="60"

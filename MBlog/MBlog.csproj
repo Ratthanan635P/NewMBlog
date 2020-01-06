@@ -23,6 +23,9 @@
     <Compile Update="Components\MB_HotBlog.xaml.cs">
       <DependentUpon>MB_HotBlog.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ListLatestPage.xaml.cs">
+      <DependentUpon>ListLatestPagexaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Components\MB_SubscribeBlog.xaml">

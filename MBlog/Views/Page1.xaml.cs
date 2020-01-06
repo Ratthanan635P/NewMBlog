@@ -29,7 +29,7 @@ namespace MBlog.Views
 
 		private void BtnLatest_Clicked(object sender, EventArgs e)
 		{
-
+			Navigation.PushAsync(new ListLatestPage());
 		}
 
 		private void BtnHot_Clicked(object sender, EventArgs e)
