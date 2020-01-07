@@ -18,7 +18,7 @@
                  />
             <Label Text="&#xf2bd;" FontFamily="{StaticResource AwesomeSolidFontFamily}" HorizontalOptions="EndAndExpand" FontSize="35" VerticalOptions="CenterAndExpand" Margin="0,0,15,0">
                 <Label.GestureRecognizers>
-                  
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
         </Grid>

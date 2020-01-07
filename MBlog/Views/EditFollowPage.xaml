@@ -30,8 +30,8 @@
                     TextColor="Red"
                     BorderColor="Red"
                     BorderWidth="2"
-                    HeightRequest="38" 
-                    WidthRequest="90"
+                    HeightRequest="30" 
+                    WidthRequest="80"
                     BackgroundColor="White"
                     Padding="0"
                     Clicked="Button_Clicked"/>
@@ -54,10 +54,10 @@
                        IsClippedToBounds="True"
                        BorderColor="Silver"
                        CornerRadius="90"
-                       HeightRequest="300" WidthRequest="120"
+                       HeightRequest="380" WidthRequest="150"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="StartAndExpand"
-                       Margin="0,-10,0,20"
+                       Margin="0,-15,0,20"
                        >
                 <Image x:Name="logoImage" 
                     Source="duck" 

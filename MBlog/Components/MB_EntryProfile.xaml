@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Name="rootView"
+        x:Class="MBlog.Components.MB_EntryProfile">
+    <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
+            BorderColor="{StaticResource primaryColor}" HasShadow="False"
+            Padding="0">
+        <StackLayout Margin="5" Spacing="0" Padding="5,0,5,0">
+            <Label Text="{Binding MB_EntryLabel}"
+                    TextColor="{StaticResource primaryColor}"
+                    FontSize="Large"
+                    FontAttributes="Bold"/>
+            <Entry Text="{Binding MB_EntryText}"
+                    Keyboard="{Binding MB_Keyboard}"
+                    MaxLength="{Binding MB_EntryMaxLength}"
+                    TabIndex="{Binding MB_EntryTabIndex}"
+                    ReturnType="{Binding MB_ReturnType}"
+                    IsPassword="{Binding MB_EntryIsPassword}" 
+                    FontAttributes="Bold"
+                    TextColor="Black" />
+        </StackLayout>
+    </Frame>
+</ContentView>

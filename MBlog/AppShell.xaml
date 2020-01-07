@@ -18,7 +18,7 @@
               Padding="5">
             <Image Aspect="AspectFit"
                    HeightRequest="80"
-                   WidthRequest="150"
+                   WidthRequest="140"
                    BackgroundColor="White"
                Source="logo.png"
                    VerticalOptions="CenterAndExpand"
@@ -51,7 +51,7 @@
                        Padding="0"
                        Margin="0,0,0,-3"
                        VerticalOptions="CenterAndExpand"
-                       FontSize="Large"
+                       FontSize="Medium"
                        Text="{Binding Title}"
                        FontAttributes="Bold"
                        TextColor="{StaticResource primaryColor}"
