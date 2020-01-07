@@ -22,8 +22,8 @@
                             <TapGestureRecognizer  Tapped="TapGestureRecognizer_Tapped"/>
                         </Label.GestureRecognizers>
                     </Label>
-                    <Label Text="Follow"
-                           HorizontalOptions="CenterAndExpand"
+                    <Label Text="Save"
+                           HorizontalOptions="EndAndExpand"
                             VerticalOptions="CenterAndExpand"
                            FontSize="Medium"
                            FontAttributes="Bold"/>

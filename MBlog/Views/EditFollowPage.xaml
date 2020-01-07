@@ -31,7 +31,8 @@
                     BorderWidth="2"
                     HeightRequest="38" 
                     WidthRequest="90"
-                    BackgroundColor="White"/>
+                    BackgroundColor="White"
+                    Padding="0"/>
             <!--<Frame VerticalOptions="Start" 
                        HasShadow="False" 
                        CornerRadius="5" 

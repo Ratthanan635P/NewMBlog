@@ -30,6 +30,7 @@
                     BorderWidth="2"
                     HeightRequest="38" 
                     WidthRequest="90"
+                    Padding="0"
                     />
             <!--<Frame VerticalOptions="Start" 
                        HasShadow="False" 

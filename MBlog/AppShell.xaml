@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MBlog.Views"
+       mc:Ignorable="d"
+       x:Class="MBlog.AppShell"
+       Shell.BackgroundColor="White"
+       Shell.ForegroundColor="{StaticResource primaryColor}"
+       >
+    <!-- 
+        Styles and Resources 
+    -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="{StaticResource primaryColor}" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="100"              
+              BackgroundColor="White"
+              Padding="5">
+            <Image Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="150"
+                   BackgroundColor="White"
+               Source="logo.png"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+        </Grid>        
+    </Shell.FlyoutHeader>
+       <FlyoutItem Title="HOME"  >
+        <ShellContent ContentTemplate="{DataTemplate local:ListLatestPage}"/>
+        </FlyoutItem>     
+        <FlyoutItem Title="SUBSCRIBES"  >
+        <ShellContent ContentTemplate="{DataTemplate local:ListTitlePage}"/>
+        </FlyoutItem>
+        <FlyoutItem Title="BOOKMARKS" >
+        <ShellContent ContentTemplate="{DataTemplate local:ListSubscribePage}"/>
+        </FlyoutItem>
+    <MenuItem>
+      
+    </MenuItem>
+</Shell>
