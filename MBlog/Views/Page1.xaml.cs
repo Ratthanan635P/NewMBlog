@@ -36,5 +36,15 @@ namespace MBlog.Views
 		{
 			Navigation.PushAsync(new ListHotBlogPage());
 		}
+
+		private void BtnProfile_Clicked(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new ProfilePage());
+		}
+
+		private void BtnFollow_Clicked(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new FollowPage());
+		}
 	}
 }

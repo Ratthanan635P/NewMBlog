@@ -21,7 +21,7 @@
                 <StackLayout Orientation="Horizontal"  HeightRequest="65">
                     <Image                           
                            Source="{Binding ImageTitle}"
-                           Aspect="AspectFit"
+                           Aspect="Fill"
                            WidthRequest="60"
                            HeightRequest="45"
                                    />

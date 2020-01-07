@@ -33,7 +33,7 @@
                        Padding="0" >                    
                     <Image                          
                                Source="{Binding ImageTitle}"
-                               Aspect="AspectFit"                                        
+                               Aspect="Fill"                                        
                                />
                 </Frame>
                 <StackLayout Grid.Column="1" Spacing="2">

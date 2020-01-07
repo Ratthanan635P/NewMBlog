@@ -59,7 +59,7 @@
                             Grid.Column="2"
                             Grid.RowSpan="3"
                             Source="{Binding ImageTitle}"                            
-                            Aspect="AspectFit"
+                            Aspect="Fill"
                             WidthRequest="60"
                             HeightRequest="60"
                                                        />
