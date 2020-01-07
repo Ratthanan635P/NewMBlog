@@ -24,6 +24,11 @@ namespace MBlog.Views
 		{
 			Navigation.PopAsync();
 		}
+
+		private void Button_Clicked(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new FollowingPage());
+		}
 	}
 
 }

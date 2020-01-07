@@ -7,7 +7,8 @@
              xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
              mc:Ignorable="d"
              x:Class="MBlog.Views.FollowPage" NavigationPage.HasNavigationBar="False"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False">
     <ContentPage.BindingContext>
         <viewmodel:ListTitleViewModel/>
     </ContentPage.BindingContext>
@@ -32,7 +33,8 @@
                     HeightRequest="38" 
                     WidthRequest="90"
                     BackgroundColor="White"
-                    Padding="0"/>
+                    Padding="0"
+                    Clicked="Button_Clicked"/>
             <!--<Frame VerticalOptions="Start" 
                        HasShadow="False" 
                        CornerRadius="5" 

@@ -1,4 +1,5 @@
 ﻿using MBlog.Models;
+using MBlog.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,8 @@ namespace MBlog.ViewModels
         }
         private async void OnSelectedFollowView(DataTest data)
         {
-           await App.Current.MainPage.DisplayAlert("", data.Title +"_", "OK");
+            //await App.Current.MainPage.DisplayAlert("", data.Title +"_", "OK");
+            await App.Current.MainPage.Navigation.PushAsync(new FollowPage());
         }
            }
 }
