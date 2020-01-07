@@ -7,9 +7,17 @@ namespace MBlog
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {
+        public string UserName { get; set; }
+
         public AppShell()
         {
-            InitializeComponent();
+            UserName = "DAMRONGDET LALITLAGSAMANONT";
+            InitializeComponent();           
+        }
+
+        private void MenuItem_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }
