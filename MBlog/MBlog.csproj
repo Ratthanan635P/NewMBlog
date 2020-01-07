@@ -17,6 +17,12 @@
     <Folder Include="Navigators\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\FollowingPage.xaml.cs">
+      <DependentUpon>FollowingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EditFollowPage.xaml.cs">
+      <DependentUpon>EditFollowPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ListLatestPage.xaml.cs">
       <DependentUpon>ListLatestPagexaml</DependentUpon>
     </Compile>
@@ -36,6 +42,12 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Components\MB_TitleBlog.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\FollowingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\EditFollowPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ListHotBlogPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

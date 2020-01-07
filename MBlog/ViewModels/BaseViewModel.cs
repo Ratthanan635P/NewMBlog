@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
@@ -18,6 +19,19 @@ namespace MBlog.ViewModels
                 if (!Equals(listData, value))
                 {
                     listData = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private  List<DataTest> listDataTest;
+        public List<DataTest> ListDataTest
+        {
+            get { return listDataTest; }
+            set
+            {
+                if (!Equals(listDataTest, value))
+                {
+                    listDataTest = value;
                     OnPropertyChanged();
                 }
             }
@@ -161,7 +175,14 @@ namespace MBlog.ViewModels
                           // Image = ImageSource.FromUri(new Uri("https://upload.wikimedia.org/wikipedia/commons/d/de/Monarch_the_bear.jpg"))
                       }
                   };
-
+            ListDataTest = ListData.Select(d => new DataTest()
+            {
+                BookmarkShow=false,
+                Detail=d.Detail,
+                Expire=d.Expire,
+                Image=d.Image,
+                Title=d.Title
+            }).ToList();
         }
     }
 }

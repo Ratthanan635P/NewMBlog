@@ -16,6 +16,8 @@
             <Button Text="Hot blog"       x:Name="BtnHot"       Clicked="BtnHot_Clicked"  />
             <Button Text="Profile blog"   x:Name="BtnProfile"   Clicked="BtnProfile_Clicked"  />
             <Button Text="Follow Page"    x:Name="BtnFollow"    Clicked="BtnFollow_Clicked"  />
+            <Button Text="Following Page"    x:Name="BtnFollowing"    Clicked="BtnFollowing_Clicked"  />
+            <Button Text="EditFollowPage"    x:Name="BtnEditFollow"    Clicked="BtnEditFollow_Clicked"  />
             <!--<compotent:MB_TitleBlog TxTitle="Ratthanan Poulai" TxDetail="qwesrdtfyguhjklkaaasdfghjklasdfghjkasdfghjkl;sdfghjklsdfghjk" TxButtom="following"/>
             --><!--<compotent:MB_TitleBlog TxTitle="Ratthanan Poulai" TxDetail="qwesrdtfyguhjklkaaasdfghjklasdfghjkasdfghjkl;sdfghjklsdfghjk" TxButtom="following"/>
             <compotent:MB_SubscribeBlog />--><!--

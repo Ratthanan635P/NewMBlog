@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:compotent="clr-namespace:MBlog.Components"
+             xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
+             mc:Ignorable="d"
+             x:Class="MBlog.Views.FollowingPage" NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <viewmodel:ListTitleViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout x:Name="ListTitle">
+               <StackLayout Orientation="Horizontal" Padding="10,10,10,0"  Spacing="0">
+            <Label     Text="&#xf060;"
+                                FontSize="Large"
+                                FontFamily="{StaticResource AwesomeSolidFontFamily}"
+                                HorizontalOptions="StartAndExpand" 
+                                VerticalOptions="CenterAndExpand">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Button Text="Following" 
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    CornerRadius="5"                  
+                    BorderColor="{StaticResource primaryColor}"
+                    BorderWidth="2"
+                    HeightRequest="38" 
+                    WidthRequest="90"
+                    />
+            <!--<Frame VerticalOptions="Start" 
+                       HasShadow="False" 
+                       CornerRadius="5" 
+                   HeightRequest="20"
+                       Padding="10,0,10,0"
+                       BorderColor="{StaticResource primaryColor}">
+                <Label Text="Follow"
+                           HorizontalOptions="EndAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                           FontSize="Medium"
+                           FontAttributes="Bold"/>
+            </Frame>-->
+        </StackLayout>
+        <!--<BoxView  HeightRequest="4" BackgroundColor="LightGray" VerticalOptions="Start" Opacity="0.3"/>-->
+        <StackLayout Spacing="0">
+            <Frame 
+                       IsClippedToBounds="True"
+                       BorderColor="Silver"
+                       CornerRadius="90"
+                       HeightRequest="300" WidthRequest="120"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="StartAndExpand"
+                       Margin="0,-10,0,20"
+                       >
+                <Image x:Name="logoImage" 
+                    Source="duck" 
+                    Aspect="Fill" />
+            </Frame>
+            <Label Text="DAMRONGDET LALITLAGSAMANONT" 
+                   HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   />
+            <Label Text="Technical consultants at ENIXER" 
+                   HorizontalOptions="CenterAndExpand"
+                    FontAttributes="Bold"
+                   TextColor="Gray"
+                   FontSize="Small"
+                   Padding="0,0,0,15"
+                   />
+          
+            <Grid  Padding="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="1"/>
+                </Grid.RowDefinitions>
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"
+                    BackgroundColor="Gray" HorizontalOptions="FillAndExpand" 
+                     HeightRequest="1"
+                     Opacity="0.2" 
+                     />
+                <Button  Grid.Column="0" 
+                         Grid.Row="1" 
+                         Text="234 Following"
+                         BackgroundColor="White"
+                         TextColor="LightGray"/>
+                <BoxView Grid.Column="1" 
+                         Grid.Row="1"
+                         BackgroundColor="Gray" HorizontalOptions="FillAndExpand" 
+                      WidthRequest="0.5"
+                     Opacity="0.2"/>
+                <Button  Grid.Column="2" 
+                         Grid.Row="1" 
+                         Text="234 Posts"
+                         BackgroundColor="White"
+                         TextColor="LightGray"/>
+                <BoxView Grid.Column="3" 
+                         Grid.Row="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" 
+                      WidthRequest="1"
+                      Opacity="0.2"/>
+                <Button  Grid.Column="4" 
+                         Grid.Row="1" 
+                         Text="234 Followers"
+                         BackgroundColor="White"
+                         TextColor="LightGray"
+                         />
+                <BoxView 
+                    Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5"
+                    BackgroundColor="Gray" HorizontalOptions="FillAndExpand" 
+                     HeightRequest="1"
+                     Opacity="0.2"/>
+            </Grid>
+           
+            <StackLayout HeightRequest="10"/>
+        </StackLayout>
+        <ListView 
+                  x:Name="MyListView" 
+                  ItemsSource="{Binding ListData}" 
+                  HasUnevenRows="true"
+                  >
+            <ListView.ItemTemplate >
+            <DataTemplate >
+                <ViewCell >
+                        <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
+                                TxTitle="{Binding Title}" 
+                                TxDetail="{Binding Detail}"
+                                BookMarkVisible="{Binding BookmarkShow}"
+                                TxName="Dookdik"
+                                TxTimeAgo="5 min ago"
+                          />
+                </ViewCell>
+            </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

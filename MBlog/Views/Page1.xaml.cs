@@ -46,5 +46,15 @@ namespace MBlog.Views
 		{
 			Navigation.PushAsync(new FollowPage());
 		}
+
+		private void BtnFollowing_Clicked(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new FollowingPage());
+		}
+
+		private void BtnEditFollow_Clicked(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new EditFollowPage());
+		}
 	}
 }
