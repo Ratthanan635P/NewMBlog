@@ -36,6 +36,19 @@ namespace MBlog.ViewModels
                 }
             }
         }
+        private List<DataTest> listDataTop3;
+        public List<DataTest> ListDataTop3
+        {
+            get { return listDataTop3; }
+            set
+            {
+                if (!Equals(listDataTop3, value))
+                {
+                    listDataTop3 = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         private bool isBusy;
         public bool IsBusy
         {
@@ -183,6 +196,11 @@ namespace MBlog.ViewModels
                 Image=d.Image,
                 Title=d.Title
             }).ToList();
+            ListDataTop3 = new List<DataTest>();
+            for (int i = 0; i < 3; i++)
+            {
+                ListDataTop3.Add(ListData[i]);
+            }
         }
     }
 }

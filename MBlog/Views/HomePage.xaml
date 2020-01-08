@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
+             xmlns:compotent="clr-namespace:MBlog.Components"
              mc:Ignorable="d"
              x:Class="MBlog.Views.HomePage">
     <Shell.TitleView>
@@ -20,11 +22,167 @@
             </Label>
         </Grid>
     </Shell.TitleView>
+    <ContentPage.BindingContext>
+        <viewmodel:ListTitleViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+        <ScrollView>      
+                <StackLayout Padding="10">
+            <!--<Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+                HorizontalOptions="CenterAndExpand" />-->
+            <Frame CornerRadius="0" HasShadow="True" Padding="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="For you"   
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           FontAttributes="Bold"
+                           FontSize="Medium"/>
+                    <Label Text="Read more >>"   
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           FontSize="Small"/>
+                </StackLayout>                
+            </Frame>
+            <!--list For You-->
+                <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Spacing="0" Padding="0">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
+                                TxTitle="{Binding Title}" 
+                                TxDetail="{Binding Detail}"
+                                BookMarkVisible="{Binding BookmarkShow}"
+                                TxName="Dookdik"
+                                TxTimeAgo="5 min ago" 
+                                Padding="-7,-8,-7,0"
+                                 />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>              
+                <Frame CornerRadius="0" HasShadow="True" Padding="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Read more" 
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"/>                  
+                </StackLayout>
+            </Frame>
+            <Label Text="Topic"   
+                    FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="StartAndExpand"
+                           />
+            <!--list To-->
+            <Frame CornerRadius="0" HasShadow="True" Padding="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Latest" 
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+                    <Label Text="Read more >>" 
+                           FontSize="Small"
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </Frame>
+                <!--list For You-->
+                <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Spacing="0" Padding="0">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <compotent:MB_Latest ImageTitle="{Binding Image}"
+                                TxTitle="{Binding Title}"
+                                TxName="Dookdik"
+                                TxTimeAgo="5 min ago"
+                                Padding="-7,-8,-7,0"
+                          />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <Frame CornerRadius="0" HasShadow="True" Padding="10">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Read more" 
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Frame CornerRadius="0" HasShadow="True" Padding="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="HOT" 
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+                    <Label Text="Read more >>"   
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           FontSize="Small"/>
+                </StackLayout>
+            </Frame>
+            <!--list HOT-->
+                <StackLayout x:Name="ListTitle" Padding="0" Margin="-5" HeightRequest="570">
+                    <CollectionView x:Name="MyListView" ItemsSource="{Binding ListDataTop3}" >
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"                                             
+                                Span="2"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate >
+                                <compotent:MB_HotBlog ImageTitle="{Binding Image}"
+                                TxTitle="{Binding Title}" 
+                                TxDetail="{Binding Detail}"
+                                BookMarkVisible="{Binding BookmarkShow}"
+                                TxName="Dookdik"
+                                TxTimeAgo="5 min ago"
+                                Padding="5,5,5,0"
+                          />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <Frame CornerRadius="0" HasShadow="True" Padding="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Read more" 
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </Frame>
+                <Frame CornerRadius="0" HasShadow="True" Padding="10" Margin="-15,0,-15,0">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="You might like" 
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Padding="10,0,0,0"/>
+                    <Label Text="More >>"   
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           FontSize="Small"/>
+                </StackLayout>
+            </Frame>
+                <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Margin="0,10,0,0" Spacing="0" Padding="0">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <compotent:MB_TitleBlog ImageTitle="{Binding Image}"
+                                TxTitle="{Binding Title}"
+                                TxDetail="{Binding Detail}"  
+                                TxButtom="Following"
+                                Padding="-10,0,-10,0"
+                          />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

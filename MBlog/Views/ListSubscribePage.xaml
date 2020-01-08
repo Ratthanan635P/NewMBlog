@@ -34,7 +34,7 @@
                   >
             <ListView.ItemTemplate >
             <DataTemplate >
-                <ViewCell >
+                <ViewCell>
                         <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
