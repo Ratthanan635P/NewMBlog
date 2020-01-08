@@ -6,7 +6,9 @@
              xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
              xmlns:compotent="clr-namespace:MBlog.Components"
              mc:Ignorable="d"
-             x:Class="MBlog.Views.HomePage">
+
+             x:Class="MBlog.Views.HomePage"
+             >
     <Shell.TitleView>
         <Grid>
             <Image Source="logo.png" 
@@ -26,7 +28,7 @@
         <viewmodel:ListTitleViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ScrollView>      
+        <ScrollView BackgroundColor="Transparent">      
                 <StackLayout Padding="10">
             <!--<Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
@@ -69,13 +71,48 @@
                            VerticalOptions="CenterAndExpand"/>                  
                 </StackLayout>
             </Frame>
-            <Label Text="Topic"   
+            <Label Text="Topic"  
+                   Padding="0,10,0,0"
                     FontAttributes="Bold"
                            FontSize="Medium"
                            HorizontalOptions="StartAndExpand"
                            />
             <!--list To-->
-            <Frame CornerRadius="0" HasShadow="True" Padding="10">
+                <StackLayout x:Name="Datatest" Padding="0" Margin="-1,0,0,0"                         
+                             Orientation="Horizontal"
+                             HeightRequest="75">
+                    <CollectionView x:Name="ListTopic" 
+                                    ItemsSource="{Binding ListDataTop3}"  >
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal"                                             
+                                             Span="1"
+                                             HorizontalItemSpacing="7"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate  >
+                                <Frame 
+                                       WidthRequest="135"
+                                       HasShadow="True"                                       
+                                       CornerRadius="0"                                       
+                                       Padding="10,0,10,0"                                      
+                                       BorderColor="LightGray"
+                                       >
+                                    <Label
+                                          Text="{Binding TopicName}"
+                                          FontSize="Medium"
+                                          FontAttributes="Bold"
+                                          HorizontalOptions="CenterAndExpand"
+                                          VerticalOptions="CenterAndExpand"
+                                        /> 
+                                </Frame>                              
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>               
+                <Frame CornerRadius="0" 
+                       HasShadow="True" 
+                       Padding="10"
+                       Margin="0,10,0,0">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Latest" 
                            TextColor="Black"
@@ -102,7 +139,9 @@
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
-                <Frame CornerRadius="0" HasShadow="True" Padding="10">
+                <Frame CornerRadius="0" HasShadow="True"
+                       Padding="10"
+                       >
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Read more" 
                            TextColor="Black"
