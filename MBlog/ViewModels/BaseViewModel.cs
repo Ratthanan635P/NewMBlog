@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MBlog.ViewModels
@@ -63,6 +64,59 @@ namespace MBlog.ViewModels
             set { SetProperty(ref errorMessage, value); }
         }
 
+
+        private bool loadingForyou;
+        public bool LoadingForyou
+        {
+            get { return loadingForyou; }
+            set
+            {
+                if (!Equals(loadingForyou, value))
+                {
+                    loadingForyou = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private bool loadingTopic;
+        public bool LoadingTopic
+        {
+            get { return loadingTopic; }
+            set
+            {
+                if (!Equals(loadingTopic, value))
+                {
+                    loadingTopic = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private bool loadingLatest;
+        public bool LoadingLatest
+        {
+            get { return loadingLatest; }
+            set
+            {
+                if (!Equals(loadingLatest, value))
+                {
+                    loadingLatest = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private bool loadingFollowing;
+        public bool LoadingFollowing
+        {
+            get { return loadingFollowing; }
+            set
+            {
+                if (!Equals(loadingFollowing, value))
+                {
+                    loadingFollowing = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         public BaseViewModel()
         {
         }
@@ -92,9 +146,13 @@ namespace MBlog.ViewModels
         {
             ErrorMessage = "";
         }
-        public void MockDatatest()
+        public async Task MockDatatest()
         {
-
+            LoadingForyou = true;
+            LoadingTopic = true;
+            LoadingLatest = true;
+            LoadingFollowing = true;
+            await Task.Delay(1000);
             ListData = new List<DataTest>()
               {
                       new DataTest
@@ -204,6 +262,13 @@ namespace MBlog.ViewModels
             {
                 ListDataTop3.Add(ListData[i]);
             }
+            LoadingForyou = false;
+            await Task.Delay(500);
+            LoadingTopic = false;
+            await Task.Delay(500);
+            LoadingLatest = false;
+            await Task.Delay(500);
+            LoadingFollowing = false;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MBlog.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace MBlog.Views
 		public HomePage()
 		{
 			InitializeComponent();
+		}
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			BindingContext = new ListTitleViewModel();
 		}
 
 		private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

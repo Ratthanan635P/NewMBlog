@@ -23,9 +23,9 @@
             </Label>
         </Grid>
     </Shell.TitleView>
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <viewmodel:ListTitleViewModel/>
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
     <ContentPage.Content>
         <ScrollView BackgroundColor="Transparent">      
                 <StackLayout Padding="10">
@@ -46,12 +46,13 @@
                 </StackLayout>                
             </Frame>
             <!--list For You-->
-                <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" 
-                             Spacing="0" Padding="0"
+                <Grid>
+                    <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" 
+                             Spacing="0" Padding="0"                             
                              >
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
                                 BookMarkVisible="{Binding BookmarkShow}"
@@ -59,9 +60,15 @@
                                 TxTimeAgo="5 min ago" 
                                 Padding="-7,-8,-7,0"
                                  />
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </StackLayout>              
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    <ActivityIndicator x:Name="LoadingForyou"
+                                       IsVisible="{Binding LoadingForyou}" 
+                                       IsRunning="True"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"/>
+                </Grid>
                 <Frame CornerRadius="0" HasShadow="True" Padding="10">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Read more" 
@@ -79,7 +86,8 @@
                            HorizontalOptions="StartAndExpand"
                            />
             <!--list To-->
-                <StackLayout x:Name="Datatest" Padding="0" Margin="-1,0,0,0"                         
+                <Grid>
+                    <StackLayout x:Name="Datatest" Padding="0" Margin="-1,0,0,0"                         
                              Orientation="Horizontal"
                              HeightRequest="75">
                     <CollectionView x:Name="ListTopic" 
@@ -110,7 +118,13 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </StackLayout>               
+                </StackLayout>
+                    <ActivityIndicator 
+                                       IsVisible="{Binding LoadingTopic}" 
+                                       IsRunning="True"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"/>
+                </Grid>
                 <Frame CornerRadius="0" 
                        HasShadow="True" 
                        Padding="10"
@@ -168,7 +182,9 @@
             </Frame>
             <!--list HOT-->
                 <StackLayout x:Name="ListTitle" Padding="0" Margin="-5" HeightRequest="570">
-                    <CollectionView x:Name="MyListView" ItemsSource="{Binding ListDataTop3}" >
+                    <CollectionView x:Name="MyListView" ItemsSource="{Binding ListDataTop3}"                                    
+                                    HorizontalOptions="CenterAndExpand"
+                                    >
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Vertical"                                             
                                 Span="2"/>
@@ -185,6 +201,14 @@
                           />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <ActivityIndicator                                   
+                                       IsRunning="True"
+                                       WidthRequest="50"
+                                       Margin="50"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"/>
+                        </CollectionView.EmptyView>
                     </CollectionView>
                 </StackLayout>
                 <Frame CornerRadius="0" HasShadow="True" Padding="10">
@@ -211,7 +235,8 @@
                            FontSize="Small"/>
                 </StackLayout>
             </Frame>
-                <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Margin="0,10,0,0" Spacing="0" Padding="0">
+                <Grid>
+                    <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Margin="0,10,0,0" Spacing="0" Padding="0">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <compotent:MB_TitleBlog ImageTitle="{Binding Image}"
@@ -222,7 +247,13 @@
                           />
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
-                </StackLayout>
+                </StackLayout>            
+            <ActivityIndicator 
+                                       IsVisible="{Binding LoadingFollowing}" 
+                                       IsRunning="True"                                       
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"/>
+            </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
