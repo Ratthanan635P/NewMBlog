@@ -6,7 +6,7 @@
              xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
              xmlns:compotent="clr-namespace:MBlog.Components"
              mc:Ignorable="d"
-
+             BackgroundImageSource="bk.png"
              x:Class="MBlog.Views.HomePage"
              >
     <Shell.TitleView>
@@ -16,7 +16,6 @@
                    VerticalOptions="CenterAndExpand"
                    HeightRequest="35"
                    Margin="-50,0,0,0"/>
-
             <Label Text="&#xf2bd;" FontFamily="{StaticResource AwesomeSolidFontFamily}" HorizontalOptions="EndAndExpand" FontSize="35" VerticalOptions="CenterAndExpand" Margin="0,0,15,0">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
@@ -47,7 +46,9 @@
                 </StackLayout>                
             </Frame>
             <!--list For You-->
-                <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Spacing="0" Padding="0">
+                <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" 
+                             Spacing="0" Padding="0"
+                             >
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
@@ -82,7 +83,8 @@
                              Orientation="Horizontal"
                              HeightRequest="75">
                     <CollectionView x:Name="ListTopic" 
-                                    ItemsSource="{Binding ListDataTop3}"  >
+                                    ItemsSource="{Binding ListDataTop3}" 
+                                    >
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Horizontal"                                             
                                              Span="1"

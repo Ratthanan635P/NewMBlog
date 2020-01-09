@@ -13,7 +13,7 @@
         <viewmodel:ListTitleViewModel/>
     </ContentPage.BindingContext>
     <StackLayout x:Name="ListTitle">
-               <StackLayout Orientation="Horizontal" Padding="10,10,10,0"  Spacing="0">
+        <StackLayout Orientation="Horizontal" Padding="10,10,10,0"  Spacing="0">
             <Label     Text="&#xf060;"
                                 FontSize="Large"
                                 FontFamily="{StaticResource AwesomeSolidFontFamily}"

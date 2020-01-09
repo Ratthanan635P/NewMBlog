@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MBlog.Views.BlogDetailPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="10,10,10,0"  Spacing="0">
+            <Label     Text="&#xf060;"
+                                FontSize="Large"
+                                FontFamily="{StaticResource AwesomeSolidFontFamily}"
+                                HorizontalOptions="StartAndExpand" 
+                                VerticalOptions="CenterAndExpand">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Following" 
+                    FontAttributes="Bold"
+                    FontSize="Small"                                                
+                    HeightRequest="30"
+                    WidthRequest="80"
+                    Padding="0" 
+                    MaxLines="1"
+                    LineBreakMode="TailTruncation"
+                    />           
+        </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame HeightRequest="50"
+                       WidthRequest="50"
+                       CornerRadius="45"
+                       IsClippedToBounds="True">
+                    <Image 
+                       Source="duck.png"
+                       Aspect="Fill"
+                    />
+                </Frame>
+                <StackLayout HorizontalOptions="StartAndExpand">
+                    <Label Text="DAMRONGDET LALA"
+                           FontSize="Small"/>
+                    <Label Text="9 Jan 2020 10:11 AM"
+                           FontSize="Micro"/>
+                </StackLayout>
+                <Label Text="Top 10 ES6 Features Every Busy JavaScript
+                       Developer Must Know"
+                       FontSize="Large"
+                       MaxLines="2"
+                       TextColor="Black"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

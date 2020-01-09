@@ -24,13 +24,14 @@
             </Label>
         </Grid>
     </Shell.TitleView>
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <viewmodel:ListTitleViewModel/>
-    </ContentPage.BindingContext>
-    <StackLayout x:Name="ListTitle">
+    </ContentPage.BindingContext>-->
+    <Grid>
+        <StackLayout x:Name="ListTitle">
         <ListView x:Name="MyListView" 
                   ItemsSource="{Binding ListData}" 
-                  HasUnevenRows="true"
+                  HasUnevenRows="true"                  
                   >
             <ListView.ItemTemplate >
             <DataTemplate >
@@ -47,4 +48,7 @@
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
+    <compotent:MB_Loading x:Name="Loading"
+                 />
+    </Grid>
 </ContentPage>
