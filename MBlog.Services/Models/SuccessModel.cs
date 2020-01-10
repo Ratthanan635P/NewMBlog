@@ -6,6 +6,7 @@ namespace MBlog.Services.Models
 {
     public class SuccessModel
     {
+        public string SuccessCode { get; set; }
         public string SuccessMessage { get; set; }
     }
 }

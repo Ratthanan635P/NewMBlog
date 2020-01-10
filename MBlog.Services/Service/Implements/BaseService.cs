@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MBlog.Services.Implements
 {
-    public class BaseService:IBaseService
+    public class BaseService: BaseUrl,IBaseService
     {
         private HttpResponseMessage response;
         private readonly HttpClient client = new HttpClient();

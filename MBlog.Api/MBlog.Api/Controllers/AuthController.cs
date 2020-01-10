@@ -12,10 +12,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace MBlog.Api.Controller
 {
-
 	[Authorize]
 	[ApiController]
 	[Route("[controller]")]
@@ -128,49 +126,49 @@ namespace MBlog.Api.Controller
 			}			
 		}
 		//[AllowAnonymous]
-		[Authorize(Roles = "User")]
-		[HttpGet("GetData")]
-		public IActionResult GetUser(string email)
-		{
-			string error = "";
-			if (string.IsNullOrEmpty(email))
-			{
-				error = " Email is null";
-				return BadRequest(new { message = error });
-			}
-			if (!((validateMethods.CheckRegEx_UserName(email)) && (email.Length > validateMethods.LengthEmail)))
-			{
-				error = " Email is Invalid!";
-				return BadRequest(new { message = error });
-			}
+		//[Authorize(Roles = "User")]
+		//[HttpGet("GetData")]
+		//public IActionResult GetUser(string email)
+		//{
+		//	string error = "";
+		//	if (string.IsNullOrEmpty(email))
+		//	{
+		//		error = " Email is null";
+		//		return BadRequest(new { message = error });
+		//	}
+		//	if (!((validateMethods.CheckRegEx_UserName(email)) && (email.Length > validateMethods.LengthEmail)))
+		//	{
+		//		error = " Email is Invalid!";
+		//		return BadRequest(new { message = error });
+		//	}
 
-			//Call Api Check email and Password
+		//	//Call Api Check email and Password
 
-			if (error == "")
-			{
-				try
-				{
-					var user = _authService.GetDataUser(email);
-					if (user == null)
-					{
-						user.ErrorMessage = "Account not found!";
-						return BadRequest(new { message = user.ErrorMessage });
-					}
-					return Ok(user);
-				}
-				catch (Exception ex)
-				{
-					error = ex.Message;
-				}
-				return BadRequest(new { message = error });
-			}
-			else
-			{
-				return BadRequest(new { message = error });
+		//	if (error == "")
+		//	{
+		//		try
+		//		{
+		//			var user = _authService.GetDataUser(email);
+		//			if (user == null)
+		//			{
+		//				user.ErrorMessage = "Account not found!";
+		//				return BadRequest(new { message = user.ErrorMessage });
+		//			}
+		//			return Ok(user);
+		//		}
+		//		catch (Exception ex)
+		//		{
+		//			error = ex.Message;
+		//		}
+		//		return BadRequest(new { message = error });
+		//	}
+		//	else
+		//	{
+		//		return BadRequest(new { message = error });
 
-			}
-			///return Ok(email);
-		}
+		//	}
+		//	///return Ok(email);
+		//}
 	}
 
 }
