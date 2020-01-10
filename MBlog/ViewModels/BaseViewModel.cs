@@ -1,4 +1,5 @@
-﻿using MBlog.Models;
+﻿using MBlog.CallApi.Service.Interfaces;
+using MBlog.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,12 +7,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace MBlog.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        public IAuthService AuthService { get; } = DependencyService.Get<IAuthService>();
         private ObservableCollection<DataTest> listData;
         public ObservableCollection<DataTest> ListData
         {
@@ -131,6 +134,18 @@ namespace MBlog.ViewModels
                 }
             }
         }
+        private string errorMessageEmail;
+        public string ErrorMessageEmail
+        {
+            get { return errorMessageEmail; }
+            set { SetProperty(ref errorMessageEmail, value); }
+        }
+        private string errorMessagePassword;
+        public string ErrorMessagePassword
+        {
+            get { return errorMessagePassword; }
+            set { SetProperty(ref errorMessagePassword, value); }
+        }
         public BaseViewModel()
         {
         }
@@ -157,6 +172,24 @@ namespace MBlog.ViewModels
         public void ClearErrorMessage()
         {
             ErrorMessage = "";
+            ErrorMessageEmail = "";
+            ErrorMessagePassword = "";
+        }
+        public bool NullValidate(string x)
+        {
+            if (x == "" || x == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        protected bool CheckingInternet()
+        {
+            var current = Connectivity.NetworkAccess;
+            return (current == NetworkAccess.Internet);
         }
         public async Task MockDatatest()
         {

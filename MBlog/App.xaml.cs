@@ -1,4 +1,6 @@
-﻿using MBlog.Views;
+﻿
+using MBlog.CallApi.Service.Implements;
+using MBlog.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,9 +11,9 @@ namespace MBlog
     {
         public App()
         {
+            DependencyService.Register<AuthService>();
             InitializeComponent();
             MainPage = new NavigationPage(new LoginPage());
-
            // MainPage = new AppShell();
         }
 

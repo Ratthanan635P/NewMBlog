@@ -16,6 +16,9 @@
     <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MBlog.Services\MBlog.CallApi.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Components\MB_EntryProfile.xaml.cs">
       <DependentUpon>MB_EntryProfile.xaml</DependentUpon>
     </Compile>

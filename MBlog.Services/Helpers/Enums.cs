@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MBlog.Services.Helpers
+namespace MBlog.CallApi.Helpers
 {
     public class Enums
     {

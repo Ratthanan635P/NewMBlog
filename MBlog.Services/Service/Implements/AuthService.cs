@@ -1,10 +1,11 @@
-﻿using MBlog.Domain.Dtos;
-using MBlog.Services.Interfaces;
-using MBlog.Services.Models;
+﻿using MBlog.CallApi.Dtos;
+using MBlog.CallApi.Models;
+using MBlog.CallApi.Service.Interfaces;
+
 using System;
 using System.Threading.Tasks;
 
-namespace MBlog.Services.Implements
+namespace MBlog.CallApi.Service.Implements
 {
     public class AuthService : BaseService, IAuthService
     {

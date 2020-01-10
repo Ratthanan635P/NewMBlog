@@ -1,10 +1,10 @@
-﻿using MBlog.Services.Models;
+﻿using MBlog.CallApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MBlog.Services.Interfaces
+namespace MBlog.CallApi.Service.Interfaces
 {
     public interface IBaseService
     {

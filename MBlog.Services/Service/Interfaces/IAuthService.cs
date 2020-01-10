@@ -1,9 +1,9 @@
-﻿using MBlog.Domain.Dtos;
-using MBlog.Services.Models;
+﻿using MBlog.CallApi.Dtos;
+using MBlog.CallApi.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace MBlog.Services.Interfaces
+namespace MBlog.CallApi.Service.Interfaces
 {
     public interface IAuthService
     {

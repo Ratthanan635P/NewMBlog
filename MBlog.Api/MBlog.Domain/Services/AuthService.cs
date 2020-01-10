@@ -169,8 +169,9 @@ namespace MBlog.Domain.Services
 			}
 			else
 			{
-				string newSalt = GenerateSalt();
-				string newPassword = GeneratePassword(password, newSalt);
+				//string newSalt = GenerateSalt();
+
+				string newPassword = PasswordHelper.CreatePasswordHashed(password);
 				User user = new User()
 				{
 					Email = email,
@@ -180,7 +181,6 @@ namespace MBlog.Domain.Services
 					About = "",
 					AccessToken = "",
 					RefeshToken = "",
-					Salt = newSalt,
 					Role = Enums.Roles.User
 				};
 				_userRepository.Add(user);

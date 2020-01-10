@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MBlog.Services.Models
+namespace MBlog.CallApi.Models
 {
     public class BaseUrl
     {

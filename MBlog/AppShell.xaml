@@ -8,6 +8,7 @@
        x:Class="MBlog.AppShell"
        Shell.BackgroundColor="White"
        Shell.ForegroundColor="{StaticResource primaryColor}"
+       NavigationPage.HasNavigationBar="False"
        >
     <!-- 
         Styles and Resources 

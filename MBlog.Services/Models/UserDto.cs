@@ -1,4 +1,4 @@
-﻿namespace MBlog.Domain.Dtos
+﻿namespace MBlog.CallApi.Dtos
 {
     public class UserDto 
     {

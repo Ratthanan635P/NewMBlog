@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MBlog.Services.Models
+namespace MBlog.CallApi.Models
 {
     public class LoginCommandModel
     {

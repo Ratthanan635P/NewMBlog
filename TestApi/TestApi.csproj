@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MBlog.Services\MBlog.Services.csproj" />
+    <ProjectReference Include="..\MBlog.Services\MBlog.CallApi.csproj" />
   </ItemGroup>
 
 </Project>
