@@ -16,87 +16,46 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace MBlog.Domain.Services
 {
-    public class AuthService : IAuthService
-    {
-        private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
-        private static Random random = new Random();
-        private readonly AppSettings _appSettings;
-        public AuthService(IUserRepository userRepository,
-            IMapper mapper, IOptions<AppSettings> appSettings)
-        {
-            _userRepository = userRepository;
-            _mapper = mapper;
-            _appSettings = appSettings.Value;
-        }
+	public class AuthService : CenterService, IAuthService
+	{
+		private readonly IUserRepository _userRepository;
+		private readonly IMapper _mapper;
+		private static Random random = new Random();
+		private readonly AppSettings _appSettings;
+		public AuthService(IUserRepository userRepository,
+			IMapper mapper, IOptions<AppSettings> appSettings)
+		{
+			_userRepository = userRepository;
+			_mapper = mapper;
+			_appSettings = appSettings.Value;
+		}
+		public UserDto Login(string email, string password)
+		{
+			email = email?.Trim().ToLower();
+			password = password?.Trim();
 
-        public UserDto Login(string email, string password)
-        {
-            email = email?.Trim().ToLower();
-            password = password?.Trim();
+			if (!EmailHelper.IsValidEmail(email))
+				throw new ArgumentException("Invalid Email.", nameof(email));
 
-            if (!EmailHelper.IsValidEmail(email))
-                throw new ArgumentException("Invalid Email.", nameof(email));
+			if (!PasswordHelper.IsValidPassword(password))
+				throw new ArgumentException(nameof(password));
 
-            if (!PasswordHelper.IsValidPassword(password))
-                throw new ArgumentException(nameof(password));
+			User user = _userRepository.GetByEmail(email);
+			if (user == null)
+			{
+				return null;
+			}
 
-            User user = _userRepository.GetByEmail(email);
-            if (user == null)
-            {
-                return null;
-            }
-
-            //bool isValidPassword = PasswordHelper.ValidatePassword(password, user.Password);
-            //if (isValidPassword)
-            //{
-				UserDto userDto = new UserDto();//_mapper.Map<UserDto>(user);
-				userDto.Email = user.Email;
-				userDto.Id = user.Id;
-				userDto.AccessToken = user.AccessToken;
-			    userDto.ErrorMessage="PASS";
-
+			bool isValidPassword = PasswordHelper.ValidatePassword(password, user.Password);
+			if (isValidPassword)
+			{
+				UserDto userDto = _mapper.Map<UserDto>(user);
+				userDto.AccessToken = Authenticate(user);
 				return userDto;
-           // }
+			}
 
-           // return null;
-        }
-
-   //     public UserDto Register(string email, string password)
-   //     {
-   //         email = email?.Trim().ToLower();
-   //         password = password?.Trim();
-
-   //         if (!EmailHelper.IsValidEmail(email))
-   //             throw new ArgumentException("Invalid Email.", nameof(email));
-
-   //         if (!PasswordHelper.IsValidPassword(password))
-   //             throw new ArgumentNullException(nameof(password));
-
-   //         var hashedPassword = PasswordHelper.CreatePasswordHashed(password);
-
-   //         User user = new User()
-   //         {
-   //             Email = email,
-   //             Password = hashedPassword
-   //         };
-
-   //         _userRepository.Add(user);
-   //          _userRepository.SaveChangeAsync();
-
-			//var Datauser = _userRepository.GetByEmail(user.Email);
-			//// _mapper.Map<UserDto>(user);
-			////UserDto userDto = Datauser.select(us => new UserDto()
-			////{
-			////	Email= "dfdfd",
-			////	Id=1				
-			////});
-			//UserDto userDto = new UserDto() { 
-			//ErrorMessage="OK"
-			//};
-
-			//return userDto;
-   //     }
+			return null;
+		}
 		public string ForgotPassword(string email)
 		{
 			//string status = "";
@@ -114,7 +73,7 @@ namespace MBlog.Domain.Services
 				//}
 				//else
 				//{
-					return "Update password fail";
+				return "Update password fail";
 				//}
 			}
 			else
@@ -161,12 +120,12 @@ namespace MBlog.Domain.Services
 			if (result != null)
 			{
 				result.Password = password;
-			   _userRepository.Update<User>(result);
+				_userRepository.Update<User>(result);
 				return true;
 			}
 			else
 			{
-				return  false;
+				return false;
 			}
 		}
 		public string Authenticate(User user)
@@ -187,17 +146,7 @@ namespace MBlog.Domain.Services
 			var token = tokenHandler.CreateToken(tokenDescriptor);
 			return tokenHandler.WriteToken(token);
 		}
-		private string createEmailBody(string userName, string message)
-		{
-			string body = string.Empty;
-			//using (StreamReader reader = new StreamReader(HttpContext.MapPath("/htmlTemplate.html")))
-			//{
-			//	body = reader.ReadToEnd();
-			//}
-			body = body.Replace("{UserName}", userName);
-			body = body.Replace("{message}", message);
-			return body;
-		}
+
 		public UserDto GetDataUser(string email)
 		{
 			var user = _userRepository.GetByEmail(email);
@@ -211,10 +160,8 @@ namespace MBlog.Domain.Services
 			};
 			return userDto;
 		}
-
-		public string RegisterUser(string email, string password)
+		public string Register(string email, string password)
 		{
-			//throw new NotImplementedException();
 			var data = _userRepository.GetByEmail(email);
 			if (data != null)
 			{
@@ -222,26 +169,29 @@ namespace MBlog.Domain.Services
 			}
 			else
 			{
-				string newSalt = RandomCode();
-				string newPassword = HashSHA256(password + newSalt);
-				//var result = _userRepository.Add(email, newPassword, newSalt);
+				string newSalt = GenerateSalt();
+				string newPassword = GeneratePassword(password, newSalt);
 				User user = new User()
 				{
 					Email = email,
 					Password = newPassword,
-					FullName="dfddgd",
-					About="ddgdgdgd",
-					ActiveStatus=Enums.Status.Active,
-					Salt="fsfsfsfsfs",
-					RefeshToken="fsdfjghfghjk",
-					AccessToken="fsdghjk"
+					ActiveStatus = Enums.Status.Active,
+					FullName = "",
+					About = "",
+					AccessToken = "",
+					RefeshToken = "",
+					Salt = newSalt,
+					Role = Enums.Roles.User
 				};
-
 				_userRepository.Add(user);
-				_userRepository.SaveChangeAsync();
+				_userRepository.SaveChange();
 				return "Success";
 			}
-			//throw new NotImplementedException();
 		}
+
+		//public string Register(string email, string password)
+		//{
+		//	throw new NotImplementedException();
+		//}
 	}
 }

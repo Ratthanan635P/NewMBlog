@@ -17,6 +17,7 @@ namespace MBlog.IoC
 
             #region Dto2Entity
 
+            CreateMap<UserDto, User>();
 
 
             #endregion

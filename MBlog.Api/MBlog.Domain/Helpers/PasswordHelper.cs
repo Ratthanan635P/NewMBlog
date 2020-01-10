@@ -55,11 +55,12 @@ namespace MBlog.Domain.Helpers
 
         public static bool ValidatePassword(string password, string passwordHashed)
         {
-            string strSalt = passwordHashed.Substring(startIndex, saltSize);
-            var salt = Convert.FromBase64String(strSalt);
-            string hashed = HashPassword(password, salt);
+            //string strSalt = passwordHashed.Substring(startIndex, saltSize);
+            //var salt = Convert.FromBase64String(strSalt);
+            //string hashed = HashPassword(password, salt);
 
-            return hashed == passwordHashed;
+            //return hashed == passwordHashed;
+            return password == passwordHashed;
         }
 
         public static bool IsValidPassword(string password)

@@ -21,8 +21,10 @@ namespace MBlog.Api.Helpers
 		public bool CheckRegEx_UserName(string username)
 		{
 			//var patterns = @"^(?=.*[a - z])(?=.*[A - Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{"+App.LengthEmail+","+App.LengthMax + "}$";
-			var patterns = @"^(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{4,50}$";
-			//var patterns = @"^(?=.*[A - Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{"+App.LengthEmail.ToString()+","+App.LengthMax.ToString() + "}$";
+			//var patterns = @"^(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{4,50}$";			
+			var patterns = @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+				//@"^(?=.*[A-Za-z0-9])(?=.*[#$^+=!*()@%&]).{4,50}$";
+				//var patterns = @"^(?=.*[A - Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{"+App.LengthEmail.ToString()+","+App.LengthMax.ToString() + "}$";
 			Regex rx = new Regex(patterns, RegexOptions.IgnoreCase);
 			username = username.ToUpper();
 			bool isCheck = rx.IsMatch(username);
