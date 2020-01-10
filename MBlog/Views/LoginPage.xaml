@@ -4,7 +4,6 @@
         xmlns:conponents="clr-namespace:MBlog.Components"
         xmlns:viewmodels="clr-namespace:MBlog.ViewModels"
         xmlns:converters="clr-namespace:MBlog.Converters"
-        xmlns:nav="clr-namespace:MBlog.Navigators"
         NavigationPage.HasNavigationBar="False" x:Class="MBlog.Views.LoginPage">
 
     <ContentPage.BindingContext>
@@ -14,33 +13,53 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ReverseBooleanConverter x:Key="reverseBooleanConverter" />
-            <nav:ViewNavigator x:Key="nav" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <Grid>
-        <StackLayout Margin="30" x:Name="loginFormStackLayout"
+        <StackLayout Padding="40" x:Name="loginFormStackLayout"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="FillAndExpand">
-            <Image x:Name="logoImage" HeightRequest="150" WidthRequest="150"
+            <Image x:Name="logoImage" HeightRequest="180" WidthRequest="180"
                     Source="logotrans" HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="CenterAndExpand" />
+                    VerticalOptions="CenterAndExpand" 
+                   Margin="0,0,0,20"/>
+            <Label Text="Errorsomething" 
+                   TextColor="Red"                   
+                   IsVisible="True"/>
             <conponents:MB_Entry x:Name="usernameEntry" MB_EntryLabel="EMAIL"
                     MB_EntryTabIndex="1" MB_EntryMaxLength="100"
                     MB_Keyboard="Email" MB_ReturnType="Next"
                     MB_EntryText="{Binding Email}" />
+            <Label Text="ErrorPasswordMessage" 
+                   TextColor="Red"                   
+                   IsVisible="True"/>
             <conponents:MB_Entry x:Name="passwordEntry" MB_EntryLabel="PASSWORD"
                     MB_EntryTabIndex="2" MB_EntryIsPassword="True"
                     MB_ReturnType="Next" MB_EntryMaxLength="100"
                     MB_EntryText="{Binding Password}" />
-            <Button x:Name="loginButton" Text="LOG IN" TabIndex="3"
+            <Button x:Name="loginButton" 
+                    Text="LOG IN" TabIndex="3"
+                    FontSize="Medium"
+                    TextColor="White" 
+                    Margin="0,15,0,0"
                     Command="{Binding LoginCommand}" />
+            <Label Text="FORGOT PASSWORD ?" 
+                   TextDecorations="Underline"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Start"
+                   FontAttributes="None"
+                   FontSize="Medium">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ForgotCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
         <Label Text="REGISTER" Margin="0, 0, 0, 10" FontSize="Medium"
-                FontAttributes="Bold" VerticalOptions="EndAndExpand"
+                VerticalOptions="EndAndExpand"
                 HorizontalOptions="CenterAndExpand">
             <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding NavToRegisterPage, Source={x:StaticResource nav}}" />
+                <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
             </Label.GestureRecognizers>
         </Label>
         <conponents:MB_Loading IsVisible="{Binding IsBusy}"

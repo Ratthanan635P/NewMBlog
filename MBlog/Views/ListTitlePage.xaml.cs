@@ -15,7 +15,7 @@ namespace MBlog.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ListTitlePage : ContentPage
 	{
-		
+		public bool Fristtime { get; set; } = false;
         public ListTitlePage()
 		{
 			InitializeComponent();           
@@ -28,13 +28,16 @@ namespace MBlog.Views
 		protected override async void OnAppearing()
 		{
 			base.OnAppearing();
-			Loading.IsVisible = true;
-			Loading.IsPlaying = true;
-			
-			await Task.Delay(2000);
-			BindingContext = new ListTitleViewModel();
-			Loading.IsVisible = false;
-			Loading.IsPlaying = false;
+			if (Fristtime==false)
+			{
+				Loading.IsVisible = true;
+				Loading.IsPlaying = true;
+				await Task.Delay(2000);
+				BindingContext = new ListTitleViewModel();
+				Loading.IsVisible = false;
+				Loading.IsPlaying = false;
+				Fristtime = true;
+			}
 		}
 	}
 

@@ -14,8 +14,9 @@ namespace MBlog.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ListSubscribePage : ContentPage
-	{		
-        public ListSubscribePage()
+	{
+		public bool Fristtime { get; set; } = false;
+		public ListSubscribePage()
 		{
 			InitializeComponent();           
 		}
@@ -27,13 +28,21 @@ namespace MBlog.Views
 		protected override async void OnAppearing()
 		{
 			base.OnAppearing();
-			Loading.IsVisible = true;
-			Loading.IsPlaying = true;
+			if (Fristtime == false)
+			{
+				Loading.IsVisible = true;
+				Loading.IsPlaying = true;
+				await Task.Delay(2000);
+				BindingContext = new ListTitleViewModel();
+				Loading.IsVisible = false;
+				Loading.IsPlaying = false;
+				Fristtime = true;
+			}
+		}
 
-			await Task.Delay(2000);
-			BindingContext = new ListTitleViewModel();
-			Loading.IsVisible = false;
-			Loading.IsPlaying = false;
+		private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
+		{
+			//scrollviewData.ScrollY
 		}
 	}
 

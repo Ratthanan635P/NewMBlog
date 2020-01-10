@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MBlog.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,8 +10,9 @@ namespace MBlog
         public App()
         {
             InitializeComponent();
+            MainPage = new NavigationPage(new LoginPage());
 
-            MainPage = new AppShell();
+           // MainPage = new AppShell();
         }
 
         protected override void OnStart()

@@ -143,7 +143,8 @@
                 </StackLayout>
             </Frame>
                 <!--list For You-->
-                <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Spacing="0" Padding="0">
+                <Grid>
+                    <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Spacing="0" Padding="0">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <compotent:MB_Latest ImageTitle="{Binding Image}"
@@ -155,6 +156,12 @@
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
+                <ActivityIndicator 
+                                       IsVisible="{Binding LoadingLatest}"
+                                       IsRunning="True"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"/>
+                </Grid>
                 <Frame CornerRadius="0" HasShadow="True"
                        Padding="10"
                        >
@@ -181,7 +188,8 @@
                 </StackLayout>
             </Frame>
             <!--list HOT-->
-                <StackLayout x:Name="ListTitle" Padding="0" Margin="-5" HeightRequest="570">
+                <Grid>
+                    <StackLayout x:Name="ListTitle" Padding="0" Margin="-5" HeightRequest="570">
                     <CollectionView x:Name="MyListView" ItemsSource="{Binding ListDataTop3}"                                    
                                     HorizontalOptions="CenterAndExpand"
                                     >
@@ -200,17 +208,15 @@
                                 Padding="5,5,5,0"
                           />
                             </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                        <CollectionView.EmptyView>
-                            <ActivityIndicator                                   
-                                       IsRunning="True"
-                                       WidthRequest="50"
-                                       Margin="50"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"/>
-                        </CollectionView.EmptyView>
+                        </CollectionView.ItemTemplate>                       
                     </CollectionView>
                 </StackLayout>
+                <ActivityIndicator 
+                                IsVisible="{Binding LoadingHot}" 
+                                IsRunning="True"                                       
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"/>
+                </Grid>
                 <Frame CornerRadius="0" HasShadow="True" Padding="10">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Read more" 
@@ -249,10 +255,10 @@
                     </BindableLayout.ItemTemplate>
                 </StackLayout>            
             <ActivityIndicator 
-                                       IsVisible="{Binding LoadingFollowing}" 
-                                       IsRunning="True"                                       
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"/>
+                                IsVisible="{Binding LoadingFollowing}" 
+                                IsRunning="True"                                       
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"/>
             </Grid>
             </StackLayout>
         </ScrollView>

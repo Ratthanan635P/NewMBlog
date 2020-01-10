@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MBlog.Views;
+using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -36,6 +38,8 @@ namespace MBlog.ViewModels
         #region Commands
 
         public Command RegisterCommand { get; }
+        public Command ForgotCommand { get; set; }
+        public Command BackPageCommand { get; set; }
 
         #endregion
 
@@ -44,10 +48,11 @@ namespace MBlog.ViewModels
         public RegisterViewModel()
         {
             RegisterCommand = new Command(async () => await Register(), CanRegister);
+            ForgotCommand = new Command(GotoForgotPage);
+            BackPageCommand = new Command(BackPage);
         }
 
         #endregion
-
 
         #region RegisterCommandMethod
 
@@ -67,9 +72,17 @@ namespace MBlog.ViewModels
         {
             IsBusy = true;
             await Task.Delay(2000);
+            //Call Api
             IsBusy = false;
         }
-
+        private async void GotoForgotPage()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordPage());
+        }       
+        private async void BackPage()
+        {
+            await App.Current.MainPage.Navigation.PopAsync();
+        }
         #endregion
 
 

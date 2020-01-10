@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using MBlog.Helpers;
+using MBlog.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -29,7 +31,9 @@ namespace MBlog.ViewModels
 
         #region Commands
 
-        public Command LoginCommand { get; }
+        public Command LoginCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
+        public ICommand ForgotCommand { get; set; }
 
         #endregion
 
@@ -38,6 +42,8 @@ namespace MBlog.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new Command(async () => await Login(), CanLogin);
+            ForgotCommand = new Command(GotoForgotPage);
+            RegisterCommand = new Command(GotoRegisterPage);
         }
 
         #endregion
@@ -55,6 +61,8 @@ namespace MBlog.ViewModels
 
             IsBusy = true;
             await Task.Delay(2000);
+            //Call Api
+            //Home
             IsBusy = false;
         }
 
@@ -62,7 +70,14 @@ namespace MBlog.ViewModels
         {
             return !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Password);
         }
-
+        private async void GotoForgotPage()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordPage());
+        }
+        private async void GotoRegisterPage()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+        }
         #endregion
 
 

@@ -27,27 +27,33 @@
         <viewmodel:ListTitleViewModel/>
     </ContentPage.BindingContext>-->
     <Grid>
-    <StackLayout x:Name="ListTitle">
-        <ListView x:Name="MyListView" 
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     RefreshColor="Teal"
+                     Command="{Binding RefreshCommand}">
+            <ScrollView>
+            <StackLayout x:Name="ListTitle">
+                <ListView x:Name="MyListView" 
                   ItemsSource="{Binding ListData}" 
                   HasUnevenRows="true"
                   >
-            <ListView.ItemTemplate >
-            <DataTemplate >
-                <ViewCell >
-                        <compotent:MB_TitleBlog ImageTitle="{Binding Image}"
+                    <ListView.ItemTemplate >
+                        <DataTemplate >
+                            <ViewCell >
+                                <compotent:MB_TitleBlog ImageTitle="{Binding Image}"
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}" 
                                 TxButtom="Following"
                                 CommandBtn="{Binding BindingContext.FollowCommand,Source={x:Reference ListTitle}}"
                                                 CommandBtnParameter="{Binding .}"
                           />
-                </ViewCell>
-            </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
-    <compotent:MB_Loading x:Name="Loading"
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            </ScrollView>
+        </RefreshView>
+        <compotent:MB_Loading x:Name="Loading"
                  />
     </Grid>
 </ContentPage>

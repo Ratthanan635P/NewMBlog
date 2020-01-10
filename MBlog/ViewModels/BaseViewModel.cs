@@ -1,6 +1,7 @@
 ﻿using MBlog.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,8 +12,8 @@ namespace MBlog.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        private List<DataTest> listData;
-        public List<DataTest> ListData
+        private ObservableCollection<DataTest> listData;
+        public ObservableCollection<DataTest> ListData
         {
             get { return listData; }
             set
@@ -24,8 +25,8 @@ namespace MBlog.ViewModels
                 }
             }
         }
-        private  List<DataTest> listDataTest;
-        public List<DataTest> ListDataTest
+        private ObservableCollection<DataTest> listDataTest;
+        public ObservableCollection<DataTest> ListDataTest
         {
             get { return listDataTest; }
             set
@@ -37,8 +38,8 @@ namespace MBlog.ViewModels
                 }
             }
         }
-        private List<DataTest> listDataTop3;
-        public List<DataTest> ListDataTop3
+        private ObservableCollection<DataTest> listDataTop3;
+        public ObservableCollection<DataTest> ListDataTop3
         {
             get { return listDataTop3; }
             set
@@ -91,6 +92,19 @@ namespace MBlog.ViewModels
                 }
             }
         }
+        private bool loadingHot;
+        public bool LoadingHot
+        {
+            get { return loadingHot; }
+            set
+            {
+                if (!Equals(loadingHot, value))
+                {
+                    loadingHot = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         private bool loadingLatest;
         public bool LoadingLatest
         {
@@ -125,7 +139,6 @@ namespace MBlog.ViewModels
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
-
             backingStore = value;
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
@@ -138,7 +151,6 @@ namespace MBlog.ViewModels
             var changed = PropertyChanged;
             if (changed == null)
                 return;
-
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
@@ -152,8 +164,9 @@ namespace MBlog.ViewModels
             LoadingTopic = true;
             LoadingLatest = true;
             LoadingFollowing = true;
+            LoadingHot = true;
             await Task.Delay(1000);
-            ListData = new List<DataTest>()
+            ListData = new ObservableCollection<DataTest>()
               {
                       new DataTest
                       {
@@ -249,7 +262,7 @@ namespace MBlog.ViewModels
                           // Image = ImageSource.FromUri(new Uri("https://upload.wikimedia.org/wikipedia/commons/d/de/Monarch_the_bear.jpg"))
                       }
                   };
-            ListDataTest = ListData.Select(d => new DataTest()
+           var ListDataTe = ListData.Select(d => new DataTest()
             {
                 BookmarkShow=false,
                 Detail=d.Detail,
@@ -257,7 +270,8 @@ namespace MBlog.ViewModels
                 Image=d.Image,
                 Title=d.Title
             }).ToList();
-            ListDataTop3 = new List<DataTest>();
+            this.ListDataTest = new ObservableCollection<DataTest>(ListDataTe);
+            ListDataTop3 = new ObservableCollection<DataTest>();
             for (int i = 0; i < 3; i++)
             {
                 ListDataTop3.Add(ListData[i]);
@@ -267,6 +281,8 @@ namespace MBlog.ViewModels
             LoadingTopic = false;
             await Task.Delay(500);
             LoadingLatest = false;
+            await Task.Delay(500); 
+            LoadingHot = false;
             await Task.Delay(500);
             LoadingFollowing = false;
         }
