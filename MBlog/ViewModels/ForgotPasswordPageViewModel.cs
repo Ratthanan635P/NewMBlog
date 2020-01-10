@@ -21,10 +21,21 @@ namespace MBlog.ViewModels
         {
             get { return email; }
             set {
-                email = value;
-                OnPropertyChanged();
-            }
+           
+                SetProperty(ref email, value); 
+                }
         }
+        //private string password;
+        //public string Password
+        //{
+        //    get { return password; }
+        //    set
+        //    {
+
+        //        SetProperty(ref password, value, onChanged: SendEmailCommand.CanExecuteChanged);
+        //    }
+        //}
+
         public ICommand RegisterCommand { get; set; }
 		public ICommand SendEmailCommand { get;}
 		public ICommand ForgotCommand { get; set; }
@@ -34,7 +45,7 @@ namespace MBlog.ViewModels
 			ForgotCommand = new Command(GotoForgotPage);
 			RegisterCommand = new Command(GotoRegisterPage);
 			BackPageCommand = new Command(BackPage);
-			SendEmailCommand=new Command(async () => await SendEmailPage(), CanEmail); 
+			SendEmailCommand=new Command(async () => await SendEmailPage()); 
 
         }
         private bool CanEmail()

@@ -228,7 +228,7 @@ namespace MBlog.ViewModels
 
         private bool CanLogin()
         {
-            return !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Password);
+            return !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password);
         }
         private async void GotoForgotPage()
         {

@@ -103,8 +103,8 @@ namespace MBlog.Domain.Services
 		}
 		public string RandomPassword()
 		{
-			const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-			return new string(Enumerable.Repeat(chars, random.Next(8, 10))
+			const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789";
+			return new string(Enumerable.Repeat(chars, random.Next(8, 8))
 			  .Select(s => s[random.Next(s.Length)]).ToArray());
 		}
 		public bool UpdateUser(string email, string password)
