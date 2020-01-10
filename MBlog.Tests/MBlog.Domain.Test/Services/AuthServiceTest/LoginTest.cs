@@ -12,6 +12,7 @@ using MBlog.Domain.Interfaces.Services;
 using MBlog.Domain.Services;
 using MBlog.IoC;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Moq;
 using Xunit;
 
@@ -21,7 +22,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
     {
         private Mock<IUserRepository> _userRepositoryMock;
         private IMapper _mapper;
-
+        private IOptions<AppSettings> appSettings;
         public LoginTest()
         {
             var config = new MapperConfiguration(cfg =>
@@ -46,7 +47,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
             _userRepositoryMock = new Mock<IUserRepository>();
             _userRepositoryMock.Setup(c => c.GetByEmail(email)).Returns(() => GetUserByEmailMock(email));
 
-            IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper);
+            IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper, appSettings);
 
             UserDto userDto = service.Login(email, password, appId);
 
@@ -70,7 +71,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
             _userRepositoryMock = new Mock<IUserRepository>();
             //_userRepositoryMock.Setup(c => c.GetByEmail(email)).Returns(() => DataTest.Users.FirstOrDefault(u => u.Email == email));
 
-            IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper);
+            IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper, appSettings);
 
             Assert.Throws<ArgumentException>(() => service.Login(email, password, appId));
         }
@@ -83,7 +84,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
             _userRepositoryMock = new Mock<IUserRepository>();
             //_userRepositoryMock.Setup(c => c.GetByEmail(email)).Returns(() => DataTest.Users.FirstOrDefault(u => u.Email == email));
 
-            IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper);
+            IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper, appSettings);
 
             Assert.Throws<ArgumentException>(() => service.Login(email, password, appId));
         }
@@ -95,7 +96,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
             _userRepositoryMock = new Mock<IUserRepository>();
             _userRepositoryMock.Setup(c => c.GetByEmail(email)).Returns(() => DataTest.Users.FirstOrDefault(u => u.Email == email));
 
-            IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper);
+            IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper, appSettings);
 
             UserDto userDto = service.Login(email, password, appId);
 
@@ -109,7 +110,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
             _userRepositoryMock = new Mock<IUserRepository>();
             _userRepositoryMock.Setup(c => c.GetByEmail(email)).Returns(() => DataTest.Users.FirstOrDefault(u => u.Email == email));
 
-            IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper);
+            IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper, appSettings);
 
             UserDto userDto = service.Login(email, password, appId);
 

@@ -10,7 +10,13 @@
     <Folder Include="Commands\" />
     <Folder Include="Commands\AuthCommands\" />
   </ItemGroup>
+
+
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MBlog.Data\MBlog.Data.csproj" />
     <ProjectReference Include="..\MBlog.Domain\MBlog.Domain.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>

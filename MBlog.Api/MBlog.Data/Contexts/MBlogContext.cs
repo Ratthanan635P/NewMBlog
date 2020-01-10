@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Reflection;
-using MBlog.Data.Configurations.MBlog;
-using MBlog.Domain.Entities.MBlogEntities;
 using Microsoft.EntityFrameworkCore;
+
+using System.Text;
+using MBlog.Domain.Entities.MBlogEntities;
+using Microsoft.Extensions.Logging;
 
 namespace MBlog.Data.Contexts
 {
@@ -10,21 +12,17 @@ namespace MBlog.Data.Contexts
     {
         public DbSet<User> Users { get; set; }
 
-        public MBlogContext()
-        {
-        }
-
+        private static readonly ILoggerFactory loggerFactory = LoggerFactory.Create(config => config.AddConsole());
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=MBlogDb;Trusted_Connection=False;User ID=sa;Password=Gg123456789");
+                optionsBuilder.UseLoggerFactory(loggerFactory).UseSqlServer("Server=localhost;Database=MBlogHKT;Trusted_Connection=True;Integrated Security = false;User Id =sa;Password=yourStrong(!)Password");
             }
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
