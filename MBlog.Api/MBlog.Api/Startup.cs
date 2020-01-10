@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using MBlog.Data.Contexts;
 using MBlog.Data.Repositories;
 using MBlog.Domain.Helpers;
 using MBlog.Domain.Interfaces.Repositories;
 using MBlog.Domain.Interfaces.Services;
 using MBlog.Domain.Services;
+using MBlog.IoC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -66,6 +68,7 @@ namespace MBlog.Api
             services.AddDbContext<MBlogContext>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddAutoMapper(typeof(AutoMapperProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

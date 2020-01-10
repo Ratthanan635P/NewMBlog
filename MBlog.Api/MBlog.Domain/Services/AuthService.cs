@@ -30,7 +30,7 @@ namespace MBlog.Domain.Services
             _appSettings = appSettings.Value;
         }
 
-        public UserDto Login(string email, string password, string appId)
+        public UserDto Login(string email, string password)
         {
             email = email?.Trim().ToLower();
             password = password?.Trim();
@@ -47,42 +47,56 @@ namespace MBlog.Domain.Services
                 return null;
             }
 
-            bool isValidPassword = PasswordHelper.ValidatePassword(password, user.Password);
-            if (isValidPassword)
-            {
-                UserDto userDto = _mapper.Map<UserDto>(user);
-                return userDto;
-            }
+            //bool isValidPassword = PasswordHelper.ValidatePassword(password, user.Password);
+            //if (isValidPassword)
+            //{
+				UserDto userDto = new UserDto();//_mapper.Map<UserDto>(user);
+				userDto.Email = user.Email;
+				userDto.Id = user.Id;
+				userDto.AccessToken = user.AccessToken;
+			    userDto.ErrorMessage="PASS";
 
-            return null;
+				return userDto;
+           // }
+
+           // return null;
         }
 
-        public async Task<UserDto> Register(string email, string password)
-        {
-            email = email?.Trim().ToLower();
-            password = password?.Trim();
+   //     public UserDto Register(string email, string password)
+   //     {
+   //         email = email?.Trim().ToLower();
+   //         password = password?.Trim();
 
-            if (!EmailHelper.IsValidEmail(email))
-                throw new ArgumentException("Invalid Email.", nameof(email));
+   //         if (!EmailHelper.IsValidEmail(email))
+   //             throw new ArgumentException("Invalid Email.", nameof(email));
 
-            if (!PasswordHelper.IsValidPassword(password))
-                throw new ArgumentNullException(nameof(password));
+   //         if (!PasswordHelper.IsValidPassword(password))
+   //             throw new ArgumentNullException(nameof(password));
 
-            var hashedPassword = PasswordHelper.CreatePasswordHashed(password);
+   //         var hashedPassword = PasswordHelper.CreatePasswordHashed(password);
 
-            User user = new User()
-            {
-                Email = email,
-                Password = hashedPassword
-            };
+   //         User user = new User()
+   //         {
+   //             Email = email,
+   //             Password = hashedPassword
+   //         };
 
-            _userRepository.Add(user);
-            await _userRepository.SaveChangeAsync();
+   //         _userRepository.Add(user);
+   //          _userRepository.SaveChangeAsync();
 
-            UserDto userDto = _mapper.Map<UserDto>(user);
+			//var Datauser = _userRepository.GetByEmail(user.Email);
+			//// _mapper.Map<UserDto>(user);
+			////UserDto userDto = Datauser.select(us => new UserDto()
+			////{
+			////	Email= "dfdfd",
+			////	Id=1				
+			////});
+			//UserDto userDto = new UserDto() { 
+			//ErrorMessage="OK"
+			//};
 
-            return userDto;
-        }
+			//return userDto;
+   //     }
 		public string ForgotPassword(string email)
 		{
 			//string status = "";
@@ -110,63 +124,6 @@ namespace MBlog.Domain.Services
 
 
 		}
-		//public UserDto LogInUser(string email, string password)
-		//{
-		//	string status = "";
-		//	UserDto User = new UserDto();
-		//	var result = _userRepository.GetByEmail(email);
-		//	if (result != null)
-		//	{
-		//		if (result.ActiveStatus == Enums.Status.InActive)
-		//		{
-		//			if (CheckUser(result, password))
-		//			{
-		//				status = "PASS";
-		//			}
-		//			else
-		//			{
-		//				status = "Password is wrong!";
-		//			}
-		//		}
-		//		else
-		//		{
-		//			status = "Account is Active!";
-		//		}
-		//	}
-		//	else
-		//	{
-		//		status = "No AccountEmail";
-		//	}
-		//	User.ErrorMessage = status;
-		//	User.Id = result.Id;
-		//	User.AccessToken = Authenticate(result);
-
-		//	//	เช็ค user มีหรือไหม
-		//	//string AddUser(string email, string password, string salt);
-		//	////ดึง Salt โดย Username 
-		//	////string GetSaltByUser(string userName);
-		//	////Update For Forgotpassword
-		//	//string UpdateUser(string email, string password, string salt);
-		//	////ดึง Salt และ Password โดย Username เพื่อ Check
-		//	//User GetUserByEmail(string email);
-		//	return User;
-		//}
-		//public string RegisterUser(string email, string password)
-		//{
-		//	var data = _userRepository.GetUserByEmail(email);
-		//	if (data != null)
-		//	{
-		//		return "Email is exist!";
-		//	}
-		//	else
-		//	{
-		//		string newSalt = RandomCode();
-		//		string newPassword = HashSHA256(password + newSalt);
-		//		var result = _userRepository.AddUser(email, newPassword, newSalt);
-		//		return result;
-		//	}
-		//	//throw new NotImplementedException();
-		//}
 		private bool CheckUser(User user, string password)
 		{
 			string currentPassword = HashSHA256(password + user.Salt);
@@ -241,21 +198,6 @@ namespace MBlog.Domain.Services
 			body = body.Replace("{message}", message);
 			return body;
 		}
-		//private async void senddata()
-		//{
-		//	var message = new MailMessage();
-		//	message.To.Add(new MailAddress("jenggig@gmail.com"));
-		//	message.From = new MailAddress("Amit Mohanty <amitmohanty@email.com>");
-		//	message.Bcc.Add(new MailAddress("Amit Mohanty <amitmohanty@email.com>"));
-		//	message.Subject = "subject";
-		//	message.Body = createEmailBody("testhfh", "gghhhhhhdh");
-		//	message.IsBodyHtml = true;
-		//	using (var smtp = new SmtpClient())
-		//	{
-		//		await smtp.SendMailAsync(message);
-		//		await Task.FromResult(0);
-		//	}
-		//}
 		public UserDto GetDataUser(string email)
 		{
 			var user = _userRepository.GetByEmail(email);
@@ -270,5 +212,36 @@ namespace MBlog.Domain.Services
 			return userDto;
 		}
 
+		public string RegisterUser(string email, string password)
+		{
+			//throw new NotImplementedException();
+			var data = _userRepository.GetByEmail(email);
+			if (data != null)
+			{
+				return "Email is exist!";
+			}
+			else
+			{
+				string newSalt = RandomCode();
+				string newPassword = HashSHA256(password + newSalt);
+				//var result = _userRepository.Add(email, newPassword, newSalt);
+				User user = new User()
+				{
+					Email = email,
+					Password = newPassword,
+					FullName="dfddgd",
+					About="ddgdgdgd",
+					ActiveStatus=Enums.Status.Active,
+					Salt="fsfsfsfsfs",
+					RefeshToken="fsdfjghfghjk",
+					AccessToken="fsdghjk"
+				};
+
+				_userRepository.Add(user);
+				_userRepository.SaveChangeAsync();
+				return "Success";
+			}
+			//throw new NotImplementedException();
+		}
 	}
 }

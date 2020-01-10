@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MBlog.Data.Migrations
 {
-    public partial class inti : Migration
+    public partial class intid : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

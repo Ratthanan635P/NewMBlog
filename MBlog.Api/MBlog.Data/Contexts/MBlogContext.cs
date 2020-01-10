@@ -17,7 +17,7 @@ namespace MBlog.Data.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseLoggerFactory(loggerFactory).UseSqlServer("Server=localhost;Database=MBlogHKT;Trusted_Connection=True;Integrated Security = false;User Id =sa;Password=yourStrong(!)Password");
+                optionsBuilder.UseLoggerFactory(loggerFactory).UseSqlServer("Server=localhost;Database=MBlogV2DB;Trusted_Connection=True;Integrated Security = false;User Id =sa;Password=yourStrong(!)Password");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

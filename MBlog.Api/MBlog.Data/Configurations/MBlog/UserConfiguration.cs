@@ -12,12 +12,9 @@ namespace MBlog.Data.Configurations.MBlog
             builder.ConfigureBase();
 
             builder.Property(entity => entity.FullName)
-                .IsRequired()
-                .HasMaxLength(100);
+                   .HasMaxLength(100);
             builder.Property(entity => entity.About)
-               .IsRequired()
-               .HasMaxLength(100);
-
+                  .HasMaxLength(100);
             builder.Property(entity => entity.Email)
                 .IsRequired()
                 .HasMaxLength(100);

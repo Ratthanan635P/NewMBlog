@@ -13,6 +13,7 @@
     <Folder Include="Entities\MBlogEntities\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.Internal" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="3.1.0" />
     <PackageReference Include="AutoMapper" Version="9.0.0" />

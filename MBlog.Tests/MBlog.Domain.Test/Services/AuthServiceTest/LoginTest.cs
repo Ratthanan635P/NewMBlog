@@ -49,7 +49,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
 
             IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper, appSettings);
 
-            UserDto userDto = service.Login(email, password, appId);
+            UserDto userDto = service.Login(email, password);
 
             Assert.IsType<UserDto>(userDto);
 
@@ -73,7 +73,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
 
             IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper, appSettings);
 
-            Assert.Throws<ArgumentException>(() => service.Login(email, password, appId));
+            Assert.Throws<ArgumentException>(() => service.Login(email, password));
         }
 
         [Theory]
@@ -86,7 +86,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
 
             IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper, appSettings);
 
-            Assert.Throws<ArgumentException>(() => service.Login(email, password, appId));
+            Assert.Throws<ArgumentException>(() => service.Login(email, password));
         }
 
         [Theory]
@@ -98,7 +98,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
 
             IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper, appSettings);
 
-            UserDto userDto = service.Login(email, password, appId);
+            UserDto userDto = service.Login(email, password);
 
             Assert.Null(userDto);
         }
@@ -112,7 +112,7 @@ namespace MBlog.Domain.Test.Services.AuthServiceTest
 
             IAuthService service = new AuthService(_userRepositoryMock.Object, _mapper, appSettings);
 
-            UserDto userDto = service.Login(email, password, appId);
+            UserDto userDto = service.Login(email, password);
 
             Assert.Null(userDto);
         }

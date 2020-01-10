@@ -6,13 +6,13 @@
 
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Commands\" />
     <Folder Include="Commands\AuthCommands\" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
@@ -20,5 +20,6 @@
     <ProjectReference Include="..\MBlog.Domain\MBlog.Domain.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\MBlog.IoC\MBlog.IoC.csproj" />
   </ItemGroup>
 </Project>

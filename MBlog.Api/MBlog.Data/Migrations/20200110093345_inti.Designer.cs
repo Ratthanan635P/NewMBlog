@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MBlog.Data.Migrations
 {
     [DbContext(typeof(MBlogContext))]
-    [Migration("20200110063702_inti")]
+    [Migration("20200110093345_inti")]
     partial class inti
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
