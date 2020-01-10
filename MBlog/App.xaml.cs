@@ -9,6 +9,10 @@ namespace MBlog
 {
     public partial class App : Application
     {
+        public static int UserId { get; set; }
+        public static string Email { get; set; }
+        public static string FullName { get; set; }
+        public static string AccessToken { get; set; }
         public App()
         {
             DependencyService.Register<AuthService>();

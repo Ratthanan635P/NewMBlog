@@ -138,6 +138,9 @@ namespace MBlog.ViewModels
                                 if (result.StatusCode == Enums.StatusCode.Ok)
                                 {
                                     // await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
+                                    App.Email = result.Success.Email;
+                                    App.UserId = result.Success.Id;
+                                    App.AccessToken = result.Success.AccessToken;
                                     App.Current.MainPage = new AppShell();
                                     workingStep = 100;
                                 }
