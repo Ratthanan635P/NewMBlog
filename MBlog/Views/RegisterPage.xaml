@@ -15,9 +15,15 @@
             <Image x:Name="logoImage" HeightRequest="150" WidthRequest="150"
                     Source="logotrans" HorizontalOptions="CenterAndExpand"
                     VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding ErrorMessageEmail}" 
+                   TextColor="Red"                   
+                   IsVisible="{Binding IsErrorEmail}"/>
             <conponents:MB_Entry MB_EntryLabel="EMAIL" MB_EntryTabIndex="1"
                     MB_EntryMaxLength="100" MB_Keyboard="Email"
                     MB_ReturnType="Next" MB_EntryText="{Binding Email}" />
+            <Label Text="{Binding ErrorMessagePassword}" 
+                   TextColor="Red"                   
+                   IsVisible="{Binding IsErrorPassword}"/>
             <conponents:MB_Entry MB_EntryLabel="PASSWORD" MB_EntryTabIndex="2"
                     MB_EntryIsPassword="True" MB_ReturnType="Next"
                     MB_EntryMaxLength="100" MB_EntryText="{Binding NewPassword}" />

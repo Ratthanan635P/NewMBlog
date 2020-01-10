@@ -61,11 +61,10 @@ namespace MBlog.ViewModels
         private async Task Login()
         {
             ClearErrorMessage();
-            Email = "jenggig@gmail.com";
-            Password = "Gg123456789";
             if (!EmailHelper.IsValidEmail(email))
             {
-                ErrorMessage = "Invalid Email.";
+                ErrorMessageEmail = "Invalid Email.";
+                IsErrorEmail = true;
                 return;
             }
 
@@ -77,14 +76,17 @@ namespace MBlog.ViewModels
                 if (NullValidate(Email) == false)
                 {
                     ErrorMessageEmail = "Please enter E-mail";
+                    IsErrorEmail = true;
                 }
                 else if (!EmailHelper.IsValidEmail(email))
                 {
                     ErrorMessageEmail = "E-mail is invalid";
+                    IsErrorEmail = true;
                 }
                 else if (NullValidate(Password) == false)
                 {
                     ErrorMessagePassword = "Please enter Password";
+                    IsErrorPassword = true;
                 }
                 else
                 {
@@ -102,7 +104,6 @@ namespace MBlog.ViewModels
                                 checkNet = CheckingInternet();
                                 if (checkNet == true)
                                 {
-
                                     workingStep = 10;
                                 }
                                 else

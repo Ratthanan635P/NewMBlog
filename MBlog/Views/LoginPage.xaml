@@ -25,16 +25,16 @@
                     Source="logotrans" HorizontalOptions="CenterAndExpand"
                     VerticalOptions="CenterAndExpand" 
                    Margin="0,0,0,20"/>
-            <Label Text="Errorsomething" 
+            <Label Text="{Binding ErrorMessageEmail}" 
                    TextColor="Red"                   
-                   IsVisible="True"/>
+                   IsVisible="{Binding IsErrorEmail}"/>
             <conponents:MB_Entry x:Name="usernameEntry" MB_EntryLabel="EMAIL"
                     MB_EntryTabIndex="1" MB_EntryMaxLength="100"
                     MB_Keyboard="Email" MB_ReturnType="Next"
                     MB_EntryText="{Binding Email}" />
-            <Label Text="ErrorPasswordMessage" 
+            <Label Text="{Binding ErrorMessagePassword}" 
                    TextColor="Red"                   
-                   IsVisible="True"/>
+                   IsVisible="{Binding IsErrorPassword}"/>
             <conponents:MB_Entry x:Name="passwordEntry" MB_EntryLabel="PASSWORD"
                     MB_EntryTabIndex="2" MB_EntryIsPassword="True"
                     MB_ReturnType="Next" MB_EntryMaxLength="100"

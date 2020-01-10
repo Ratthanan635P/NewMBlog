@@ -76,15 +76,17 @@ namespace MBlog.ViewModels
 
         private async Task Register()
         {
-            
+            ClearErrorMessage();
             if (!EmailHelper.IsValidEmail(email))
             {
-                ErrorMessage = "Invalid Email.";
+                ErrorMessageEmail = "Invalid Email.";
+                IsErrorEmail = true;
                 return;
             }
             if (NewPassword != ConfirmPassword)
             {
-                //password = NewPassword;
+                ErrorMessagePassword = "Password and ConfirmPassword not same!";
+                IsErrorPassword = true;
                 return;
             }
             else
@@ -99,14 +101,17 @@ namespace MBlog.ViewModels
                 if (NullValidate(Email) == false)
                 {
                     ErrorMessageEmail = "Please enter E-mail";
+                    IsErrorEmail = true;
                 }
                 else if (!EmailHelper.IsValidEmail(email))
                 {
                     ErrorMessageEmail = "E-mail is invalid";
+                    IsErrorEmail = true;
                 }
                 else if (NullValidate(password) == false)
                 {
                     ErrorMessagePassword = "Please enter Password";
+                    IsErrorPassword = true;
                 }
                 else
                 {

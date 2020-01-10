@@ -75,11 +75,8 @@ namespace MBlog.ViewModels
             get { return loadingForyou; }
             set
             {
-                if (!Equals(loadingForyou, value))
-                {
-                    loadingForyou = value;
-                    OnPropertyChanged();
-                }
+                   loadingForyou = value;
+                   OnPropertyChanged();
             }
         }
         private bool loadingTopic;
@@ -88,11 +85,10 @@ namespace MBlog.ViewModels
             get { return loadingTopic; }
             set
             {
-                if (!Equals(loadingTopic, value))
-                {
+
                     loadingTopic = value;
                     OnPropertyChanged();
-                }
+
             }
         }
         private bool loadingHot;
@@ -101,11 +97,10 @@ namespace MBlog.ViewModels
             get { return loadingHot; }
             set
             {
-                if (!Equals(loadingHot, value))
-                {
+
                     loadingHot = value;
                     OnPropertyChanged();
-                }
+
             }
         }
         private bool loadingLatest;
@@ -114,11 +109,10 @@ namespace MBlog.ViewModels
             get { return loadingLatest; }
             set
             {
-                if (!Equals(loadingLatest, value))
-                {
-                    loadingLatest = value;
+
+                 loadingLatest = value;
                     OnPropertyChanged();
-                }
+
             }
         }
         private bool loadingFollowing;
@@ -127,11 +121,10 @@ namespace MBlog.ViewModels
             get { return loadingFollowing; }
             set
             {
-                if (!Equals(loadingFollowing, value))
-                {
+
                     loadingFollowing = value;
                     OnPropertyChanged();
-                }
+
             }
         }
         private string errorMessageEmail;
@@ -145,6 +138,26 @@ namespace MBlog.ViewModels
         {
             get { return errorMessagePassword; }
             set { SetProperty(ref errorMessagePassword, value); }
+        }
+        private bool isErrorEmail;
+        public bool IsErrorEmail
+        {
+            get { return isErrorEmail; }
+            set
+            {
+                isErrorEmail = value;
+                OnPropertyChanged();
+            }
+        }
+        private bool isErrorPassword;
+        public bool IsErrorPassword
+        {
+            get { return isErrorPassword; }
+            set
+            {
+                isErrorPassword = value;
+                OnPropertyChanged();
+            }
         }
         public BaseViewModel()
         {
@@ -174,6 +187,8 @@ namespace MBlog.ViewModels
             ErrorMessage = "";
             ErrorMessageEmail = "";
             ErrorMessagePassword = "";
+            IsErrorPassword = false;
+            IsErrorEmail = false;
         }
         public bool NullValidate(string x)
         {
