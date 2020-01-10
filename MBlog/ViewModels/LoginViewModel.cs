@@ -136,7 +136,8 @@ namespace MBlog.ViewModels
                                 result = await AuthService.Login(command);
                                 if (result.StatusCode == Enums.StatusCode.Ok)
                                 {
-                                   App.Current.MainPage=new AppShell();
+                                    // await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
+                                    App.Current.MainPage = new AppShell();
                                     workingStep = 100;
                                 }
                                 else
@@ -199,13 +200,13 @@ namespace MBlog.ViewModels
                     } while (internetCheck);
                 }
             }
-            catch (OperationCanceledException)
+            catch (OperationCanceledException ex)
             {
                 //await PopupNavigation.Instance.PushAsync(new ErrorPopup("ปิดปรับปรุงServer"));
                 await Application.Current.MainPage.DisplayAlert("", "ปิดปรับปรุงServer", "OK");
                 //Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
-            catch (TimeoutException)
+            catch (TimeoutException ex)
             {
                 //await PopupNavigation.Instance.PushAsync(new ErrorPopup("กรุณาลองใหม่อีกครั้ง"));
                 await Application.Current.MainPage.DisplayAlert("", "กรุณาลองใหม่อีกครั้ง", "OK");

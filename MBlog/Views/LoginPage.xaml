@@ -4,7 +4,8 @@
         xmlns:conponents="clr-namespace:MBlog.Components"
         xmlns:viewmodels="clr-namespace:MBlog.ViewModels"
         xmlns:converters="clr-namespace:MBlog.Converters"
-        NavigationPage.HasNavigationBar="False" x:Class="MBlog.Views.LoginPage">
+        NavigationPage.HasNavigationBar="False" x:Class="MBlog.Views.LoginPage"
+             BackgroundImageSource="bk">
 
     <ContentPage.BindingContext>
         <viewmodels:LoginViewModel />
