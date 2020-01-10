@@ -103,10 +103,12 @@ namespace MBlog.Api.Controller
 		{
 			try
 			{
-				var status = _authService.ForgotPassword(email.ToLower());
-				if (status == "Success")
+				var isSuccess = _authService.ForgotPassword(email.ToLower());
+				if (isSuccess)
 				{
-					return Ok(status);
+					SuccessModel.SuccessCode = "200";
+					SuccessModel.SuccessMessage = "Password was Send!";
+					return Ok(SuccessModel);
 				}
 				else
 				{

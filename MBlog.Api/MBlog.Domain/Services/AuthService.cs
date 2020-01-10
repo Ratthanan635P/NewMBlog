@@ -56,29 +56,24 @@ namespace MBlog.Domain.Services
 
 			return null;
 		}
-		public string ForgotPassword(string email)
+		public bool ForgotPassword(string email)
 		{
 			//string status = "";
 			var user = _userRepository.GetByEmail(email);
 			if (user != null)
 			{
 				string newpassword = RandomPassword();
-				string newSalt = RandomCode();
-				string hashPassword = HashSHA256(newpassword + newSalt);
-				//var result = _userRepository.Update<User>(email, hashPassword, newSalt);
-				//if (result == "Success")
-				//{
-				//	//senddata();
-				//	return result;// newpassword;
-				//}
-				//else
-				//{
-				return "Update password fail";
+				string newPasswordHash = PasswordHelper.CreatePasswordHashed(newpassword);
+				user.Password = newPasswordHash;
+				_userRepository.Update(user);
+				_userRepository.SaveChange();
+				SendNewPassword(email, newpassword);
+				return true;
 				//}
 			}
 			else
 			{
-				return "No AccountEmail";
+				return false;
 			}
 
 
