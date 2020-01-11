@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MBlog.Domain.Interfaces.Repositories
 {
-	public interface IBlogRepository
+	public interface IBlogRepository:IBaseRepository
 	{
 		List<Blog> GetBlogsByUserId(int UserId);
 	}

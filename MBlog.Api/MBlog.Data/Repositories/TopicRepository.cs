@@ -28,5 +28,11 @@ namespace MBlog.Data.Repositories
 			var topic = _context.Topics.ToList();
 			return topic;
 		}
+
+		public Topic GetByName(string topicName)
+		{
+			var topic = _context.Topics.Where(t=>t.TopicName==topicName&&t.IsDelete==false).FirstOrDefault();
+			return topic;
+		}
 	}
 }

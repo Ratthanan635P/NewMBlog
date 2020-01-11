@@ -12,12 +12,14 @@ namespace MBlog.IoC
             #region Entity2Dto
 
             CreateMap<User, UserDto>();
+            CreateMap<Topic, TopicDto>();
 
             #endregion
 
             #region Dto2Entity
 
             CreateMap<UserDto, User>();
+            CreateMap<TopicDto, Topic>();
 
 
             #endregion

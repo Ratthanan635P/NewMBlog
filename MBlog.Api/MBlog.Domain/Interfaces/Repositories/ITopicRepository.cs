@@ -8,5 +8,6 @@ namespace MBlog.Domain.Interfaces.Repositories
 	public interface ITopicRepository : IBaseRepository
 	{
 		List<Topic> GetAll();
+		Topic GetByName(string topicName);
 	}
 }
