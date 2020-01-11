@@ -34,18 +34,18 @@
             <ScrollView x:Name="scrollviewData" Scrolled="ScrollView_Scrolled">
                 <StackLayout x:Name="ListTitle">
                     <ListView x:Name="MyListView" 
-                  ItemsSource="{Binding ListData}" 
+                  ItemsSource="{Binding ListFavorite}" 
                   HasUnevenRows="true"                  
                   >
                         <ListView.ItemTemplate >
                             <DataTemplate >
                                 <ViewCell>
-                                    <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
+                                    <compotent:MB_SubscribeBlog ImageTitle="{Binding ImagePath}"
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
                                 BookMarkVisible="{Binding BookmarkShow}"
-                                TxName="Dookdik"
-                                TxTimeAgo="5 min ago"
+                                TxName="{Binding Owner.FullName}"
+                                TxTimeAgo="{Binding Createtime}"
                           />
                                 </ViewCell>
                             </DataTemplate>

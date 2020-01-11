@@ -47,6 +47,7 @@ namespace MBlog.Domain.Services
 			var result = _blogRepository.GetBlogsByUserId(userId);
 			var data = result.Select(b => new BlogDto
 			{
+				Id=b.Id,
 				Detail=b.Detail,
 				ImageHead=b.ImageHead,
 				ImagePath=b.ImagePath,
@@ -54,6 +55,7 @@ namespace MBlog.Domain.Services
 				OwnerId =b.OwnerId,
 				Title=b.Title,
 				TopicId=b.TopicId,
+				Createtime=b.CreateDateTime,
 				Topic = _mapper.Map<TopicDto>(b.Topic),
 			}).ToList();
 			return data;
@@ -158,16 +160,17 @@ namespace MBlog.Domain.Services
 			List<BlogDto> blogDtos = new List<BlogDto>();
 			blogDtos = favorites.Where(x => x.IsDelete == false).Select(f => new BlogDto()
 			{
+				Id=f.Id,
 				Detail=f.Detail,
 				ImageHead=f.ImageHead,
 				ImagePath=f.ImagePath,
 				Owner= _mapper.Map<ProfileDto>(f.Owner),
 				OwnerId=f.OwnerId,
 				Title=f.Title,
-				Topic=_mapper.Map<TopicDto>(f.Topic),
+				Createtime = f.CreateDateTime,
+				Topic =_mapper.Map<TopicDto>(f.Topic),
 				TopicId=f.TopicId
 			}).ToList();
-
 			return blogDtos;
 		}
 	}

@@ -33,7 +33,7 @@ namespace MBlog.Views
 				Loading.IsVisible = true;
 				Loading.IsPlaying = true;
 				await Task.Delay(2000);
-				BindingContext = new ListTitleViewModel();
+				BindingContext = new ListBookmarkViewModel();
 				Loading.IsVisible = false;
 				Loading.IsPlaying = false;
 				Fristtime = true;
