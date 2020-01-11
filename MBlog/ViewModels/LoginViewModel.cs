@@ -138,8 +138,11 @@ namespace MBlog.ViewModels
                                 {
                                     // await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
                                     App.Email = result.Success.Email;
+                                    App.FullName = result.Success.FullName;
                                     App.UserId = result.Success.Id;
                                     App.AccessToken = result.Success.AccessToken;
+                                    App.About = result.Success.About;
+                                    App.ImagePath = result.Success.ImageProfilePath;
                                     App.Current.MainPage = new AppShell();
                                     workingStep = 100;
                                 }

@@ -33,15 +33,15 @@
             <ScrollView>
             <StackLayout x:Name="ListTitle">
                 <ListView x:Name="MyListView" 
-                  ItemsSource="{Binding ListData}" 
+                  ItemsSource="{Binding ListSubscr}" 
                   HasUnevenRows="true"
                   >
                     <ListView.ItemTemplate >
                         <DataTemplate >
                             <ViewCell >
-                                <compotent:MB_TitleBlog ImageTitle="{Binding Image}"
-                                TxTitle="{Binding Title}" 
-                                TxDetail="{Binding Detail}" 
+                                    <compotent:MB_TitleBlog ImageTitle="{Binding ImageProfilePath}"
+                                TxTitle="{Binding FullName}" 
+                                TxDetail="{Binding About}" 
                                 TxButtom="Following"
                                 CommandBtn="{Binding BindingContext.FollowCommand,Source={x:Reference ListTitle}}"
                                                 CommandBtnParameter="{Binding .}"

@@ -4,11 +4,15 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:conponents="clr-namespace:MBlog.Components"
+             xmlns:viewmodels="clr-namespace:MBlog.ViewModels"
              mc:Ignorable="d"
              x:Class="MBlog.Views.ProfilePage"
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <viewmodels:ProfileViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
 
         <StackLayout Spacing="0">
@@ -27,7 +31,11 @@
                            HorizontalOptions="EndAndExpand"
                             VerticalOptions="CenterAndExpand"
                            FontSize="Medium"
-                           FontAttributes="Bold"/>
+                           FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
 
             </Frame>
@@ -48,7 +56,7 @@
                        >
 
                         <Image x:Name="logoImage" 
-                    Source="duck" 
+                    Source="{Binding ImagePath}" 
                     Aspect="Fill" />
                     </Frame>
                     <AbsoluteLayout>
@@ -70,11 +78,11 @@
                 <conponents:MB_EntryProfile x:Name="nameEntry" MB_EntryLabel="NAME"
                     MB_EntryTabIndex="1" MB_EntryMaxLength="100"
                     MB_Keyboard="Email" MB_ReturnType="Next"
-                    MB_EntryText="DAMRONGDET LALITLAGSAM" />
+                    MB_EntryText="{Binding FullName}" />
                 <conponents:MB_EntryProfile x:Name="aboutEntry" MB_EntryLabel="ABOUT"
                     MB_EntryTabIndex="2" MB_EntryIsPassword="False"
                     MB_ReturnType="Next" MB_EntryMaxLength="100"
-                    MB_EntryText="Technical consultants at ENIXER" />
+                    MB_EntryText="{Binding About}" />
                
             </StackLayout>
         </StackLayout>

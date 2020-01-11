@@ -15,6 +15,10 @@ namespace MBlog.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IAuthService AuthService { get; } = DependencyService.Get<IAuthService>();
+       // public IAuthService AuthService { get; } = DependencyService.Get<IAuthService>();
+        public IBlogService BlogService { get; } = DependencyService.Get<IBlogService>();
+        protected int retry = 1;
+        protected int maxRetry = 3;
         private ObservableCollection<DataTest> listData;
         public ObservableCollection<DataTest> ListData
         {

@@ -20,7 +20,7 @@ namespace MBlog.CallApi.Service.Implements
 
 		public async Task<Result<SuccessModel, ErrorModel>> Favorite(int blogId, int userId)
 		{
-			Uri url = new Uri(BaseUriUser, $"/Blog/Favorite?blogId={blogId}?userId={userId}");
+			Uri url = new Uri(BaseUriUser, $"/Blog/Favorite?blogId={blogId}&userId={userId}");
 
 			Result<SuccessModel, ErrorModel> result = await GetMethodAsync<SuccessModel, ErrorModel>(url);
 
@@ -56,7 +56,7 @@ namespace MBlog.CallApi.Service.Implements
 
 		public async Task<Result<SuccessModel, ErrorModel>> Subscribes(int targetUser, int userId)
 		{
-			Uri url = new Uri(BaseUriUser, $"/Blog/Subscribes?targetUser={targetUser}?userId={userId}");
+			Uri url = new Uri(BaseUriUser, $"/Blog/Subscribes?targetUser={targetUser}&userId={userId}");
 
 			Result<SuccessModel, ErrorModel> result = await GetMethodAsync<SuccessModel, ErrorModel>(url);
 
@@ -65,7 +65,7 @@ namespace MBlog.CallApi.Service.Implements
 
 		public async Task<Result<SuccessModel, ErrorModel>> UnFavorite(int blogId, int userId)
 		{
-			Uri url = new Uri(BaseUriUser, $"/Blog/UnFavorite?blogId={blogId}?userId={userId}");
+			Uri url = new Uri(BaseUriUser, $"/Blog/UnFavorite?blogId={blogId}&userId={userId}");
 
 			Result<SuccessModel, ErrorModel> result = await GetMethodAsync<SuccessModel, ErrorModel>(url);
 
@@ -74,7 +74,7 @@ namespace MBlog.CallApi.Service.Implements
 
 		public async Task<Result<SuccessModel, ErrorModel>> UnSubscribes(int targetUser, int userId)
 		{
-			Uri url = new Uri(BaseUriUser, $"/Blog/UnSubscribes?targetUser={targetUser}?userId={userId}");
+			Uri url = new Uri(BaseUriUser, $"/Blog/UnSubscribes?targetUser={targetUser}&userId={userId}");
 
 			Result<SuccessModel, ErrorModel> result = await GetMethodAsync<SuccessModel, ErrorModel>(url);
 
