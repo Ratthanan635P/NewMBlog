@@ -68,7 +68,8 @@ namespace MBlog.Api
             services.AddDbContext<MBlogContext>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ITopicService, TopicService>();
-            //services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<IBlogRepository, BlogRepository>();
             services.AddScoped<IFavoriteRepository, FavoriteRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IFollowingRepository, FollowingRepository>();

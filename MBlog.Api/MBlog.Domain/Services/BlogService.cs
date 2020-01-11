@@ -57,5 +57,60 @@ namespace MBlog.Domain.Services
 			}).ToList();
 			return data;
 		}
+
+		public List<ProfileDto> GetSubscribesByUserId(int userId)
+		{
+			//throw new NotImplementedException();
+			var Followings = _followingRepository.GetDataFollowingByUserId(userId);
+			List<ProfileDto> profileDtos = new List<ProfileDto>();
+			profileDtos= Followings.Where(x=>x.IsDelete==false).Select(f=> new ProfileDto()
+			{
+				About=f.About,
+				Email=f.Email,
+				FullName=f.FullName,
+				Id=f.Id,
+				ImageProfile=f.ImageProfile,
+				ImageProfilePath=f.ImageProfilePath,
+				Following=true
+			}).ToList();
+
+			return profileDtos;
+		}
+
+		public bool SubscribesByUserId(int unSubUserId, int myUserId)
+		{
+			Following following = new Following()
+			{
+				FollowerId = myUserId,
+				FollowingId = unSubUserId	
+							};
+			var result =_followingRepository.GetFollowByUserId(unSubUserId, myUserId);
+			if (result == null)
+			{
+				_followingRepository.Add(following);
+				_followingRepository.SaveChange();
+			}
+			else
+			{
+				if (result.IsDelete==true)
+				{
+					result.IsDelete = false;
+					_followingRepository.Update(result);
+					_followingRepository.SaveChange();
+				}
+			}
+			return true;
+		}
+
+		public bool UnSubscribesByUserId(int unSubUserId, int myUserId)
+		{
+			Following following = _followingRepository.GetFollowByUserId(unSubUserId, myUserId);
+			if (following != null)
+			{
+				following.IsDelete = true;
+				_followingRepository.SaveChange();
+			}
+			return true;
+		}
 	}
 }

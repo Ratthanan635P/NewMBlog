@@ -25,19 +25,40 @@ namespace MBlog.Data.Repositories
 
 		public List<Following> GetDataFollowerByUserId(int Userid)
 		{
-			var result = _context.Followings.Where(x=>x.FollowerId==Userid).ToList();
+			var result = _context.Followings.Include(x => x.FollowingUser).Where(x=>x.FollowingId==Userid).ToList();
 			return result;
 		}
 
-		public List<Following> GetDataFollowingByUserId(int Userid)
+		public List<User> GetDataFollowingByUserId(int Userid)
 		{
-			var result = _context.Followings.Where(x => x.FollowingId == Userid).ToList();
+			//var result = _context.Followings.Include(x => x.FollowingUser).Where(x => x.FollowerId == Userid).ToList();
+			var data = _context.Users
+				.Join(_context.Followings.Where(u => u.FollowerId==Userid),
+				 u => u.Id,
+				 f => f.FollowingId,
+			(u, f) => new User
+			{
+				About = u.About,
+				Email = u.Email,
+				FullName = u.FullName,
+				Id = u.Id,
+				ImageProfile = u.ImageProfile,
+				ImageProfilePath =u.ImageProfilePath,
+
+			}
+		).ToList();
+			return data;
+		}
+
+		public Following GetFollowByUserId(int unSubUserId, int myUserId)
+		{
+			var result = _context.Followings.Include(x => x.FollowingUser).Include(x => x.Follower).Where(x => x.FollowingId == unSubUserId&&x.FollowerId==myUserId).FirstOrDefault();
 			return result;
 		}
 
 		public int GetFollowerByUserId(int Userid)
 		{
-			var result = _context.Followings.Where(x => x.FollowerId == Userid&&x.IsDelete==false).Count();
+			var result = _context.Followings.Include(x=>x.Follower).Where(x => x.FollowerId == Userid&&x.IsDelete==false).Count();
 			return result;
 		}
 
