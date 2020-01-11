@@ -18,7 +18,6 @@ namespace MBlog.CallApi.Service.Implements
 
             return result;
         }
-
         public async Task<Result<UserDto, ErrorModel>> Login(LoginCommandModel command)
         {
             Uri url = new Uri(BaseUriUser, $"/Auth/Login");
@@ -33,6 +32,24 @@ namespace MBlog.CallApi.Service.Implements
             Uri url = new Uri(BaseUriUser, $"/Auth/Register");
 
             Result<SuccessModel, ErrorModel> result = await PostMethodAsync<SuccessModel, ErrorModel>(url, command);
+
+            return result;
+        }
+
+        public async Task<Result<SuccessModel, ErrorModel>> Update(ProfileCommands model)
+        {
+            Uri url = new Uri(BaseUriUser, $"/Auth/Update");
+
+            Result<SuccessModel, ErrorModel> result = await PostMethodAsync<SuccessModel, ErrorModel>(url, model);
+
+            return result;
+        }
+
+        public async Task<Result<UserDto, ErrorModel>> GetUser(string email)
+        {
+            Uri url = new Uri(BaseUriUser, $"/Auth/GetData?email={email}");
+
+            Result<UserDto, ErrorModel> result = await GetMethodAsync<UserDto, ErrorModel>(url);
 
             return result;
         }
