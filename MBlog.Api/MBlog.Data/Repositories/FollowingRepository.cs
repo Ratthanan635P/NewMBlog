@@ -44,7 +44,7 @@ namespace MBlog.Data.Repositories
 				Id = u.Id,
 				ImageProfile = u.ImageProfile,
 				ImageProfilePath =u.ImageProfilePath,
-
+				IsDelete=f.IsDelete
 			}
 		).ToList();
 			return data;

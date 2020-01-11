@@ -64,7 +64,8 @@ namespace MBlog.Domain.Services
 			//throw new NotImplementedException();
 			var Followings = _followingRepository.GetDataFollowingByUserId(userId);
 			List<ProfileDto> profileDtos = new List<ProfileDto>();
-			profileDtos= Followings.Where(x=>x.IsDelete==false).Select(f=> new ProfileDto()
+			Followings = Followings.Where(x => x.IsDelete == false).ToList();
+			profileDtos = Followings.Select(f=> new ProfileDto()
 			{
 				About=f.About,
 				Email=f.Email,

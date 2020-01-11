@@ -33,7 +33,22 @@ namespace MBlog.Data.Repositories
 				.Join(_context.Favorites.Where(f => f.UserId == Userid),
 				 b => b.Id,
 				 f => f.BlogId,
-			(b, f) => b
+			(b, f) => new Blog()
+			{
+				CreateDateTime = b.CreateDateTime,
+				Detail=b.Detail,
+				Id=b.Id,
+				ImageHead=b.ImageHead,
+				ImagePath=b.ImagePath,
+				IsDelete=f.IsDelete,
+				Owner=b.Owner,
+				OwnerId=b.OwnerId,
+				Title=b.Title,
+				Topic=b.Topic,
+				TopicId=b.TopicId,
+				UpdateDateTime=b.UpdateDateTime
+			}
+
 		).ToList();
 			return data;
 		}
