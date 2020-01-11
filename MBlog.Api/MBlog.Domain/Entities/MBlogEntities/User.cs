@@ -1,5 +1,6 @@
 ﻿using MBlog.Domain.Helpers;
 using System;
+using System.Collections.Generic;
 
 namespace MBlog.Domain.Entities.MBlogEntities
 {
@@ -14,5 +15,9 @@ namespace MBlog.Domain.Entities.MBlogEntities
 		public string About { get; set; }
 		public Enums.Status ActiveStatus { get; set; }
 		public Enums.Roles Role { get; set; }
+		public byte[] ImageProfile { get; set; }
+		public string ImageProfilePath { get; set; }
+		public ICollection<Blog> Blogs { get; set; }
+		public ICollection<Favorite> Favorites { get; set; }
 	}
 }

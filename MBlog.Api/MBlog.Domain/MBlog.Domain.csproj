@@ -5,11 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Interfaces\Services\" />
     <Folder Include="Interfaces\Repositories\" />
-    <Folder Include="Entities\MBlogEntities\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />

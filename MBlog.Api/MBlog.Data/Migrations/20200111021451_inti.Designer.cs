@@ -4,14 +4,16 @@ using MBlog.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MBlog.Data.Migrations
 {
     [DbContext(typeof(MBlogContext))]
-    partial class MBlogContextModelSnapshot : ModelSnapshot
+    [Migration("20200111021451_inti")]
+    partial class inti
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

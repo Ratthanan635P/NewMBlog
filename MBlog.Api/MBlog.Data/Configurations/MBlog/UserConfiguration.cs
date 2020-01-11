@@ -18,8 +18,10 @@ namespace MBlog.Data.Configurations.MBlog
             builder.Property(entity => entity.Email)
                 .IsRequired()
                 .HasMaxLength(100);
-
+           
             builder.HasAlternateKey(entity => entity.Email);
+
+            
         }
     }
 }

@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Contexts\" />
-    <Folder Include="Configurations\" />
-    <Folder Include="Configurations\MBlog\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>

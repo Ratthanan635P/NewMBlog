@@ -67,7 +67,6 @@ namespace MBlog.ViewModels
                 IsErrorEmail = true;
                 return;
             }
-
             IsBusy = true;
             await Task.Delay(1000);
             try

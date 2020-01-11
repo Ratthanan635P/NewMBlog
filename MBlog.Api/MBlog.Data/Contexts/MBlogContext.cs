@@ -11,6 +11,10 @@ namespace MBlog.Data.Contexts
     public class MBlogContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<Following> Followings { get; set; }
+        public DbSet<Topic> Topics { get; set; }
 
         private static readonly ILoggerFactory loggerFactory = LoggerFactory.Create(config => config.AddConsole());
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
