@@ -66,8 +66,13 @@ namespace MBlog.Api
             // configure DI for application services
             //services.AddScoped<IUserDataServices, UserDataServices>();
             services.AddDbContext<MBlogContext>();
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ITopicService, TopicService>();
+            //services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IFollowingRepository, FollowingRepository>();
+            services.AddScoped<ITopicRepository, TopicRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfile));
         }
 
