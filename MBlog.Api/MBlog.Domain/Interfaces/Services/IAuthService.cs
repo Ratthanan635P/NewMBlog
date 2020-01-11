@@ -11,6 +11,7 @@ namespace MBlog.Domain.Interfaces.Services
         UserDto Login(string email, string password);  
         
         bool UpdateUser(string email, string password);
+        bool UpdateProfile(ProfileCommand profile);
         bool ForgotPassword(string email);
         UserDto GetDataUser(string email);
 

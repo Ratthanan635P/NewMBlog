@@ -127,50 +127,77 @@ namespace MBlog.Api.Controller
 				return StatusCode(500, ErrorModel);
 			}			
 		}
-		//[AllowAnonymous]
+		[AllowAnonymous]
+		[HttpPost("Update")]
+		[ProducesResponseType(typeof(ErrorModel), StatusCodes.Status200OK)]
+		public IActionResult UpdateUser(ProfileCommands model)
+		{
+			try
+			{
+				ProfileCommand profile = new ProfileCommand() {
+					Email = model.Email,
+					FullName = model.FullName,
+					About = model.About,
+					ImageProfile = model.ImageProfile,
+					ImageProfilePath = model.ImageProfilePath
+				};
+				bool isSuccess = _authService.UpdateProfile(profile);
+				if (isSuccess)
+				{
+					SuccessModel.SuccessCode = "200";
+					SuccessModel.SuccessMessage = "Update Completed.";
+
+					return Ok(SuccessModel);
+				}
+				else
+				{
+					ErrorModel.ErrorCode = "400";
+					ErrorModel.ErrorMessage = "Not found";
+
+					return BadRequest(ErrorModel);
+				}
+			}
+			catch (Exception ex)
+			{
+				ErrorModel.ErrorMessage = ex.Message;
+				ErrorModel.ErrorCode = "500";
+
+				return StatusCode(500, ErrorModel);
+			}
+		}
+		[AllowAnonymous]
 		//[Authorize(Roles = "User")]
-		//[HttpGet("GetData")]
-		//public IActionResult GetUser(string email)
-		//{
-		//	string error = "";
-		//	if (string.IsNullOrEmpty(email))
-		//	{
-		//		error = " Email is null";
-		//		return BadRequest(new { message = error });
-		//	}
-		//	if (!((validateMethods.CheckRegEx_UserName(email)) && (email.Length > validateMethods.LengthEmail)))
-		//	{
-		//		error = " Email is Invalid!";
-		//		return BadRequest(new { message = error });
-		//	}
+		[HttpGet("GetData")]
+		public IActionResult GetUser(string email)
+		{
+			
 
-		//	//Call Api Check email and Password
+			//Call Api Check email and Password
 
-		//	if (error == "")
-		//	{
-		//		try
-		//		{
-		//			var user = _authService.GetDataUser(email);
-		//			if (user == null)
-		//			{
-		//				user.ErrorMessage = "Account not found!";
-		//				return BadRequest(new { message = user.ErrorMessage });
-		//			}
-		//			return Ok(user);
-		//		}
-		//		catch (Exception ex)
-		//		{
-		//			error = ex.Message;
-		//		}
-		//		return BadRequest(new { message = error });
-		//	}
-		//	else
-		//	{
-		//		return BadRequest(new { message = error });
+			if (EmailHelper.IsValidEmail(email))
+			{
+				try
+				{
+					var user = _authService.GetDataUser(email);					
+					return Ok(user);
+				}
+				catch (Exception ex)
+				{
+					ErrorModel.ErrorMessage = ex.Message;
+					ErrorModel.ErrorCode = "500";
 
-		//	}
-		//	///return Ok(email);
-		//}
+					return StatusCode(500, ErrorModel);
+				}
+				
+			}
+			else
+			{
+				ErrorModel.ErrorCode = "400";
+				ErrorModel.ErrorMessage = "Email inValid";
+				return BadRequest(ErrorModel);
+			}
+			
+		}
 	}
 
 }

@@ -75,26 +75,8 @@ namespace MBlog.Domain.Services
 			{
 				return false;
 			}
+		}
 
-
-		}
-		private bool CheckUser(User user, string password)
-		{
-			string currentPassword = HashSHA256(password + user.Salt);
-			return (user.Password == currentPassword) ? true : false;
-		}
-		private string HashSHA256(string psw)
-		{
-			SHA256 sHA256hash = SHA256.Create();
-			byte[] bytes = sHA256hash.ComputeHash(Encoding.UTF8.GetBytes(psw));
-			StringBuilder builder = new StringBuilder();
-			for (int i = 0; i < bytes.Length; i++)
-			{
-				builder.Append(bytes[i].ToString("x2"));
-			}
-			string hashPSW = builder.ToString();
-			return hashPSW;
-		}
 		public string RandomCode()
 		{
 			const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -109,8 +91,8 @@ namespace MBlog.Domain.Services
 		}
 		public bool UpdateUser(string email, string password)
 		{
-			string newSalt = RandomCode();
-			string hashPassword = HashSHA256(password + newSalt);
+			//string newSalt = RandomCode();
+			//string hashPassword = HashSHA256(password + newSalt);
 			User result = _userRepository.GetByEmail(email);
 			if (result != null)
 			{
@@ -149,10 +131,7 @@ namespace MBlog.Domain.Services
 			{
 				return null;
 			}
-			UserDto userDto = new UserDto()
-			{
-				Id = user.Id,
-			};
+			UserDto userDto = _mapper.Map<UserDto>(user);
 			return userDto;
 		}
 		public string Register(string email, string password)
@@ -184,9 +163,23 @@ namespace MBlog.Domain.Services
 			}
 		}
 
-		//public string Register(string email, string password)
-		//{
-		//	throw new NotImplementedException();
-		//}
+		public bool UpdateProfile(ProfileCommand profile)
+		{
+			var user = _userRepository.GetByEmail(profile.Email);
+			if (user != null)
+			{
+				user.FullName = profile.FullName;
+				user.About = profile.About;
+				user.ImageProfile = profile.ImageProfile;
+				user.ImageProfilePath = profile.ImageProfilePath;
+				_userRepository.Update(user);
+				_userRepository.SaveChange();
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}		
 	}
 }
