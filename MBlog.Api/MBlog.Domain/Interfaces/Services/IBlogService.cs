@@ -14,6 +14,10 @@ namespace MBlog.Domain.Interfaces.Services
 		List<ProfileDto> GetSubscribesByUserId(int userId);
 		bool UnSubscribesByUserId(int unSubUserId, int myUserId);
 		bool SubscribesByUserId(int unSubUserId, int myUserId);
-		
+
+		List<BlogDto> GetFavoritesByUserId(int userId);
+		bool UnFavoritesByUserId(int blogId, int UserId);
+		bool FavoritesByUserId(int blogId, int UserId);
+
 	}
 }

@@ -13,6 +13,7 @@ namespace MBlog.IoC
 
             CreateMap<User, UserDto>();
             CreateMap<Topic, TopicDto>();
+            CreateMap<User, ProfileDto>();
 
             #endregion
 
@@ -20,6 +21,7 @@ namespace MBlog.IoC
 
             CreateMap<UserDto, User>();
             CreateMap<TopicDto, Topic>();
+            CreateMap<ProfileDto, User>();
 
 
             #endregion
@@ -32,7 +34,8 @@ namespace MBlog.IoC
 
             #region ViewModel2Dto
 
-
+            CreateMap<BlogCommand, BlogDto>();
+            CreateMap<BlogDto, BlogCommand>();
 
             #endregion
 

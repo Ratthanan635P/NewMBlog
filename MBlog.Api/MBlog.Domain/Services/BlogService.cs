@@ -37,9 +37,10 @@ namespace MBlog.Domain.Services
 				Title=blogDto.Title		
 			};
 			  _blogRepository.Add(blogDetail);
+			_blogRepository.SaveChange();
 			return true;
 		}
-
+				
 		public List<BlogDto> GetBlogByUserId(int userId)
 		{
 			//throw new NotImplementedException();
@@ -49,7 +50,7 @@ namespace MBlog.Domain.Services
 				Detail=b.Detail,
 				ImageHead=b.ImageHead,
 				ImagePath=b.ImagePath,
-				Owner = _mapper.Map<UserDto>(b.Owner),
+				Owner = _mapper.Map<ProfileDto>(b.Owner),
 				OwnerId =b.OwnerId,
 				Title=b.Title,
 				TopicId=b.TopicId,
@@ -101,16 +102,72 @@ namespace MBlog.Domain.Services
 			}
 			return true;
 		}
-
+				
 		public bool UnSubscribesByUserId(int unSubUserId, int myUserId)
 		{
 			Following following = _followingRepository.GetFollowByUserId(unSubUserId, myUserId);
 			if (following != null)
 			{
 				following.IsDelete = true;
+				_followingRepository.Update(following);
 				_followingRepository.SaveChange();
 			}
 			return true;
+		}
+		public bool UnFavoritesByUserId(int blogId, int UserId)
+		{
+			Favorite favorite = _favoriteRepository.GetFavoritesByUserId(blogId, UserId);
+			if (favorite != null)
+			{
+				favorite.IsDelete = true;
+				_favoriteRepository.Update(favorite);
+				_favoriteRepository.SaveChange();
+			}
+			return true;
+		}
+		public bool FavoritesByUserId(int blogId, int UserId)
+		{
+			Favorite following = new Favorite()
+			{
+				BlogId = blogId,
+				UserId = UserId
+			};
+			var result = _favoriteRepository.GetFavoritesByUserId(blogId, UserId);
+			if (result == null)
+			{
+				_favoriteRepository.Add(following);
+				_favoriteRepository.SaveChange();
+			}
+			else
+			{
+				if (result.IsDelete == true)
+				{
+					result.IsDelete = false;
+					_favoriteRepository.Update(result);
+					_favoriteRepository.SaveChange();
+				}
+			}
+			return true;
+		}
+
+		public List<BlogDto> GetFavoritesByUserId(int userId)
+		{
+			//throw new NotImplementedException();
+			var favorites = _favoriteRepository.GetDataFavoritesByUserId(userId);
+			List<BlogDto> blogDtos = new List<BlogDto>();
+			blogDtos = favorites.Where(x => x.IsDelete == false).Select(f => new BlogDto()
+			{
+				Detail=f.Detail,
+				ImageHead=f.ImageHead,
+				ImagePath=f.ImagePath,
+				Owner= _mapper.Map<ProfileDto>(f.Owner),
+				OwnerId=f.OwnerId,
+				Title=f.Title,
+				Topic=_mapper.Map<TopicDto>(f.Topic),
+				TopicId=f.TopicId
+			}).ToList();
+
+			return blogDtos;
 		}
 	}
 }
