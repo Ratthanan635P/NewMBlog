@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:compotent="clr-namespace:MBlog.Components"
+             xmlns:compotent="clr-namespace:MBlog.Components" 
              xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
              mc:Ignorable="d"
              x:Class="MBlog.Views.ListTitlePage">
@@ -44,9 +44,13 @@
                                 TxDetail="{Binding About}" 
                                 TxButtom="Following"
                                 CommandBtn="{Binding BindingContext.FollowCommand,Source={x:Reference ListTitle}}"
-                                                CommandBtnParameter="{Binding .}"
-                          />
-                            </ViewCell>
+                                CommandBtnParameter="{Binding .}">
+                                      <compotent:MB_TitleBlog.GestureRecognizers>
+                                            <TapGestureRecognizer  Command="{Binding BindingContext.SelectCommand, Source={x:Reference ListTitle}}"
+                                              CommandParameter="{Binding .}" />
+                                       </compotent:MB_TitleBlog.GestureRecognizers>
+                                    </compotent:MB_TitleBlog>
+                                </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

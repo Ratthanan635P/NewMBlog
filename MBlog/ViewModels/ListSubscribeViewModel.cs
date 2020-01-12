@@ -45,7 +45,8 @@ namespace MBlog.ViewModels
 		}
 		
 		public Command FollowCommand { get; set; }
-        public ICommand RefreshCommand => new Command(async () => await RefreshItemsAsync());
+		public Command SelectCommand { get; set; }
+		public ICommand RefreshCommand => new Command(async () => await RefreshItemsAsync());
         bool isRefreshing;
 
         public bool IsRefreshing
@@ -60,10 +61,14 @@ namespace MBlog.ViewModels
         public ListSubscribeViewModel()
         {
 			GetSubscribe();
-
+			SelectCommand = new Command<ProfileDto>(OnSelectedListView);
 			FollowCommand = new Command<ProfileDto>(OnSelectedFollowView);
         }
-        private async void OnSelectedFollowView(ProfileDto data)
+		private async void OnSelectedListView(ProfileDto data)
+		{
+			await App.Current.MainPage.Navigation.PushAsync(new FollowingPage(data));
+		}
+		private async void OnSelectedFollowView(ProfileDto data)
         {
 			bool response = await App.Current.MainPage.DisplayAlert("ยืนยัน", "คุณต้องการยกเลิกการติดตาม \n ใช่ หรือ ไม่", "ใช่", "ไม่ใช่");
 			if(response)

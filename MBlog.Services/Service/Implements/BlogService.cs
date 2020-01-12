@@ -36,11 +36,11 @@ namespace MBlog.CallApi.Service.Implements
 			return result;
 		}
 
-		public async Task<Result<List<BlogDto>, ErrorModel>> GetMyBlog(int userId)
+		public async Task<Result<MyBlogs, ErrorModel>> GetMyBlog(int userId)
 		{
 			Uri url = new Uri(BaseUriUser, $"/Blog/GetMyBlog?userId={userId}");
 
-			Result<List<BlogDto>, ErrorModel> result = await GetMethodAsync<List<BlogDto>, ErrorModel>(url);
+			Result<MyBlogs, ErrorModel> result = await GetMethodAsync<MyBlogs, ErrorModel>(url);
 
 			return result;
 		}

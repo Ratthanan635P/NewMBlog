@@ -27,7 +27,7 @@ namespace MBlog.Views
 
 		private void Button_Clicked(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new FollowingPage());
+			//Navigation.PushAsync(new FollowingPage());
 		}
 	}
 

@@ -173,5 +173,19 @@ namespace MBlog.Domain.Services
 			}).ToList();
 			return blogDtos;
 		}
+
+		public int GetFollowerByUserId(int Userid)
+		{
+			//throw new NotImplementedException();
+			var Followers = _followingRepository.GetFollowerByUserId(Userid);
+			return Followers;
+		}
+
+		public int GetFollowingByUserId(int Userid)
+		{
+			//throw new NotImplementedException();
+			var Followings = _followingRepository.GetFollowingByUserId(Userid);
+			return Followings;
+		}
 	}
 }

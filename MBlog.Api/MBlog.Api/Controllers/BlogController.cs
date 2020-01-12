@@ -81,7 +81,16 @@ namespace MBlog.Api.Controllers
 			try
 			{
 				var myBlog = _blogService.GetBlogByUserId(userId);
-				return Ok(myBlog);
+				var posts = myBlog.Count();
+				var followers = _blogService.GetFollowingByUserId(userId);
+				var followings = _blogService.GetFollowerByUserId(userId);
+				MyBlogs myBlogDetail = new MyBlogs();
+				//var myBlog = _blogService.(userId);
+				myBlogDetail.Blogs = myBlog;
+				myBlogDetail.Followers = followers;
+				myBlogDetail.Followings = followings;
+				myBlogDetail.Posts = posts;
+				return Ok(myBlogDetail);
 			}
 			catch (Exception ex)
 			{

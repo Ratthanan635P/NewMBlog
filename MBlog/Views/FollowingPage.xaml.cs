@@ -1,4 +1,6 @@
-﻿using MBlog.Models;
+﻿using MBlog.CallApi.Models;
+using MBlog.Models;
+using MBlog.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,9 +17,10 @@ namespace MBlog.Views
 	public partial class FollowingPage : ContentPage
 	{
 		
-        public FollowingPage()
+        public FollowingPage(ProfileDto profile)
 		{
-			InitializeComponent();           
+			InitializeComponent();
+			BindingContext = new FollowingViewModel(profile); 
 		}
 
 		private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -27,7 +30,7 @@ namespace MBlog.Views
 
 		private void Button_Clicked(object sender, EventArgs e)
 		{
-			Navigation.PushAsync( new EditFollowPage());
+			//Navigation.PushAsync( new EditFollowPage());
 		}
 	}
 

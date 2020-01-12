@@ -57,6 +57,7 @@ namespace MBlog.ViewModels
 				OnPropertyChanged();
 			}
 		}
+
 		public ListBookmarkViewModel()
 		{
 			GetFavorite();

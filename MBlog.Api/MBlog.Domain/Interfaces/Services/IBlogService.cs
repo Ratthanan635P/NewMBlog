@@ -18,6 +18,7 @@ namespace MBlog.Domain.Interfaces.Services
 		List<BlogDto> GetFavoritesByUserId(int userId);
 		bool UnFavoritesByUserId(int blogId, int UserId);
 		bool FavoritesByUserId(int blogId, int UserId);
-
+		int GetFollowerByUserId(int Userid);
+		int GetFollowingByUserId(int Userid);
 	}
 }
