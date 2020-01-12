@@ -93,7 +93,9 @@
                                    FontSize="Large"
                                 FontFamily="{StaticResource AwesomeRegularFontFamily}"/>
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                                   Command="{Binding BookmarkBtn}"
+                                                   CommandParameter="{Binding BookmarkBtnParameter}"/>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </Grid> <!--f02e-->

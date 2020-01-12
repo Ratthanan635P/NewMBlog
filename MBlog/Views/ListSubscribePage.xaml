@@ -46,6 +46,10 @@
                                 TxName="{Binding Owner.FullName}"
                                 TxTimeAgo="{Binding Createtime}"
                                 IsLike="{Binding IsLike}"
+                                IsOn="{Binding IsOn}"
+                                IsOff="{Binding IsOff}"
+                                BookmarkBtn="{Binding BindingContext.BookmakCommand,Source={x:Reference ListTitle}}"
+                                                BookmarkBtnParameter="{Binding .}"                               
                                      />
                                 </ViewCell>
                             </DataTemplate>

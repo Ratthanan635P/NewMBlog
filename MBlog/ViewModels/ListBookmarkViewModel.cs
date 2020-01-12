@@ -61,11 +61,11 @@ namespace MBlog.ViewModels
 		{
 			GetFavorite();
 
-			BookmakCommand = new Command<BlogModel>(OnSelectedBookMark);
+			BookmakCommand = new Command<BlogModel>(async (data) => await OnSelectedBookMark(data));
 		}
-		private async void OnSelectedBookMark(BlogModel data)
+		private async Task OnSelectedBookMark(BlogModel data)
 		{
-			bool response = await App.Current.MainPage.DisplayAlert("ยืนยัน", "คุณต้องการยกเลิกการติดตาม \n ใช่ หรือ ไม่", "ใช่", "ไม่ใช่");
+			bool response = await App.Current.MainPage.DisplayAlert("ยืนยัน", "คุณต้องการยกเลิกรายการโปรด \n ใช่ หรือ ไม่", "ใช่", "ไม่ใช่");
 			if (response)
 			{
 				UnFavorite(data);

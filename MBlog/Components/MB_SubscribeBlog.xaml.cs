@@ -96,25 +96,73 @@ namespace MBlog.Components
 			get { return (bool)GetValue(BookMarkVisibleProperty); }
 			set { SetValue(BookMarkVisibleProperty, value); }
 		}
-		private bool isOn;
+
+
+		public static readonly BindableProperty IsOnProperty =
+						  BindableProperty.Create(nameof(IsOn),
+												  typeof(bool),
+												  typeof(MB_SubscribeBlog)
+												  );
 		public bool IsOn
 		{
-			get { return isOn; }
-			set
-			{
-				isOn = value;
+			get { return (bool)GetValue(IsOnProperty); }
+			set { SetValue(IsOnProperty, value);
 				OnPropertyChanged();
 			}
 		}
-		private bool isOff;
+		//private bool isOn;
+		//public bool IsOn
+		//{
+		//	get { return isOn; }
+		//	set
+		//	{
+		//		isOn = value;
+		//		OnPropertyChanged();
+		//	}
+		//}
+		public static readonly BindableProperty IsOffProperty =
+						  BindableProperty.Create(nameof(IsOff),
+												  typeof(bool),
+												  typeof(MB_SubscribeBlog)
+												  );
 		public bool IsOff
 		{
-			get { return isOff; }
+			get { return (bool)GetValue(IsOffProperty); }
 			set
 			{
-				isOff = value;
+				SetValue(IsOffProperty, value);
 				OnPropertyChanged();
 			}
+		}
+		//private bool isOff;
+		//public bool IsOff
+		//{
+		//	get { return isOff; }
+		//	set
+		//	{
+		//		isOff = value;
+		//		OnPropertyChanged();
+		//	}
+		//}
+		public static readonly BindableProperty BookmarkBtnProperty =
+						  BindableProperty.Create(nameof(BookmarkBtn),
+												  typeof(Command),
+												  typeof(MB_TitleBlog)
+												 );
+		public Command BookmarkBtn
+		{
+			get { return (Command)GetValue(BookmarkBtnProperty); }
+			set { SetValue(BookmarkBtnProperty, value); }
+		}
+		public static readonly BindableProperty BookmarkBtnParameterProperty =
+						  BindableProperty.Create(nameof(BookmarkBtnParameter),
+												  typeof(object),
+												  typeof(MB_TitleBlog)
+												 );
+		public object BookmarkBtnParameter
+		{
+			get { return (object)GetValue(BookmarkBtnParameterProperty); }
+			set { SetValue(BookmarkBtnParameterProperty, value); }
 		}
 		public MB_SubscribeBlog()
 		{
