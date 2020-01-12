@@ -1,10 +1,10 @@
 ﻿
-using MBlog.CallApi.Models;
+using MBlog.Domain.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MBlog.Models
+namespace MBlog.Api.Models
 {
 	public class BlogModel 
 	{
@@ -16,6 +16,7 @@ namespace MBlog.Models
 		public byte[] ImageHead { get; set; }
 		public string ImagePath { get; set; }
 		public int TopicId { get; set; }
+
 		public bool BookMarkVisible { get; set; }
 		public bool IsLike { get; set; }
 		public bool IsOn { get; set; }

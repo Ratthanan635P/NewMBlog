@@ -25,7 +25,7 @@ namespace MBlog.Data.Repositories
 		public List<Blog> GetBlogsByUserId(int UserId)
 		{
 			//throw new NotImplementedException();
-			var blog = _context.Blogs.Where(b=>b.OwnerId==UserId).ToList();
+			var blog = _context.Blogs.Include(x=>x.Owner).Where(b=>b.OwnerId==UserId).ToList();
 			return blog;
 		}
 	}

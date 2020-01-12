@@ -11,6 +11,6 @@ namespace MBlog.CallApi.Models
 		public int Posts { get; set; }
 		public int Followings { get; set; }
 		public int Followers { get; set; }
-		public List<BlogDto> Blogs { get; set; }
+		public List<BlogModel> Blogs { get; set; }
 	}
 }

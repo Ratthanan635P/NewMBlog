@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MBlog.Api.Models
 {
-	public class MyBlogs
+	public class TargetBlogs
 	{
 		public int Posts { get; set; }
 		public int Followings { get; set; }
 		public int Followers { get; set; }
-		public List<BlogModel> Blogs { get; set; }
+		public List<BlogDto> Blogs { get; set; }
 	}
 }

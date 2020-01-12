@@ -10,6 +10,7 @@ namespace MBlog.CallApi.Service.Interfaces
 	{
 		Task<Result<SuccessModel, ErrorModel>> CreateBlog(BlogCommand blog);//post
 		Task<Result<MyBlogs, ErrorModel>> GetMyBlog(int userId);//Get
+		Task<Result<MyBlogs, ErrorModel>> GetTargetBlog(int targetId, int userId);
 		Task<Result<List<ProfileDto>, ErrorModel>> GetSubscribes(int userId);//get
 		Task<Result<SuccessModel, ErrorModel>> Subscribes(int targetUser, int userId);//get
 		Task<Result<SuccessModel, ErrorModel>> UnSubscribes(int targetUser, int userId);//get

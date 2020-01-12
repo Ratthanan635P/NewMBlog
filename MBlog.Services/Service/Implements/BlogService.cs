@@ -54,6 +54,15 @@ namespace MBlog.CallApi.Service.Implements
 			return result;
 		}
 
+		public async Task<Result<MyBlogs, ErrorModel>> GetTargetBlog(int targetId, int userId)
+		{
+			Uri url = new Uri(BaseUriUser, $"/Blog/GetFollowBlog?targetId={targetId}&userId={userId}");
+
+			Result<MyBlogs, ErrorModel> result = await GetMethodAsync<MyBlogs, ErrorModel>(url);
+
+			return result;
+		}
+
 		public async Task<Result<SuccessModel, ErrorModel>> Subscribes(int targetUser, int userId)
 		{
 			Uri url = new Uri(BaseUriUser, $"/Blog/Subscribes?targetUser={targetUser}&userId={userId}");

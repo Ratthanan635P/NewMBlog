@@ -22,8 +22,8 @@ namespace MBlog.ViewModels
         private Result<SuccessModel, ErrorModel> resultUnFavo { get; set; }
         const int RefreshDuration = 2;
 
-        private ObservableCollection<BlogModel> listBlog;
-        public ObservableCollection<BlogModel> ListBlog
+        private ObservableCollection<CallApi.Models.BlogModel> listBlog;
+        public ObservableCollection<CallApi.Models.BlogModel> ListBlog
         {
             get { return listBlog; }
             set
@@ -153,15 +153,15 @@ namespace MBlog.ViewModels
                             break;
                         case 10://call api
                             loopcheck++;
-                            result = await BlogService.GetMyBlog(Profile.Id);
+                            result = await BlogService.GetTargetBlog(Profile.Id,App.UserId);
                             if (result.StatusCode == Enums.StatusCode.Ok)
                             {
                                 List<BlogModel> blogModel = new List<BlogModel>();
                                 MyBlogs data = result.Success;
                                 blogModel = data.Blogs.Select(b => new BlogModel()
                                 {
-                                    BookMarkVisible = true,
-                                    IsLike = true,
+                                    BookMarkVisible = b.BookMarkVisible,
+                                    IsLike = b.IsLike,
                                     Createtime = b.Createtime,
                                     Detail = b.Detail,
                                     Id = b.Id,
@@ -172,8 +172,8 @@ namespace MBlog.ViewModels
                                     Title = b.Title,
                                     Topic = b.Topic,
                                     TopicId = b.TopicId,
-                                    IsOn = true,
-                                    IsOff = false
+                                    IsOn = b.IsOn,
+                                    IsOff = b.IsOff
                                 }).ToList();
                                 ListBlog = new ObservableCollection<BlogModel>(blogModel);
                                 Posts = data.Posts + " " + "Posts";
