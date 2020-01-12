@@ -1,4 +1,5 @@
 ﻿using MBlog.Models;
+using MBlog.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,9 +16,10 @@ namespace MBlog.Views
 	public partial class FollowPage : ContentPage
 	{
 		
-        public FollowPage()
+        public FollowPage(FollowingViewModel data)
 		{
-			InitializeComponent();           
+			InitializeComponent();		
+			BindingContext = data;
 		}
 
 		private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

@@ -41,7 +41,7 @@ namespace MBlog.ViewModels
         private async void OnSelectedFollowView(DataTest data)
         {
             //await App.Current.MainPage.DisplayAlert("", data.Title +"_", "OK");
-            await App.Current.MainPage.Navigation.PushAsync(new FollowPage());
+           // await App.Current.MainPage.Navigation.PushAsync(new FollowPage());
         }
         void AddItems()
         {
