@@ -18,8 +18,7 @@ namespace MBlog.ViewModels
     {
         #region Properties
         public Result<UserDto, ErrorModel> result { get; set; }
-        protected int retry = 1;
-        protected int maxRetry = 3;
+
 
         private string email;
         public string Email

@@ -67,6 +67,8 @@
                                  Grid.Column="1"
                                  Grid.Row="2">
                         <Label Text="{Binding TxName}" 
+                               MaxLines="1"
+                               LineBreakMode="TailTruncation"
                                TextColor="{StaticResource P_TimeText}"
                                 FontAttributes="Bold"/>
                         <Label Text="•" 
@@ -83,7 +85,8 @@
                                 Text="&#xf02e;" 
                                    IsVisible="{Binding IsOn}"
                                 FontSize="Large"
-                                FontFamily="{StaticResource AwesomeSolidFontFamily}"/>
+                                FontFamily="{StaticResource AwesomeSolidFontFamily}">
+                        </Label>
                         <Label x:Name="BookmarkOff"
                                 Text="&#xf02e;"                                     
                                    IsVisible="{Binding IsOff}"

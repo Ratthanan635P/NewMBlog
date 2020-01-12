@@ -71,12 +71,19 @@ namespace MBlog.Components
 		public static readonly BindableProperty IsLikeProperty =
 						  BindableProperty.Create(nameof(IsLike),
 												  typeof(bool),
-												  typeof(MB_SubscribeBlog)
+												  typeof(MB_SubscribeBlog),
+												  defaultBindingMode: BindingMode.TwoWay
 												  );
 		public bool IsLike
 		{
 			get { return (bool)GetValue(IsLikeProperty); }
-			set { SetValue(IsLikeProperty, value); }
+			set
+			{
+				SetValue(IsLikeProperty, value);
+				SetBookMark();
+				OnPropertyChanged();
+			}
+				
 		}
 
 		public static readonly BindableProperty BookMarkVisibleProperty =
@@ -141,6 +148,19 @@ namespace MBlog.Components
 				IsOn = true;
 				IsOff = false;
 				IsLike = true;
+			}
+		}
+		private void SetBookMark()
+		{
+			if (IsLike == true)
+			{
+				IsOn = false;
+				IsOff = true;
+			}
+			else
+			{
+				IsOn = true;
+				IsOff = false;
 			}
 		}
 	}

@@ -12,8 +12,7 @@ namespace MBlog.ViewModels
 {
 	public class ProfileViewModel : BaseViewModel
 	{
-        protected int retry = 1;
-        protected int maxRetry = 3;
+
         public Result<SuccessModel, ErrorModel> result { get; set; }
         public Result<UserDto, ErrorModel> userData { get; set; }
         private string fullName;

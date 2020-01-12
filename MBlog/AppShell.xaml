@@ -107,6 +107,7 @@
                         BackgroundColor="White"
                         Padding="0"
                         VerticalOptions="EndAndExpand"
+                        Clicked="Button_Clicked"
                         />
                 <BoxView Grid.Row="5" BackgroundColor="LightGray"
                          VerticalOptions="EndAndExpand"

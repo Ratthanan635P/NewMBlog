@@ -1,8 +1,10 @@
 ﻿using MBlog.CallApi.Helpers;
 using MBlog.CallApi.Models;
+using MBlog.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -15,8 +17,8 @@ namespace MBlog.ViewModels
 		private Result<List<BlogDto>, ErrorModel> result { get; set; }
 		private Result<SuccessModel, ErrorModel> resultUnFavo { get; set; }
 		const int RefreshDuration = 2;
-		private ObservableCollection<BlogDto> listFavorite;
-		public ObservableCollection<BlogDto> ListFavorite
+		private ObservableCollection<BlogModel> listFavorite;
+		public ObservableCollection<BlogModel> ListFavorite
 		{
 			get { return listFavorite; }
 			set
@@ -59,9 +61,9 @@ namespace MBlog.ViewModels
 		{
 			GetFavorite();
 
-			BookmakCommand = new Command<BlogDto>(OnSelectedBookMark);
+			BookmakCommand = new Command<BlogModel>(OnSelectedBookMark);
 		}
-		private async void OnSelectedBookMark(BlogDto data)
+		private async void OnSelectedBookMark(BlogModel data)
 		{
 			bool response = await App.Current.MainPage.DisplayAlert("ยืนยัน", "คุณต้องการยกเลิกการติดตาม \n ใช่ หรือ ไม่", "ใช่", "ไม่ใช่");
 			if (response)
@@ -123,7 +125,25 @@ namespace MBlog.ViewModels
 							result = await BlogService.GetFavorites(App.UserId);
 							if (result.StatusCode == Enums.StatusCode.Ok)
 							{
-								ListFavorite = new ObservableCollection<BlogDto>(result.Success);
+								List<BlogModel> blogModel = new List<BlogModel>();
+								List<BlogDto> data = result.Success;
+								blogModel = data.Select(b => new BlogModel(){
+									BookMarkVisible = true,
+									IsLike = true,
+									Createtime=b.Createtime,
+									Detail=b.Detail,
+									Id=b.Id,
+									ImageHead=b.ImageHead,
+									ImagePath=b.ImagePath,
+									Owner=b.Owner,
+									OwnerId=b.OwnerId,
+									Title=b.Title,
+									Topic=b.Topic,
+									TopicId=b.TopicId,
+									IsOn=true,
+									IsOff=false
+								}).ToList();
+								ListFavorite = new ObservableCollection<BlogModel>(blogModel);
 								workingStep = 100;
 							}
 							else
@@ -205,7 +225,7 @@ namespace MBlog.ViewModels
 				//Application.Current.MainPage = new NavigationPage(new LoginPage());
 			}
 		}
-		public async void UnFavorite(BlogDto data)
+		public async void UnFavorite(BlogModel data)
 		{
 			try
 			{

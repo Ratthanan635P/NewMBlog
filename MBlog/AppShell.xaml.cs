@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MBlog.Views;
+using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -14,10 +15,14 @@ namespace MBlog
             UserName = "DAMRONGDET LALITLAGSAMANONT";
             InitializeComponent();           
         }
-
-        private void MenuItem_Clicked(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
-
+            App.Email = "";
+            App.FullName = "";
+            App.AccessToken = "";
+            App.ImagePath = "";
+            App.About = "";
+            App.Current.MainPage = new NavigationPage( new LoginPage());
         }
     }
 }

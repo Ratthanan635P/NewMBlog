@@ -16,7 +16,6 @@
                    FontAttributes="Bold"
                     Margin="-50,0,0,0"
                  />
-
             <Label Text="&#xf2bd;" FontFamily="{StaticResource AwesomeSolidFontFamily}" HorizontalOptions="EndAndExpand" FontSize="35" VerticalOptions="CenterAndExpand" Margin="0,0,15,0">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
@@ -43,10 +42,11 @@
                                     <compotent:MB_SubscribeBlog ImageTitle="{Binding ImagePath}"
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
-                                BookMarkVisible="{Binding BookmarkShow}"
+                                BookMarkVisible="{Binding BookMarkVisible}"
                                 TxName="{Binding Owner.FullName}"
                                 TxTimeAgo="{Binding Createtime}"
-                          />
+                                IsLike="{Binding IsLike}"
+                                     />
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>

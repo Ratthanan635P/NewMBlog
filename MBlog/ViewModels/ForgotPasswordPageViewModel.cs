@@ -14,8 +14,7 @@ namespace MBlog.ViewModels
 	public class ForgotPasswordPageViewModel:BaseViewModel
 	{
         public Result<SuccessModel, ErrorModel> result { get; set; }
-        protected int retry = 1;
-        protected int maxRetry = 3;
+
         private string email;
         public string Email
         {
