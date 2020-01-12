@@ -12,7 +12,7 @@ namespace MBlog
 
         public AppShell()
         {
-            UserName = "DAMRONGDET LALITLAGSAMANONT";
+            UserName = App.FullName;
             InitializeComponent();           
         }
         private void Button_Clicked(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace MBlog.ViewModels
 	public class FollowingViewModel : BaseViewModel
 	{
 
-      //  public Result<SuccessModel, ErrorModel> result { get; set; }
+        public Result<SuccessModel, ErrorModel> resultFavo { get; set; }
         public Result<UserDto, ErrorModel> userData { get; set; }
         private Result<MyBlogs, ErrorModel> result { get; set; }
         private Result<SuccessModel, ErrorModel> resultUnFavo { get; set; }
@@ -99,6 +99,19 @@ namespace MBlog.ViewModels
                 OnPropertyChanged();
             }
         }
+		bool isRefreshing;
+
+		public bool IsRefreshing
+		{
+			get { return isRefreshing; }
+			set
+			{
+				isRefreshing = value;
+				OnPropertyChanged();
+			}
+		}
+		public Command BookmakCommand { get; set; }
+
         public ProfileDto Profile { get; set; }
         public Command SaveCommand { get; set; }
         public FollowingViewModel(ProfileDto profile)
@@ -109,9 +122,287 @@ namespace MBlog.ViewModels
             About = Profile.About;
             ImagePath = Profile.ImageProfilePath;
             GetBlog();
+            BookmakCommand = new Command<BlogModel>(async (data) => await OnSelectedBookMark(data));
         }
-       
-        public async void GetBlog()
+		private async Task OnSelectedBookMark(BlogModel data)
+		{
+			
+			if (data.IsLike)
+			{
+				UnFavorite(data);
+			}
+			else
+			{
+				Favorite(data);
+			}
+			//await App.Current.MainPage.Navigation.PushAsync(new FollowPage());
+		}
+		async Task RefreshItemsAsync()
+		{
+			IsRefreshing = true;
+			await Task.Delay(TimeSpan.FromSeconds(RefreshDuration));
+			GetBlog();
+			IsRefreshing = false;
+		}
+		public async void Favorite(BlogModel data)
+		{
+			try
+			{
+				var checkNet = true;
+				int workingStep = 1;
+				retry = 1;
+				int loopcheck = 0;
+
+				bool internetCheck = true;
+				do
+				{
+					switch (workingStep)
+					{
+						case 1://check internet
+							checkNet = CheckingInternet();
+							if (checkNet == true)
+							{
+								workingStep = 10;
+							}
+							else
+							{
+								workingStep = 2;
+							}
+							break;
+						case 2://delay
+							await Task.Delay(300);
+							workingStep = 3;
+							break;
+						case 3://action result
+							bool istryAgain = await Application.Current.MainPage.DisplayAlert("", "No Internet", "Try Again", "Cancel");
+							if (istryAgain)
+							{
+								workingStep = 1;
+							}
+							else
+							{
+								internetCheck = false;
+							}
+							break;
+						case 10://call api
+							loopcheck++;
+
+							resultFavo = await BlogService.Favorite(data.Id,App.UserId);
+							if (result.StatusCode == Enums.StatusCode.Ok)
+							{
+								GetBlog();
+								workingStep = 100;
+							}
+							else
+							{
+								if (loopcheck <= maxRetry)
+								{
+									if (result.StatusCode == Enums.StatusCode.Unauthorized)
+									{
+										//await GetToken();
+									}
+									else
+									{
+										workingStep++;
+									}
+								}
+								else
+								{
+									internetCheck = false;
+								}
+							}
+							break;
+						case 11://
+							await Task.Delay(300);
+							workingStep++;
+							break;
+						case 12://
+							if (result.StatusCode == Enums.StatusCode.BadRequest)
+							{
+								//await App.Current.MainPage.Navigation.PopAsync();
+								//await PopupNavigation.Instance.PushAsync(new ErrorPopup("SOMETHING WRONG"));
+
+								//await App.Current.MainPage.DisplayAlert("WARNING", "SOMETHING WRONG", "OK");
+							}
+							else if (result.StatusCode == Enums.StatusCode.NotFound)
+							{
+								//await PopupNavigation.Instance.PushAsync(new ErrorPopup(result.Error.ErrorMessage));
+
+								//await Application.Current.MainPage.DisplayAlert("", result.Error.ErrorMessage.ToString(), "OK");
+
+							}
+							else if (result.StatusCode == Enums.StatusCode.InternalServerError)
+							{
+								//await PopupNavigation.Instance.PushAsync(new ErrorPopup(result.Error.ErrorMessage));
+
+								//await Application.Current.MainPage.DisplayAlert("", result.Error.ErrorMessage.ToString(), "OK");
+							}
+							else
+							{
+								///await PopupNavigation.Instance.PushAsync(new ErrorPopup(result.Error.ErrorMessage));
+
+								//await Application.Current.MainPage.DisplayAlert("", result.Error.ErrorMessage.ToString(), "OK");
+							}
+							workingStep++;
+							break;
+						case 13://
+							internetCheck = false;
+							break;
+						case 100://
+							internetCheck = false;
+							break;
+						default:
+							internetCheck = false;
+							break;
+					}
+				} while (internetCheck);
+			}
+			catch (OperationCanceledException)
+			{
+				//await PopupNavigation.Instance.PushAsync(new ErrorPopup("ปิดปรับปรุงServer"));
+
+				//await Application.Current.MainPage.DisplayAlert("", "ปิดปรับปรุงServer", "OK");
+				//Application.Current.MainPage = new NavigationPage(new LoginPage());
+			}
+			catch (TimeoutException)
+			{
+				//await PopupNavigation.Instance.PushAsync(new ErrorPopup("ปิดปรับปรุงServer"));
+
+				//await Application.Current.MainPage.DisplayAlert("", "กรุณาลองใหม่อีกครั้ง", "OK");
+				//Application.Current.MainPage = new NavigationPage(new LoginPage());
+			}
+		}
+		public async void UnFavorite(BlogModel data)
+		{
+			try
+			{
+				var checkNet = true;
+				int workingStep = 1;
+				retry = 1;
+				int loopcheck = 0;
+
+				bool internetCheck = true;
+				do
+				{
+					switch (workingStep)
+					{
+						case 1://check internet
+							checkNet = CheckingInternet();
+							if (checkNet == true)
+							{
+								workingStep = 10;
+							}
+							else
+							{
+								workingStep = 2;
+							}
+							break;
+						case 2://delay
+							await Task.Delay(300);
+							workingStep = 3;
+							break;
+						case 3://action result
+							bool istryAgain = await Application.Current.MainPage.DisplayAlert("", "No Internet", "Try Again", "Cancel");
+							if (istryAgain)
+							{
+								workingStep = 1;
+							}
+							else
+							{
+								internetCheck = false;
+							}
+							break;
+						case 10://call api
+							loopcheck++;
+
+							resultUnFavo = await BlogService.UnFavorite(data.Id, App.UserId);
+							if (resultUnFavo.StatusCode == Enums.StatusCode.Ok)
+							{
+								//ListSubscr = new ObservableCollection<ProfileDto>(resultUnsub.Success);
+								GetBlog();
+								workingStep = 100;
+							}
+							else
+							{
+								if (loopcheck <= maxRetry)
+								{
+									if (resultUnFavo.StatusCode == Enums.StatusCode.Unauthorized)
+									{
+										//await GetToken();
+									}
+									else
+									{
+										workingStep++;
+									}
+								}
+								else
+								{
+									internetCheck = false;
+								}
+							}
+							break;
+						case 11://
+							await Task.Delay(300);
+							workingStep++;
+							break;
+						case 12://
+							if (resultUnFavo.StatusCode == Enums.StatusCode.BadRequest)
+							{
+								//await App.Current.MainPage.Navigation.PopAsync();
+								//await PopupNavigation.Instance.PushAsync(new ErrorPopup("SOMETHING WRONG"));
+
+								//await App.Current.MainPage.DisplayAlert("WARNING", "SOMETHING WRONG", "OK");
+							}
+							else if (resultUnFavo.StatusCode == Enums.StatusCode.NotFound)
+							{
+								//await PopupNavigation.Instance.PushAsync(new ErrorPopup(result.Error.ErrorMessage));
+
+								//await Application.Current.MainPage.DisplayAlert("", result.Error.ErrorMessage.ToString(), "OK");
+
+							}
+							else if (resultUnFavo.StatusCode == Enums.StatusCode.InternalServerError)
+							{
+								//await PopupNavigation.Instance.PushAsync(new ErrorPopup(result.Error.ErrorMessage));
+
+								//await Application.Current.MainPage.DisplayAlert("", result.Error.ErrorMessage.ToString(), "OK");
+							}
+							else
+							{
+								///await PopupNavigation.Instance.PushAsync(new ErrorPopup(result.Error.ErrorMessage));
+
+								//await Application.Current.MainPage.DisplayAlert("", result.Error.ErrorMessage.ToString(), "OK");
+							}
+							workingStep++;
+							break;
+						case 13://
+							internetCheck = false;
+							break;
+						case 100://
+							internetCheck = false;
+							break;
+						default:
+							internetCheck = false;
+							break;
+					}
+				} while (internetCheck);
+			}
+			catch (OperationCanceledException)
+			{
+				//await PopupNavigation.Instance.PushAsync(new ErrorPopup("ปิดปรับปรุงServer"));
+
+				//await Application.Current.MainPage.DisplayAlert("", "ปิดปรับปรุงServer", "OK");
+				//Application.Current.MainPage = new NavigationPage(new LoginPage());
+			}
+			catch (TimeoutException)
+			{
+				//await PopupNavigation.Instance.PushAsync(new ErrorPopup("ปิดปรับปรุงServer"));
+
+				//await Application.Current.MainPage.DisplayAlert("", "กรุณาลองใหม่อีกครั้ง", "OK");
+				//Application.Current.MainPage = new NavigationPage(new LoginPage());
+			}
+		}
+
+		public async void GetBlog()
         {
             try
             {
