@@ -165,14 +165,14 @@
                 <Frame CornerRadius="0" HasShadow="True"
                        Padding="10"
                        >
-                    <StackLayout Orientation="Horizontal">
+                    
                         <Label Text="Read more" 
                            TextColor="Black"
                            FontAttributes="Bold"
                            FontSize="Medium"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="CenterAndExpand"/>
-                    </StackLayout>
+                    
                 </Frame>
                 <Frame CornerRadius="0" HasShadow="True" Padding="10">
                 <StackLayout Orientation="Horizontal">

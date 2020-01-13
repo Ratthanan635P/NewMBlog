@@ -48,11 +48,9 @@ namespace MBlog.Data.Repositories
 				TopicId=b.TopicId,
 				UpdateDateTime=b.UpdateDateTime
 			}
-
 		).ToList();
 			return data;
 		}
-
 		public Favorite GetFavoritesByUserId(int blogId, int myUserId)
 		{
 			var result = _context.Favorites.Include(x => x.User).Where(x => x.Id == blogId && x.UserId == myUserId).FirstOrDefault();

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:compotent="clr-namespace:MBlog.Components"
+             xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
+             mc:Ignorable="d"
+             x:Class="MBlog.Views.ListBookmarkPage">
+    <Shell.TitleView>
+        <Grid >
+            <Label Text="BOOKMARKS"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                    Margin="-50,0,0,0"
+                 />
+            <Label Text="&#xf2bd;" FontFamily="{StaticResource AwesomeSolidFontFamily}" HorizontalOptions="EndAndExpand" FontSize="35" VerticalOptions="CenterAndExpand" Margin="0,0,15,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </Shell.TitleView>
+    <!--<ContentPage.BindingContext>
+        <viewmodel:ListTitleViewModel/>
+    </ContentPage.BindingContext>-->
+    <Grid>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     RefreshColor="Teal"
+                     Command="{Binding RefreshCommand}">
+            <ScrollView x:Name="scrollviewData" Scrolled="ScrollView_Scrolled">
+                <StackLayout x:Name="ListTitle">
+                    <ListView x:Name="MyListView" 
+                  ItemsSource="{Binding ListFavorite}" 
+                  HasUnevenRows="true"                  
+                  >
+                        <ListView.ItemTemplate >
+                            <DataTemplate >
+                                <ViewCell>
+                                    <compotent:MB_SubscribeBlog ImageTitle="{Binding ImagePath}"
+                                TxTitle="{Binding Title}" 
+                                TxDetail="{Binding Detail}"
+                                BookMarkVisible="{Binding BookMarkVisible}"
+                                TxName="{Binding Owner.FullName}"
+                                TxTimeAgo="{Binding Createtime}"
+                                IsLike="{Binding IsLike}"
+                                IsOn="{Binding IsOn}"
+                                IsOff="{Binding IsOff}"
+                                BookmarkBtn="{Binding BindingContext.BookmakCommand,Source={x:Reference ListTitle}}"
+                                                BookmarkBtnParameter="{Binding .}"                               
+                                     />
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
+        <compotent:MB_Loading x:Name="Loading"
+                 />
+    </Grid>
+</ContentPage>

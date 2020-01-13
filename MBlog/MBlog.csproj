@@ -31,6 +31,12 @@
     <Compile Update="Views\FollowPage.xaml.cs">
       <DependentUpon>FollowPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ListBookmarkPage.xaml.cs">
+      <DependentUpon>ListBookmarkPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ListSubscribePage.xaml.cs">
+      <DependentUpon>ListSubscribePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="AppShell.xaml">
@@ -69,10 +75,10 @@
     <EmbeddedResource Update="Views\FollowPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ListSubscribePage.xaml">
+    <EmbeddedResource Update="Views\ListBookmarkPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ListTitlePage.xaml">
+    <EmbeddedResource Update="Views\ListSubscribePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilePage.xaml">

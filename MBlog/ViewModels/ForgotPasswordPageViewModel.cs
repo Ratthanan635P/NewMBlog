@@ -11,18 +11,19 @@ using Xamarin.Forms;
 
 namespace MBlog.ViewModels
 {
-	public class ForgotPasswordPageViewModel:BaseViewModel
-	{
+    public class ForgotPasswordPageViewModel : BaseViewModel
+    {
         public Result<SuccessModel, ErrorModel> result { get; set; }
 
         private string email;
         public string Email
         {
             get { return email; }
-            set {
-           
-                SetProperty(ref email, value); 
-                }
+            set
+            {
+
+                SetProperty(ref email, value);
+            }
         }
         //private string password;
         //public string Password
@@ -36,15 +37,15 @@ namespace MBlog.ViewModels
         //}
 
         public ICommand RegisterCommand { get; set; }
-		public ICommand SendEmailCommand { get;}
-		public ICommand ForgotCommand { get; set; }
-		public ICommand BackPageCommand { get; set; }
-		public ForgotPasswordPageViewModel()
-		{
-			ForgotCommand = new Command(GotoForgotPage);
-			RegisterCommand = new Command(GotoRegisterPage);
-			BackPageCommand = new Command(BackPage);
-			SendEmailCommand=new Command(async () => await SendEmailPage()); 
+        public ICommand SendEmailCommand { get; }
+        public ICommand ForgotCommand { get; set; }
+        public ICommand BackPageCommand { get; set; }
+        public ForgotPasswordPageViewModel()
+        {
+            ForgotCommand = new Command(GotoForgotPage);
+            RegisterCommand = new Command(GotoRegisterPage);
+            BackPageCommand = new Command(BackPage);
+            SendEmailCommand = new Command(async () => await SendEmailPage());
 
         }
         private bool CanEmail()
@@ -57,18 +58,18 @@ namespace MBlog.ViewModels
             return true;
         }
         private async void GotoForgotPage()
-		{
-			await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordPage());
-		}
-		private async void GotoRegisterPage()
-		{
-			await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
-		}
-		private async void BackPage()
-		{
-			await App.Current.MainPage.Navigation.PopAsync();
-		}
-	
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordPage());
+        }
+        private async void GotoRegisterPage()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+        }
+        private async void BackPage()
+        {
+            await App.Current.MainPage.Navigation.PopAsync();
+        }
+
         private async Task SendEmailPage()
         {
             ClearErrorMessage();
@@ -93,7 +94,7 @@ namespace MBlog.ViewModels
                 {
                     ErrorMessageEmail = "E-mail is invalid";
                     IsErrorEmail = true;
-                }             
+                }
                 else
                 {
                     var checkNet = true;
@@ -134,13 +135,13 @@ namespace MBlog.ViewModels
                                 break;
                             case 10://call api
                                 loopcheck++;
-                                
+
 
                                 result = await AuthService.ForgotPassword(Email);
                                 if (result.StatusCode == Enums.StatusCode.Ok)
                                 {
-                                     await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordCompletePage());
-                                                                      workingStep = 100;
+                                    await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordCompletePage());
+                                    workingStep = 100;
                                 }
                                 else
                                 {

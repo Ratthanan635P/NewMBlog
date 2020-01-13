@@ -3,17 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:compotent="clr-namespace:MBlog.Components"
+             xmlns:compotent="clr-namespace:MBlog.Components" 
              xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
              mc:Ignorable="d"
              x:Class="MBlog.Views.ListSubscribePage">
     <Shell.TitleView>
         <Grid >
-            <Label Text="BOOKMARKS"
+            <Label Text="SUBSCRIBES"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
-                   FontSize="Large"
                    FontAttributes="Bold"
+                   FontSize="Large"
                     Margin="-50,0,0,0"
                  />
             <Label Text="&#xf2bd;" FontFamily="{StaticResource AwesomeSolidFontFamily}" HorizontalOptions="EndAndExpand" FontSize="35" VerticalOptions="CenterAndExpand" Margin="0,0,15,0">
@@ -30,32 +30,31 @@
         <RefreshView IsRefreshing="{Binding IsRefreshing}"
                      RefreshColor="Teal"
                      Command="{Binding RefreshCommand}">
-            <ScrollView x:Name="scrollviewData" Scrolled="ScrollView_Scrolled">
-                <StackLayout x:Name="ListTitle">
-                    <ListView x:Name="MyListView" 
-                  ItemsSource="{Binding ListFavorite}" 
-                  HasUnevenRows="true"                  
+            <ScrollView>
+            <StackLayout x:Name="ListTitle">
+                <ListView x:Name="MyListView" 
+                  ItemsSource="{Binding ListSubscr}" 
+                  HasUnevenRows="true"
                   >
-                        <ListView.ItemTemplate >
-                            <DataTemplate >
-                                <ViewCell>
-                                    <compotent:MB_SubscribeBlog ImageTitle="{Binding ImagePath}"
-                                TxTitle="{Binding Title}" 
-                                TxDetail="{Binding Detail}"
-                                BookMarkVisible="{Binding BookMarkVisible}"
-                                TxName="{Binding Owner.FullName}"
-                                TxTimeAgo="{Binding Createtime}"
-                                IsLike="{Binding IsLike}"
-                                IsOn="{Binding IsOn}"
-                                IsOff="{Binding IsOff}"
-                                BookmarkBtn="{Binding BindingContext.BookmakCommand,Source={x:Reference ListTitle}}"
-                                                BookmarkBtnParameter="{Binding .}"                               
-                                     />
+                    <ListView.ItemTemplate >
+                        <DataTemplate >
+                            <ViewCell >
+                                    <compotent:MB_TitleBlog ImageTitle="{Binding ImageProfilePath}"
+                                TxTitle="{Binding FullName}" 
+                                TxDetail="{Binding About}" 
+                                TxButtom="Following"
+                                CommandBtn="{Binding BindingContext.FollowCommand,Source={x:Reference ListTitle}}"
+                                CommandBtnParameter="{Binding .}">
+                                      <compotent:MB_TitleBlog.GestureRecognizers>
+                                            <TapGestureRecognizer  Command="{Binding BindingContext.SelectCommand, Source={x:Reference ListTitle}}"
+                                              CommandParameter="{Binding .}" />
+                                       </compotent:MB_TitleBlog.GestureRecognizers>
+                                    </compotent:MB_TitleBlog>
                                 </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
             </ScrollView>
         </RefreshView>
         <compotent:MB_Loading x:Name="Loading"

@@ -132,7 +132,7 @@ namespace MBlog.ViewModels
 		private async Task OnSelectedBookMark(BlogModel data)
 		{
 			
-			if (data.IsLike)
+			if (data.IsOn)
 			{
 				UnFavorite(data);
 			}

@@ -76,7 +76,6 @@ namespace MBlog.Domain.Services
 				return false;
 			}
 		}
-
 		public string RandomCode()
 		{
 			const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -123,7 +122,6 @@ namespace MBlog.Domain.Services
 			var token = tokenHandler.CreateToken(tokenDescriptor);
 			return tokenHandler.WriteToken(token);
 		}
-
 		public UserDto GetDataUser(string email)
 		{
 			var user = _userRepository.GetByEmail(email);
@@ -162,7 +160,6 @@ namespace MBlog.Domain.Services
 				return "Success";
 			}
 		}
-
 		public bool UpdateProfile(ProfileCommand profile)
 		{
 			var user = _userRepository.GetByEmail(profile.Email);

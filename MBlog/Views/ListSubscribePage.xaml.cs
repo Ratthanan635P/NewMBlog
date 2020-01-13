@@ -18,7 +18,7 @@ namespace MBlog.Views
 		public bool Fristtime { get; set; } = false;
 		public ListSubscribePage()
 		{
-			InitializeComponent();           
+			InitializeComponent();
 		}
 
 		private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -33,16 +33,11 @@ namespace MBlog.Views
 				Loading.IsVisible = true;
 				Loading.IsPlaying = true;
 				await Task.Delay(2000);
-				BindingContext = new ListBookmarkViewModel();
+				BindingContext = new ListSubscribeViewModel();// new ListTitleViewModel();
 				Loading.IsVisible = false;
 				Loading.IsPlaying = false;
 				Fristtime = true;
 			}
-		}
-
-		private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
-		{
-			//scrollviewData.ScrollY
 		}
 	}
 

@@ -13,10 +13,10 @@ using Xamarin.Forms.Xaml;
 namespace MBlog.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ListTitlePage : ContentPage
+	public partial class ListBookmarkPage : ContentPage
 	{
 		public bool Fristtime { get; set; } = false;
-        public ListTitlePage()
+		public ListBookmarkPage()
 		{
 			InitializeComponent();           
 		}
@@ -28,16 +28,21 @@ namespace MBlog.Views
 		protected override async void OnAppearing()
 		{
 			base.OnAppearing();
-			if (Fristtime==false)
+			if (Fristtime == false)
 			{
 				Loading.IsVisible = true;
 				Loading.IsPlaying = true;
 				await Task.Delay(2000);
-				BindingContext = new ListSubscribeViewModel();// new ListTitleViewModel();
+				BindingContext = new ListBookmarkViewModel();
 				Loading.IsVisible = false;
 				Loading.IsPlaying = false;
 				Fristtime = true;
 			}
+		}
+
+		private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
+		{
+			//scrollviewData.ScrollY
 		}
 	}
 
