@@ -26,36 +26,34 @@ namespace MBlog.Domain.Services
 		}
 		public bool AddBlog(BlogDto blogDto)
 		{
-			//throw new NotImplementedException();
 			Blog blogDetail = new Blog()
 			{
-				Detail= blogDto.Detail,
+				Detail = blogDto.Detail,
 				ImageHead = blogDto.ImageHead,
 				ImagePath = blogDto.ImagePath,
-				OwnerId=blogDto.OwnerId,
-				TopicId=blogDto.TopicId,
-				Title=blogDto.Title		
+				OwnerId = blogDto.OwnerId,
+				TopicId = blogDto.TopicId,
+				Title = blogDto.Title
 			};
-			  _blogRepository.Add(blogDetail);
+			_blogRepository.Add(blogDetail);
 			_blogRepository.SaveChange();
 			return true;
 		}
-				
+
 		public List<BlogDto> GetBlogByUserId(int userId)
 		{
-			//throw new NotImplementedException();
 			var result = _blogRepository.GetBlogsByUserId(userId);
 			var data = result.Select(b => new BlogDto
 			{
-				Id=b.Id,
-				Detail=b.Detail,
-				ImageHead=b.ImageHead,
-				ImagePath=b.ImagePath,
+				Id = b.Id,
+				Detail = b.Detail,
+				ImageHead = b.ImageHead,
+				ImagePath = b.ImagePath,
 				Owner = _mapper.Map<ProfileDto>(b.Owner),
-				OwnerId =b.OwnerId,
-				Title=b.Title,
-				TopicId=b.TopicId,
-				Createtime=b.CreateDateTime,
+				OwnerId = b.OwnerId,
+				Title = b.Title,
+				TopicId = b.TopicId,
+				Createtime = b.CreateDateTime,
 				Topic = _mapper.Map<TopicDto>(b.Topic),
 			}).ToList();
 			return data;
@@ -63,19 +61,18 @@ namespace MBlog.Domain.Services
 
 		public List<ProfileDto> GetSubscribesByUserId(int userId)
 		{
-			//throw new NotImplementedException();
 			var Followings = _followingRepository.GetDataFollowingByUserId(userId);
 			List<ProfileDto> profileDtos = new List<ProfileDto>();
 			Followings = Followings.Where(x => x.IsDelete == false).ToList();
-			profileDtos = Followings.Select(f=> new ProfileDto()
+			profileDtos = Followings.Select(f => new ProfileDto()
 			{
-				About=f.About,
-				Email=f.Email,
-				FullName=f.FullName,
-				Id=f.Id,
-				ImageProfile=f.ImageProfile,
-				ImageProfilePath=f.ImageProfilePath,
-				Following=true
+				About = f.About,
+				Email = f.Email,
+				FullName = f.FullName,
+				Id = f.Id,
+				ImageProfile = f.ImageProfile,
+				ImageProfilePath = f.ImageProfilePath,
+				Following = true
 			}).ToList();
 
 			return profileDtos;
@@ -86,9 +83,9 @@ namespace MBlog.Domain.Services
 			Following following = new Following()
 			{
 				FollowerId = myUserId,
-				FollowingId = unSubUserId	
-							};
-			var result =_followingRepository.GetFollowByUserId(unSubUserId, myUserId);
+				FollowingId = unSubUserId
+			};
+			var result = _followingRepository.GetFollowByUserId(unSubUserId, myUserId);
 			if (result == null)
 			{
 				_followingRepository.Add(following);
@@ -96,7 +93,7 @@ namespace MBlog.Domain.Services
 			}
 			else
 			{
-				if (result.IsDelete==true)
+				if (result.IsDelete == true)
 				{
 					result.IsDelete = false;
 					_followingRepository.Update(result);
@@ -105,7 +102,7 @@ namespace MBlog.Domain.Services
 			}
 			return true;
 		}
-				
+
 		public bool UnSubscribesByUserId(int unSubUserId, int myUserId)
 		{
 			Following following = _followingRepository.GetFollowByUserId(unSubUserId, myUserId);
@@ -155,35 +152,32 @@ namespace MBlog.Domain.Services
 
 		public List<BlogDto> GetFavoritesByUserId(int userId)
 		{
-			//throw new NotImplementedException();
 			var favorites = _favoriteRepository.GetDataFavoritesByUserId(userId);
 			List<BlogDto> blogDtos = new List<BlogDto>();
 			blogDtos = favorites.Where(x => x.IsDelete == false).Select(f => new BlogDto()
 			{
-				Id=f.Id,
-				Detail=f.Detail,
-				ImageHead=f.ImageHead,
-				ImagePath=f.ImagePath,
-				Owner= _mapper.Map<ProfileDto>(f.Owner),
-				OwnerId=f.OwnerId,
-				Title=f.Title,
+				Id = f.Id,
+				Detail = f.Detail,
+				ImageHead = f.ImageHead,
+				ImagePath = f.ImagePath,
+				Owner = _mapper.Map<ProfileDto>(f.Owner),
+				OwnerId = f.OwnerId,
+				Title = f.Title,
 				Createtime = f.CreateDateTime,
-				Topic =_mapper.Map<TopicDto>(f.Topic),
-				TopicId=f.TopicId
+				Topic = _mapper.Map<TopicDto>(f.Topic),
+				TopicId = f.TopicId
 			}).ToList();
 			return blogDtos;
 		}
 
 		public int GetFollowerByUserId(int Userid)
 		{
-			//throw new NotImplementedException();
 			var Followers = _followingRepository.GetFollowerByUserId(Userid);
 			return Followers;
 		}
 
 		public int GetFollowingByUserId(int Userid)
 		{
-			//throw new NotImplementedException();
 			var Followings = _followingRepository.GetFollowingByUserId(Userid);
 			return Followings;
 		}

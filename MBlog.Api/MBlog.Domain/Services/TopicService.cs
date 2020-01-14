@@ -44,7 +44,7 @@ namespace MBlog.Domain.Services
 			{
 				return false;
 			}
-			
+
 		}
 
 		public List<TopicDto> GetAll()
@@ -68,7 +68,7 @@ namespace MBlog.Domain.Services
 				{
 					result.TopicName = topicDto.TopicName;
 					result.TopicDetail = topicDto.TopicDetail;
-					
+
 					_topicRepository.Update(result);
 					_topicRepository.SaveChange();
 					return true;
@@ -77,7 +77,7 @@ namespace MBlog.Domain.Services
 				{
 					return false;
 				}
-				
+
 			}
 			catch (Exception ex)
 			{
