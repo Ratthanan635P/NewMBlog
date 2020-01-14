@@ -1,6 +1,7 @@
 ﻿
 using MBlog.CallApi.Service.Implements;
 using MBlog.Views;
+using MBlog.Views.LogInViews;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

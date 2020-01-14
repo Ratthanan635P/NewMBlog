@@ -4,6 +4,7 @@ using MBlog.CallApi.Models;
 using MBlog.Helpers;
 using MBlog.Models;
 using MBlog.Views;
+using MBlog.Views.LogInViews;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -452,7 +453,7 @@ namespace MBlog.ViewModels
 							{
 								//ListSubscr = new ObservableCollection<ProfileDto>(resultUnsub.Success);
 								//await App.Current.MainPage.Navigation.RemovePage();
-								await App.Current.MainPage.Navigation.PushAsync(new FollowPage(this));								
+								//await App.Current.MainPage.Navigation.PushAsync(new FollowPage(this));								
 
 								workingStep = 100;
 							}

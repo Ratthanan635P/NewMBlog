@@ -27,6 +27,50 @@ namespace MBlog.CallApi.Service.Implements
 			return result;
 		}
 
+		public async Task<Result<List<BlogDto>, ErrorModel>> GetBlogByTopicId(int topicId)
+		{
+			Uri url = new Uri(BaseUriUser, $"/Blog/GetBlogByTopicId?topicId={topicId}");
+
+			Result<List<BlogDto>, ErrorModel> result = await GetMethodAsync<List<BlogDto>, ErrorModel>(url);
+
+			return result;
+		}
+
+		public async Task<Result<List<BlogDto>, ErrorModel>> GetBlogForYou(int userId)
+		{
+			Uri url = new Uri(BaseUriUser, $"/Blog/GetBlogForYou?userId={userId}");
+
+			Result<List<BlogDto>, ErrorModel> result = await GetMethodAsync<List<BlogDto>, ErrorModel>(url);
+
+			return result;
+		}
+
+		public async Task<Result<List<BlogDto>, ErrorModel>> GetBlogHot()
+		{
+			Uri url = new Uri(BaseUriUser, $"/Blog/GetBlogHot");
+
+			Result<List<BlogDto>, ErrorModel> result = await GetMethodAsync<List<BlogDto>, ErrorModel>(url);
+
+			return result;
+		}
+
+		public async Task<Result<List<BlogDto>, ErrorModel>> GetBlogLatest()
+		{
+			Uri url = new Uri(BaseUriUser, $"/Blog/GetBlogLatest");
+
+			Result<List<BlogDto>, ErrorModel> result = await GetMethodAsync<List<BlogDto>, ErrorModel>(url);
+
+			return result;
+		}
+		public async Task<Result<List<ProfileDto>, ErrorModel>> GetYouMightLike(int userId)
+		{
+			Uri url = new Uri(BaseUriUser, $"/Blog/GetBlogForYou?userId={userId}");
+
+			Result<List<ProfileDto>, ErrorModel> result = await GetMethodAsync<List<ProfileDto>, ErrorModel>(url);
+
+			return result;
+		}
+
 		public async Task<Result<List<BlogDto>, ErrorModel>> GetFavorites(int userId)
 		{
 			Uri url = new Uri(BaseUriUser, $"/Blog/GetFavorites?userId={userId}");
@@ -62,7 +106,6 @@ namespace MBlog.CallApi.Service.Implements
 
 			return result;
 		}
-
 		public async Task<Result<SuccessModel, ErrorModel>> Subscribes(int targetUser, int userId)
 		{
 			Uri url = new Uri(BaseUriUser, $"/Blog/Subscribes?targetUser={targetUser}&userId={userId}");

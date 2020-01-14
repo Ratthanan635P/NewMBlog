@@ -17,5 +17,11 @@ namespace MBlog.CallApi.Service.Interfaces
 		Task<Result<SuccessModel, ErrorModel>> Favorite(int blogId, int userId);//get
 		Task<Result<SuccessModel, ErrorModel>> UnFavorite(int blogId, int userId);//get
 		Task<Result<List<BlogDto>, ErrorModel>> GetFavorites(int userId);//get
+		// TODO
+		Task<Result<List<BlogDto>, ErrorModel>> GetBlogHot();//Get
+		Task<Result<List<BlogDto>, ErrorModel>> GetBlogForYou(int userId);//Get
+		Task<Result<List<BlogDto>, ErrorModel>> GetBlogLatest();//Get
+		Task<Result<List<ProfileDto>, ErrorModel>> GetYouMightLike(int userId);//get
+		Task<Result<List<BlogDto>, ErrorModel>> GetBlogByTopicId(int topicId);//Get
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using MBlog.Views;
+using MBlog.Views.LogInViews;
 using System;
 using System.Collections.Generic;
 

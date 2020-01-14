@@ -314,33 +314,8 @@ namespace MBlog.Api.Controllers
 			int userId = 1;
 			try
 			{
-				var myBlog = _blogService.GetBlogByUserId(userId);
-				var posts = myBlog.Count();
-				var followers = _blogService.GetFollowingByUserId(userId);
-				var followings = _blogService.GetFollowerByUserId(userId);
-				var favorites = _blogService.GetFavoritesByUserId(userId);
-				MyBlogs myBlogDetail = new MyBlogs();
-				myBlogDetail.Blogs = myBlog.Select(b => new BlogModel()
-				{
-					BookMarkVisible = true,
-					Createtime = b.Createtime,
-					Detail = b.Detail,
-					Id = b.Id,
-					ImageHead = b.ImageHead,
-					ImagePath = b.ImagePath,
-					IsLike = false,
-					IsOff = false,
-					IsOn = true,
-					Owner = b.Owner,
-					OwnerId = b.OwnerId,
-					Title = b.Title,
-					Topic = b.Topic,
-					TopicId = b.TopicId
-				}).Take(4).ToList();
-				myBlogDetail.Followers = followers;
-				myBlogDetail.Followings = followings;
-				myBlogDetail.Posts = posts;
-				return Ok(myBlogDetail);
+				var user = _blogService.GetFavoritesByUserId(userId);
+				return Ok(user.Take(4));
 			}
 			catch (Exception ex)
 			{
@@ -353,35 +328,11 @@ namespace MBlog.Api.Controllers
 		[HttpGet("GetBlogForYou")]//TODO
 		public IActionResult GetBlogForYou(int userId)
 		{
+			//int userId = 1;
 			try
 			{
-				var myBlog = _blogService.GetBlogByUserId(userId);
-				var posts = myBlog.Count();
-				var followers = _blogService.GetFollowingByUserId(userId);
-				var followings = _blogService.GetFollowerByUserId(userId);
-				var favorites = _blogService.GetFavoritesByUserId(userId);
-				MyBlogs myBlogDetail = new MyBlogs();
-				myBlogDetail.Blogs = myBlog.Select(b => new BlogModel()
-				{
-					BookMarkVisible = true,
-					Createtime = b.Createtime,
-					Detail = b.Detail,
-					Id = b.Id,
-					ImageHead = b.ImageHead,
-					ImagePath = b.ImagePath,
-					IsLike = false,
-					IsOff = false,
-					IsOn = true,
-					Owner = b.Owner,
-					OwnerId = b.OwnerId,
-					Title = b.Title,
-					Topic = b.Topic,
-					TopicId = b.TopicId
-				}).Take(3).ToList();
-				myBlogDetail.Followers = followers;
-				myBlogDetail.Followings = followings;
-				myBlogDetail.Posts = posts;
-				return Ok(myBlogDetail);
+				var user = _blogService.GetFavoritesByUserId(userId);
+				return Ok(user.Take(3));
 			}
 			catch (Exception ex)
 			{
@@ -397,33 +348,8 @@ namespace MBlog.Api.Controllers
 			int userId = 1;
 			try
 			{
-				var myBlog = _blogService.GetBlogByUserId(userId);
-				var posts = myBlog.Count();
-				var followers = _blogService.GetFollowingByUserId(userId);
-				var followings = _blogService.GetFollowerByUserId(userId);
-				var favorites = _blogService.GetFavoritesByUserId(userId);
-				MyBlogs myBlogDetail = new MyBlogs();
-				myBlogDetail.Blogs = myBlog.Select(b => new BlogModel()
-				{
-					BookMarkVisible = true,
-					Createtime = b.Createtime,
-					Detail = b.Detail,
-					Id = b.Id,
-					ImageHead = b.ImageHead,
-					ImagePath = b.ImagePath,
-					IsLike = false,
-					IsOff = false,
-					IsOn = true,
-					Owner = b.Owner,
-					OwnerId = b.OwnerId,
-					Title = b.Title,
-					Topic = b.Topic,
-					TopicId = b.TopicId
-				}).Take(3).ToList();
-				myBlogDetail.Followers = followers;
-				myBlogDetail.Followings = followings;
-				myBlogDetail.Posts = posts;
-				return Ok(myBlogDetail);
+				var user = _blogService.GetFavoritesByUserId(userId);
+				return Ok(user.Take(4));
 			}
 			catch (Exception ex)
 			{
@@ -455,33 +381,8 @@ namespace MBlog.Api.Controllers
 			int userId = TopicId;
 			try
 			{
-				var myBlog = _blogService.GetBlogByUserId(userId);
-				var posts = myBlog.Count();
-				var followers = _blogService.GetFollowingByUserId(userId);
-				var followings = _blogService.GetFollowerByUserId(userId);
-				var favorites = _blogService.GetFavoritesByUserId(userId);
-				MyBlogs myBlogDetail = new MyBlogs();
-				myBlogDetail.Blogs = myBlog.Select(b => new BlogModel()
-				{
-					BookMarkVisible = true,
-					Createtime = b.Createtime,
-					Detail = b.Detail,
-					Id = b.Id,
-					ImageHead = b.ImageHead,
-					ImagePath = b.ImagePath,
-					IsLike = false,
-					IsOff = false,
-					IsOn = true,
-					Owner = b.Owner,
-					OwnerId = b.OwnerId,
-					Title = b.Title,
-					Topic = b.Topic,
-					TopicId = b.TopicId
-				}).Take(3).ToList();
-				myBlogDetail.Followers = followers;
-				myBlogDetail.Followings = followings;
-				myBlogDetail.Posts = posts;
-				return Ok(myBlogDetail);
+				var user = _blogService.GetFavoritesByUserId(userId);
+				return Ok(user.Take(4));
 			}
 			catch (Exception ex)
 			{
