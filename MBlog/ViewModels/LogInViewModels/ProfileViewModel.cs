@@ -12,9 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace MBlog.ViewModels
+namespace MBlog.ViewModels.LogInViewModels
 {
-	public class FollowingViewModel : BaseViewModel
+	public class ProfileViewModel : BaseViewModel
 	{
 
 		public Result<SuccessModel, ErrorModel> resultFavo;
@@ -58,8 +58,8 @@ namespace MBlog.ViewModels
                 OnPropertyChanged();
             }
         }
-        private string imagePath;
-        public string ImagePath
+        private ImageSource imagePath;
+        public ImageSource ImagePath
         {
             get { return imagePath; }
             set
@@ -117,20 +117,21 @@ namespace MBlog.ViewModels
 
         public ProfileDto Profile { get; set; }
         public Command SaveCommand { get; set; }
-        public FollowingViewModel(ProfileDto profile)
+        public ProfileViewModel()
         {
 
-            Profile = profile;
-            FullName = Profile.FullName;
-            About = Profile.About;
-            ImagePath = Profile.ImageProfilePath;
+            //Profile = profile;
+            FullName = App.FullName;
+            About = App.About;
+            ImagePath = App.ImagePath;
             GetBlog();
-            BookmakCommand = new Command<BlogModel>( (data) => OnSelectedBookMark(data));
+            BookmakCommand = new Command<BlogModel>(async (data) => await OnSelectedBookMark(data));
 			FollowPageCommand = new Command(UnSubscribe);
 
 		}
-		private void OnSelectedBookMark(BlogModel data)
-		{			
+		private async Task OnSelectedBookMark(BlogModel data)
+		{
+			
 			if (data.IsOn)
 			{
 				UnFavorite(data);
@@ -138,7 +139,8 @@ namespace MBlog.ViewModels
 			else
 			{
 				Favorite(data);
-			}			
+			}
+			//await App.Current.MainPage.Navigation.PushAsync(new FollowPage());
 		}
 		async Task RefreshItemsAsync()
 		{
@@ -452,7 +454,7 @@ namespace MBlog.ViewModels
 							{
 								//ListSubscr = new ObservableCollection<ProfileDto>(resultUnsub.Success);
 								//await App.Current.MainPage.Navigation.RemovePage();
-								await App.Current.MainPage.Navigation.PushAsync(new FollowPage(this));								
+								//await App.Current.MainPage.Navigation.PushAsync(new FollowPage(this));								
 
 								workingStep = 100;
 							}
@@ -577,14 +579,14 @@ namespace MBlog.ViewModels
                             break;
                         case 10://call api
                             loopcheck++;
-                            result = await BlogService.GetTargetBlog(Profile.Id,App.UserId);
+                            result = await BlogService.GetMyBlog(App.UserId);
                             if (result.StatusCode == Enums.StatusCode.Ok)
                             {
                                 List<BlogModel> blogModel = new List<BlogModel>();
                                 MyBlogs data = result.Success;
                                 blogModel = data.Blogs.Select(b => new BlogModel()
                                 {
-                                    BookMarkVisible = b.BookMarkVisible,
+                                    BookMarkVisible = false,
                                     IsLike = b.IsLike,
                                     Createtime = b.Createtime,
                                     Detail = b.Detail,
@@ -596,6 +598,7 @@ namespace MBlog.ViewModels
                                     Title = b.Title,
                                     Topic = b.Topic,
                                     TopicId = b.TopicId,
+
                                     IsOn = b.IsOn,
                                     IsOff = b.IsOff
                                 }).ToList();

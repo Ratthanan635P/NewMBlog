@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace MBlog.Views
+namespace MBlog.Views.LogInViews
 {
     public partial class RegisterPage : ContentPage
     {

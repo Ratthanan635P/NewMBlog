@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace MBlog.Views
+namespace MBlog.Views.LogInViews
 {
     public partial class LoginPage : ContentPage
     {

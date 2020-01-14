@@ -1,11 +1,12 @@
 ﻿using MBlog.Views;
+using MBlog.Views.LogInViews;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace MBlog.ViewModels
+namespace MBlog.ViewModels.LogInViewModels
 {
 	public class ForgotPasswordCompletePageViewModel:BaseViewModel
 	{

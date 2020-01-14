@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MBlog.Views
+namespace MBlog.Views.LogInViews
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ForgotPasswordCompletePage : ContentPage

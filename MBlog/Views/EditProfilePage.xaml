@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conponents="clr-namespace:MBlog.Components"
+             xmlns:viewmodels="clr-namespace:MBlog.ViewModels"
+             mc:Ignorable="d"
+             x:Class="MBlog.Views.EditProfilePage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <viewmodels:EditProfileViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+
+        <StackLayout Spacing="0">
+            <Frame VerticalOptions="Start" HasShadow="True" CornerRadius="0" Padding="0">
+                <StackLayout Orientation="Horizontal" Padding="20" Spacing="0">
+                    <Label     Text="&#xf00d;"
+                                FontSize="Large"
+                                FontFamily="{StaticResource AwesomeSolidFontFamily}"
+                                HorizontalOptions="StartAndExpand" 
+                               VerticalOptions="CenterAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer  Tapped="TapGestureRecognizer_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Save"
+                           HorizontalOptions="EndAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                           FontSize="Medium"
+                           FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+            </Frame>
+            <BoxView  HeightRequest="4" BackgroundColor="LightGray" VerticalOptions="Start" Opacity="0.3"/>
+            <StackLayout Margin="30" x:Name="loginFormStackLayout"
+                VerticalOptions="StartAndExpand"
+                HorizontalOptions="FillAndExpand">
+               
+               <Grid>
+                <Frame 
+                       IsClippedToBounds="True"
+                       BorderColor="Silver"
+                       CornerRadius="100"
+                       HeightRequest="165" WidthRequest="165"
+                       HorizontalOptions="Center"
+                       VerticalOptions="StartAndExpand"
+                       Margin="0,-10,0,40"
+                       >
+
+                        <Image x:Name="logoImage" 
+                    Source="{Binding ImagePath}" 
+                    Aspect="Fill" />
+                    </Frame>
+                    <AbsoluteLayout>
+                        <Frame
+                           AbsoluteLayout.LayoutBounds=".75,.7"
+                           AbsoluteLayout.LayoutFlags="PositionProportional"
+                           CornerRadius="45"                       
+                           Padding="10"
+                           >
+                        <Label  Text="&#xf2f9;"
+                                FontSize="Large"
+                               
+                                FontFamily="{StaticResource AwesomeSolidFontFamily}"
+                                />
+                    </Frame>
+                    </AbsoluteLayout>
+                </Grid>
+
+                <conponents:MB_EntryProfile x:Name="nameEntry" MB_EntryLabel="NAME"
+                    MB_EntryTabIndex="1" MB_EntryMaxLength="100"
+                    MB_Keyboard="Email" MB_ReturnType="Next"
+                    MB_EntryText="{Binding FullName}" />
+                <conponents:MB_EntryProfile x:Name="aboutEntry" MB_EntryLabel="ABOUT"
+                    MB_EntryTabIndex="2" MB_EntryIsPassword="False"
+                    MB_ReturnType="Next" MB_EntryMaxLength="100"
+                    MB_EntryText="{Binding About}" />
+               
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

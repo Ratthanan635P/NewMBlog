@@ -9,10 +9,11 @@ using MBlog.CallApi.Models;
 using MBlog.Helpers;
 
 using MBlog.Views;
+using MBlog.Views.LogInViews;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace MBlog.ViewModels
+namespace MBlog.ViewModels.LogInViewModels
 {
     public class LoginViewModel : BaseViewModel
     {

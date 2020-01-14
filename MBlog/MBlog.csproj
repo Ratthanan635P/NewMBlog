@@ -25,17 +25,17 @@
     <Compile Update="Views\FollowingPage.xaml.cs">
       <DependentUpon>FollowingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\EditFollowPage.xaml.cs">
-      <DependentUpon>EditFollowPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\FollowPage.xaml.cs">
-      <DependentUpon>FollowPage.xaml</DependentUpon>
+    <Compile Update="Views\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\ListBookmarkPage.xaml.cs">
       <DependentUpon>ListBookmarkPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\ListSubscribePage.xaml.cs">
       <DependentUpon>ListSubscribePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EditProfilePage.xaml.cs">
+      <DependentUpon>EditProfilePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -45,10 +45,10 @@
     <EmbeddedResource Update="Views\BlogDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ForgotPasswordCompletePage.xaml">
+    <EmbeddedResource Update="Views\LogInViews\ForgotPasswordCompletePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ForgotPasswordPage.xaml">
+    <EmbeddedResource Update="Views\LogInViews\ForgotPasswordPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HomePage.xaml">
@@ -69,10 +69,7 @@
     <EmbeddedResource Update="Views\FollowingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditFollowPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\FollowPage.xaml">
+    <EmbeddedResource Update="Views\ProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ListBookmarkPage.xaml">
@@ -81,7 +78,7 @@
     <EmbeddedResource Update="Views\ListSubscribePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ProfilePage.xaml">
+    <EmbeddedResource Update="Views\EditProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

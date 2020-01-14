@@ -21,7 +21,7 @@ namespace MBlog
             DependencyService.Register<BlogService>();
             InitializeComponent();
             MainPage = new NavigationPage(new LoginPage());
-           // MainPage = new AppShell();
+            //MainPage = new AppShell();
         }
 
         protected override void OnStart()

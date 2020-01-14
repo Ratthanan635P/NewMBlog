@@ -19,7 +19,9 @@ namespace MBlog.Api
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                   .UseUrls("http://*:30000")
+                    .UseStartup<Startup>();
                 });
     }
 }

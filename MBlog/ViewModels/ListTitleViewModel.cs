@@ -29,16 +29,11 @@ namespace MBlog.ViewModels
         }
         public ListTitleViewModel()
 		{
-            //LoadingForyou = true;
-            //
-
             Task.Run(async () => await MockDatatest());
-            
-            //LoadingForyou = false;
             FollowCommand = new Command<DataTest>(OnSelectedFollowView);
 
         }
-        private async void OnSelectedFollowView(DataTest data)
+        private void OnSelectedFollowView(DataTest data)
         {
             //await App.Current.MainPage.DisplayAlert("", data.Title +"_", "OK");
            // await App.Current.MainPage.Navigation.PushAsync(new FollowPage());
@@ -50,7 +45,7 @@ namespace MBlog.ViewModels
                 ListData.Add(new DataTest
                 {
                     BookmarkShow=false,
-                    Detail="Testgfgsdfgh fhfhf",
+                    Detail="TestTestTestTestTestTest",
                     Title="Hello"+i,
                 });
             }

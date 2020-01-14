@@ -2,13 +2,14 @@
 using MBlog.CallApi.Models;
 using MBlog.Helpers;
 using MBlog.Views;
+using MBlog.Views.LogInViews;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace MBlog.ViewModels
+namespace MBlog.ViewModels.LogInViewModels
 {
     public class RegisterViewModel : BaseViewModel
     {
