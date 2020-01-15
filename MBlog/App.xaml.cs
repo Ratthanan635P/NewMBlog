@@ -20,6 +20,7 @@ namespace MBlog
         {
             DependencyService.Register<AuthService>();
             DependencyService.Register<BlogService>();
+            DependencyService.Register<TopicService>();
             InitializeComponent();
             MainPage = new NavigationPage(new LoginPage());
             //MainPage = new AppShell();

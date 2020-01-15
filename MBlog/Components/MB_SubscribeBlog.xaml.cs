@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +12,13 @@ namespace MBlog.Components
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MB_SubscribeBlog : ContentView
 	{
+
+		//   ImageTitle    // imageSource
+		//TxTitle
+		//TxDetail
+		//TxButtom
+		//ColorBtn   // color
+		//CommandBtn //Command
 		public static readonly BindableProperty TxTitleProperty =
 						  BindableProperty.Create(nameof(TxTitle),
 												  typeof(string),
@@ -36,26 +41,17 @@ namespace MBlog.Components
 			get { return (string)GetValue(TxDetailProperty); }
 			set { SetValue(TxDetailProperty, value); }
 		}
-		public static readonly BindableProperty TxNameProperty =
-						  BindableProperty.Create(nameof(TxName),
+		public static readonly BindableProperty TxButtomProperty =
+						  BindableProperty.Create(nameof(TxButtom),
 												  typeof(string),
 												  typeof(MB_SubscribeBlog),
 												  string.Empty);
-		public string TxName
+		public string TxButtom
 		{
-			get { return (string)GetValue(TxNameProperty); }
-			set { SetValue(TxNameProperty, value); }
+			get { return (string)GetValue(TxButtomProperty); }
+			set { SetValue(TxButtomProperty, value); }
 		}
-		public static readonly BindableProperty TxTimeAgoProperty =
-								  BindableProperty.Create(nameof(TxTimeAgo),
-														  typeof(string),
-														  typeof(MB_SubscribeBlog),
-														  string.Empty);
-		public string TxTimeAgo
-		{
-			get { return (string)GetValue(TxTimeAgoProperty); }
-			set { SetValue(TxTimeAgoProperty, value); }
-		}
+
 		public static readonly BindableProperty ImageTitleProperty =
 						  BindableProperty.Create(nameof(ImageTitle),
 												  typeof(ImageSource),
@@ -67,149 +63,40 @@ namespace MBlog.Components
 			set { SetValue(ImageTitleProperty, value); }
 		}
 
-
-		public static readonly BindableProperty IsLikeProperty =
-						  BindableProperty.Create(nameof(IsLike),
-												  typeof(bool),
-												  typeof(MB_SubscribeBlog),
-												  defaultBindingMode: BindingMode.TwoWay
-												  );
-		public bool IsLike
-		{
-			get { return (bool)GetValue(IsLikeProperty); }
-			set
-			{
-				SetValue(IsLikeProperty, value);
-				SetBookMark();
-				OnPropertyChanged();
-			}
-				
-		}
-
-		public static readonly BindableProperty BookMarkVisibleProperty =
-						  BindableProperty.Create(nameof(BookMarkVisible),
-												  typeof(bool),
-												  typeof(MB_SubscribeBlog)
-												  );
-		public bool BookMarkVisible
-		{
-			get { return (bool)GetValue(BookMarkVisibleProperty); }
-			set { SetValue(BookMarkVisibleProperty, value); }
-		}
-
-
-		public static readonly BindableProperty IsOnProperty =
-						  BindableProperty.Create(nameof(IsOn),
-												  typeof(bool),
-												  typeof(MB_SubscribeBlog)
-												  );
-		public bool IsOn
-		{
-			get { return (bool)GetValue(IsOnProperty); }
-			set { SetValue(IsOnProperty, value);
-				OnPropertyChanged();
-			}
-		}
-		//private bool isOn;
-		//public bool IsOn
+		//public static readonly BindableProperty ColorBtnProperty =
+		//				  BindableProperty.Create(nameof(ColorBtn),
+		//										  typeof(Color),
+		//										  typeof(MB_TitleBlog)
+		//										 );
+		//public Color ColorBtn
 		//{
-		//	get { return isOn; }
-		//	set
-		//	{
-		//		isOn = value;
-		//		OnPropertyChanged();
-		//	}
+		//	get { return (Color)GetValue(ColorBtnProperty); }
+		//	set { SetValue(ColorBtnProperty, value); }
 		//}
-		public static readonly BindableProperty IsOffProperty =
-						  BindableProperty.Create(nameof(IsOff),
-												  typeof(bool),
-												  typeof(MB_SubscribeBlog)
-												  );
-		public bool IsOff
-		{
-			get { return (bool)GetValue(IsOffProperty); }
-			set
-			{
-				SetValue(IsOffProperty, value);
-				OnPropertyChanged();
-			}
-		}
-		//private bool isOff;
-		//public bool IsOff
-		//{
-		//	get { return isOff; }
-		//	set
-		//	{
-		//		isOff = value;
-		//		OnPropertyChanged();
-		//	}
-		//}
-		public static readonly BindableProperty BookmarkBtnProperty =
-						  BindableProperty.Create(nameof(BookmarkBtn),
+		public static readonly BindableProperty CommandBtnProperty =
+						  BindableProperty.Create(nameof(CommandBtn),
 												  typeof(Command),
-												  typeof(MB_TitleBlog)
+												  typeof(MB_SubscribeBlog)
 												 );
-		public Command BookmarkBtn
+		public Command CommandBtn
 		{
-			get { return (Command)GetValue(BookmarkBtnProperty); }
-			set { SetValue(BookmarkBtnProperty, value); }
+			get { return (Command)GetValue(CommandBtnProperty); }
+			set { SetValue(CommandBtnProperty, value); }
 		}
-		public static readonly BindableProperty BookmarkBtnParameterProperty =
-						  BindableProperty.Create(nameof(BookmarkBtnParameter),
+		public static readonly BindableProperty CommandBtnParameterProperty =
+						  BindableProperty.Create(nameof(CommandBtnParameter),
 												  typeof(object),
-												  typeof(MB_TitleBlog)
+												  typeof(MB_SubscribeBlog)
 												 );
-		public object BookmarkBtnParameter
+		public object CommandBtnParameter
 		{
-			get { return (object)GetValue(BookmarkBtnParameterProperty); }
-			set { SetValue(BookmarkBtnParameterProperty, value); }
+			get { return (object)GetValue(CommandBtnParameterProperty); }
+			set { SetValue(CommandBtnParameterProperty, value); }
 		}
+		//CommandBtnParameter
 		public MB_SubscribeBlog()
 		{
 			InitializeComponent();
-			if (IsLike == false)
-			{
-				IsOn = false;
-				IsOff = true;
-			}
-			else
-			{
-				IsOn = true;
-				IsOff = false;
-			}
-		}
-
-		private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-		{
-			ChangeBookMark();
-		}
-		private void ChangeBookMark()
-		{
-			if (IsLike == true)
-			{
-				IsOn = false;
-				IsOff = true;
-				IsLike = false;
-			}
-			else
-			{
-				IsOn = true;
-				IsOff = false;
-				IsLike = true;
-			}
-		}
-		private void SetBookMark()
-		{
-			if (IsLike == true)
-			{
-				IsOn = false;
-				IsOff = true;
-			}
-			else
-			{
-				IsOn = true;
-				IsOff = false;
-			}
 		}
 	}
 }

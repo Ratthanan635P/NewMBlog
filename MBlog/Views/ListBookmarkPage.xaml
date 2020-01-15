@@ -39,7 +39,7 @@
                         <ListView.ItemTemplate >
                             <DataTemplate >
                                 <ViewCell>
-                                    <compotent:MB_SubscribeBlog ImageTitle="{Binding ImagePath}"
+                                    <compotent:MB_BookmarkBlog ImageTitle="{Binding ImagePath}"
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
                                 BookMarkVisible="{Binding BookMarkVisible}"

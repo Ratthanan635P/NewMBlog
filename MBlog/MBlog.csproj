@@ -22,6 +22,12 @@
     <Compile Update="Components\MB_EntryProfile.xaml.cs">
       <DependentUpon>MB_EntryProfile.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Components\MB_BookmarkBlog.xaml.cs">
+      <DependentUpon>MB_BookmarkBlog.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Components\MB_SubscribeBlog.xaml.cs">
+      <DependentUpon>MB_SubscribeBlog.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\FollowingPage.xaml.cs">
       <DependentUpon>FollowingPage.xaml</DependentUpon>
     </Compile>
@@ -60,10 +66,10 @@
     <EmbeddedResource Update="Components\MB_Latest.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Components\MB_SubscribeBlog.xaml">
+    <EmbeddedResource Update="Components\MB_BookmarkBlog.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Components\MB_TitleBlog.xaml">
+    <EmbeddedResource Update="Components\MB_SubscribeBlog.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\FollowingPage.xaml">

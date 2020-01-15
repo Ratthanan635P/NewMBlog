@@ -14,8 +14,8 @@ namespace MBlog.ViewModels
 {
 	public class ListSubscribeViewModel : BaseViewModel
 	{
-		private Result<List<ProfileDto>, ErrorModel> result { get; set; }
-		private Result<SuccessModel, ErrorModel> resultUnsub { get; set; }
+		private Result<List<ProfileDto>, ErrorModel> result;
+		private Result<SuccessModel, ErrorModel> resultUnsub;
 		const int RefreshDuration = 2;
 		private ObservableCollection<ProfileDto> listSubscr;
 		public ObservableCollection<ProfileDto> ListSubscr
@@ -48,7 +48,6 @@ namespace MBlog.ViewModels
 		public Command SelectCommand { get; set; }
 		public ICommand RefreshCommand => new Command(async () => await RefreshItemsAsync());
         bool isRefreshing;
-
         public bool IsRefreshing
         {
             get { return isRefreshing; }

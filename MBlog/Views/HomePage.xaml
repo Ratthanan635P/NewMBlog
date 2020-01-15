@@ -28,10 +28,7 @@
     </ContentPage.BindingContext>-->
     <ContentPage.Content>
         <ScrollView BackgroundColor="Transparent">      
-                <StackLayout Padding="10">
-            <!--<Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />-->
+          <StackLayout Padding="10">
             <Frame CornerRadius="0" HasShadow="True" Padding="10">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="For you"   
@@ -52,7 +49,7 @@
                              >
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
+                                <compotent:MB_BookmarkBlog ImageTitle="{Binding Image}"
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
                                 BookMarkVisible="{Binding BookmarkShow}"
@@ -245,7 +242,7 @@
                     <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Margin="0,10,0,0" Spacing="0" Padding="0">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <compotent:MB_TitleBlog ImageTitle="{Binding Image}"
+                                <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
                                 TxTitle="{Binding Title}"
                                 TxDetail="{Binding Detail}"  
                                 TxButtom="Following"

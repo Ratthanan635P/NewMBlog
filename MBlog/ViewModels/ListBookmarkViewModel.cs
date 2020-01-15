@@ -14,8 +14,8 @@ namespace MBlog.ViewModels
 {
 	public class ListBookmarkViewModel:BaseViewModel
 	{
-		private Result<List<BlogDto>, ErrorModel> result { get; set; }
-		private Result<SuccessModel, ErrorModel> resultUnFavo { get; set; }
+		private Result<List<BlogDto>, ErrorModel> result;
+		private Result<SuccessModel, ErrorModel> resultUnFavo;
 		const int RefreshDuration = 2;
 		private ObservableCollection<BlogModel> listFavorite;
 		public ObservableCollection<BlogModel> ListFavorite

@@ -1,4 +1,5 @@
-﻿using MBlog.CallApi.Service.Interfaces;
+﻿using MBlog.CallApi.Service.Implements;
+using MBlog.CallApi.Service.Interfaces;
 using MBlog.Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace MBlog.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IAuthService AuthService { get; } = DependencyService.Get<IAuthService>();
-       // public IAuthService AuthService { get; } = DependencyService.Get<IAuthService>();
+        public ITopicService TopicService { get; } = DependencyService.Get<ITopicService>();
         public IBlogService BlogService { get; } = DependencyService.Get<IBlogService>();
         protected int retry = 1;
         protected int maxRetry = 3;

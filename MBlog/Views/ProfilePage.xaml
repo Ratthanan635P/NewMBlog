@@ -4,13 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:compotent="clr-namespace:MBlog.Components"
-             xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
+             xmlns:viewmodel1="clr-namespace:MBlog.ViewModels"
              mc:Ignorable="d"
              x:Class="MBlog.Views.ProfilePage" NavigationPage.HasNavigationBar="False"
              BackgroundColor="White"
              Shell.NavBarIsVisible="False">
     <ContentPage.BindingContext>
-        <viewmodel:ProfileViewModel/>
+        <viewmodel1:ProfileViewModel/>
     </ContentPage.BindingContext>
     <StackLayout x:Name="ListTitle">
         <StackLayout Orientation="Horizontal" Padding="10,10,10,0"  Spacing="0">
@@ -122,7 +122,7 @@
             <ListView.ItemTemplate >
                 <DataTemplate >
                     <ViewCell>
-                        <compotent:MB_SubscribeBlog ImageTitle="{Binding ImagePath}"
+                        <compotent:MB_BookmarkBlog ImageTitle="{Binding ImagePath}"
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
                                 BookMarkVisible="{Binding BookMarkVisible}"

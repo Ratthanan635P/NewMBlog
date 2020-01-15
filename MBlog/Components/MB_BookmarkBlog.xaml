@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Name="rootView"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MBlog.Components.MB_BookmarkBlog">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Color x:Key="P_BookMarkFill">#005B56</Color>
+            <Color x:Key="P_TimeText">#206F6D</Color>
+            <Color x:Key="P_HeadTitle">#000000</Color>
+            <Color x:Key="P_DetailTitle">#B4B4B4</Color>
+            <Color x:Key="P_NavBartext">#1A6B69</Color>
+            <Color x:Key="P_BlackgroudBtn">#1A6B69</Color>
+            <Color x:Key="P_Buttomtext">#FFFFFF</Color>
+        </ResourceDictionary>
+    </ContentView.Resources>
+  <ContentView.Content>
+        <Frame BindingContext="{x:Reference rootView}" CornerRadius="0"
+               HasShadow="True"
+               Padding="0" Margin="8">
+            <StackLayout HorizontalOptions="End" Padding="10">
+                <Grid RowSpacing="0" ColumnSpacing="10"                       
+                      Padding="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Image 
+                            Grid.Column="0"
+                            Grid.RowSpan="3"
+                            Source="{Binding ImageTitle}"                          
+                            Aspect="Fill"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            />
+                    <Label 
+                           Grid.Column="1"
+                           Grid.ColumnSpan="3"
+                           Grid.Row="0"
+                           Text="{Binding TxTitle}" 
+                           MaxLines="2" 
+                           LineBreakMode="TailTruncation"
+                           FontSize="Medium"
+                           TextColor="{StaticResource P_HeadTitle}"
+                           FontAttributes="Bold"
+                           VerticalOptions="Start" />
+                    <Label Grid.Column="1"
+                           Grid.ColumnSpan="3"
+                           Grid.Row="1"
+                           Text="{Binding TxDetail}"   
+                           MaxLines="2"
+                           TextColor="{StaticResource P_DetailTitle}"
+                           FontSize="Small"
+                           Margin="0,0,5,0"
+                           />
+                    <StackLayout Orientation="Horizontal" 
+                                 VerticalOptions="End"
+                                 Grid.Column="1"
+                                 Grid.Row="2">
+                        <Label Text="{Binding TxName}" 
+                               MaxLines="1"
+                               LineBreakMode="TailTruncation"
+                               TextColor="{StaticResource P_TimeText}"
+                                FontAttributes="Bold"/>
+                        <Label Text="•" 
+                               TextColor="{StaticResource P_TimeText}"
+                                FontAttributes="Bold"/>
+                        <Label Text="{Binding TxTimeAgo}" 
+                               TextColor="{StaticResource P_TimeText}"
+                                FontAttributes="Bold"/>
+                    </StackLayout>                                         
+                    <StackLayout  Grid.Column="3"
+                                  Grid.Row="2" 
+                                  IsVisible="{Binding BookMarkVisible}">
+                        <Label x:Name="BookmarkOn"
+                                Text="&#xf02e;" 
+                                   IsVisible="{Binding IsOn}"
+                                FontSize="Large"
+                                FontFamily="{StaticResource AwesomeSolidFontFamily}">
+                        </Label>
+                        <Label x:Name="BookmarkOff"
+                                Text="&#xf02e;"                                     
+                                   IsVisible="{Binding IsOff}"
+                                   FontSize="Large"
+                                FontFamily="{StaticResource AwesomeRegularFontFamily}"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                                   Command="{Binding BookmarkBtn}"
+                                                   CommandParameter="{Binding BookmarkBtnParameter}"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Grid> <!--f02e-->
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

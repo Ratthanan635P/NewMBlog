@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace MBlog.ViewModels.LogInViewModels
+namespace MBlog.ViewModels
 {
 	public class ProfileViewModel : BaseViewModel
 	{

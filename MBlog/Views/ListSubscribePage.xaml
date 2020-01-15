@@ -39,17 +39,17 @@
                     <ListView.ItemTemplate >
                         <DataTemplate >
                             <ViewCell >
-                                    <compotent:MB_TitleBlog ImageTitle="{Binding ImageProfilePath}"
+                                    <compotent:MB_SubscribeBlog ImageTitle="{Binding ImageProfilePath}"
                                 TxTitle="{Binding FullName}" 
                                 TxDetail="{Binding About}" 
                                 TxButtom="Following"
                                 CommandBtn="{Binding BindingContext.FollowCommand,Source={x:Reference ListTitle}}"
                                 CommandBtnParameter="{Binding .}">
-                                      <compotent:MB_TitleBlog.GestureRecognizers>
+                                        <compotent:MB_SubscribeBlog.GestureRecognizers>
                                             <TapGestureRecognizer  Command="{Binding BindingContext.SelectCommand, Source={x:Reference ListTitle}}"
                                               CommandParameter="{Binding .}" />
-                                       </compotent:MB_TitleBlog.GestureRecognizers>
-                                    </compotent:MB_TitleBlog>
+                                       </compotent:MB_SubscribeBlog.GestureRecognizers>
+                                    </compotent:MB_SubscribeBlog>
                                 </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
