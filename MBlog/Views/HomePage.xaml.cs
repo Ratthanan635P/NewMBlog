@@ -23,7 +23,7 @@ namespace MBlog.Views
 			base.OnAppearing();
 			if (Fristtime == false)
 			{
-				BindingContext = new ListTitleViewModel();
+				BindingContext = new HomeViewModel();
 				Fristtime = true;
 			}
 		}

@@ -27,7 +27,7 @@
         <viewmodel:ListTitleViewModel/>
     </ContentPage.BindingContext>-->
     <ContentPage.Content>
-        <ScrollView BackgroundColor="Transparent">      
+        <ScrollView BackgroundColor="Transparent" >      
           <StackLayout Padding="10">
             <Frame CornerRadius="0" HasShadow="True" Padding="10">
                 <StackLayout Orientation="Horizontal">
@@ -44,7 +44,7 @@
             </Frame>
             <!--list For You-->
                 <Grid>
-                    <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" 
+                    <StackLayout BindableLayout.ItemsSource="{Binding ListBlogsForYou}" 
                              Spacing="0" Padding="0"                             
                              >
                         <BindableLayout.ItemTemplate>
@@ -53,8 +53,8 @@
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
                                 BookMarkVisible="{Binding BookmarkShow}"
-                                TxName="Dookdik"
-                                TxTimeAgo="5 min ago" 
+                                TxName="{Binding Owner.FullName}"
+                                TxTimeAgo="{Binding Createtime}" 
                                 Padding="-7,-8,-7,0"
                                  />
                             </DataTemplate>
@@ -82,13 +82,13 @@
                            FontSize="Medium"
                            HorizontalOptions="StartAndExpand"
                            />
-            <!--list To-->
+            <!--list Topic-->
                 <Grid>
                     <StackLayout x:Name="Datatest" Padding="0" Margin="-1,0,0,0"                         
                              Orientation="Horizontal"
                              HeightRequest="75">
                     <CollectionView x:Name="ListTopic" 
-                                    ItemsSource="{Binding ListDataTop3}" 
+                                    ItemsSource="{Binding ListTopic}" 
                                     >
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Horizontal"                                             
@@ -139,15 +139,15 @@
                            VerticalOptions="CenterAndExpand"/>
                 </StackLayout>
             </Frame>
-                <!--list For You-->
+                <!--list latest-->
                 <Grid>
-                    <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Spacing="0" Padding="0">
+                    <StackLayout BindableLayout.ItemsSource="{Binding ListBlogLatest}" Spacing="0" Padding="0">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <compotent:MB_Latest ImageTitle="{Binding Image}"
                                 TxTitle="{Binding Title}"
-                                TxName="Dookdik"
-                                TxTimeAgo="5 min ago"
+                                TxName="{Binding Owner.FullName}"
+                                TxTimeAgo="{Binding Createtime}"
                                 Padding="-7,-8,-7,0"
                           />
                         </DataTemplate>
@@ -187,7 +187,7 @@
             <!--list HOT-->
                 <Grid>
                     <StackLayout x:Name="ListTitle" Padding="0" Margin="-5" HeightRequest="570">
-                    <CollectionView x:Name="MyListView" ItemsSource="{Binding ListDataTop3}"                                    
+                        <CollectionView x:Name="MyListView" ItemsSource="{Binding ListBlogHot}"                                    
                                     HorizontalOptions="CenterAndExpand"
                                     >
                         <CollectionView.ItemsLayout>
@@ -200,8 +200,8 @@
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
                                 BookMarkVisible="{Binding BookmarkShow}"
-                                TxName="Dookdik"
-                                TxTimeAgo="5 min ago"
+                                TxName="{Binding Ower.FullName}"
+                                TxTimeAgo="{Binding Createtime}"
                                 Padding="5,5,5,0"
                           />
                             </DataTemplate>
@@ -239,7 +239,7 @@
                 </StackLayout>
             </Frame>
                 <Grid>
-                    <StackLayout BindableLayout.ItemsSource="{Binding ListDataTop3}" Margin="0,10,0,0" Spacing="0" Padding="0">
+                    <StackLayout BindableLayout.ItemsSource="{Binding ListYouMightLike}" Margin="0,10,0,0" Spacing="0" Padding="0">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                                 <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"

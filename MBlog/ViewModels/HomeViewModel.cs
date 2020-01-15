@@ -63,15 +63,15 @@ namespace MBlog.ViewModels
 			}
 		}
 
-		private ObservableCollection<BlogModel> listBlogsForyou;
-		public ObservableCollection<BlogModel> ListBlogsForyou
+		private ObservableCollection<BlogModel> listBlogsForYou;
+		public ObservableCollection<BlogModel> ListBlogsForYou
 		{
-			get { return listBlogsForyou; }
+			get { return listBlogsForYou; }
 			set
 			{
-				if (!Equals(listBlogsForyou, value))
+				if (!Equals(listBlogsForYou, value))
 				{
-					listBlogsForyou = value;
+					listBlogsForYou = value;
 					OnPropertyChanged();
 				}
 			}
@@ -105,10 +105,10 @@ namespace MBlog.ViewModels
 		public HomeViewModel()
 		{
 			GetYouMightLike();
-			GetBlogsHot();
-			GetBlogsLatest();
-			GetBlogsForyou();
-			GetTopicAll();
+			//GetBlogsHot();
+			//GetBlogsLatest();
+			//GetBlogsForYou();
+			//GetTopicAll();
 		}
 		async Task RefreshItemsAsync()
 		{
@@ -468,7 +468,7 @@ namespace MBlog.ViewModels
 			{
 			}
 		}
-		public async void GetBlogsForyou()
+		public async void GetBlogsForYou()
 		{
 			try
 			{
@@ -533,7 +533,7 @@ namespace MBlog.ViewModels
 									IsOn = true,
 									IsOff = false
 								}).ToList();
-								ListBlogsForyou = new ObservableCollection<BlogModel>(blogModel);
+								ListBlogsForYou = new ObservableCollection<BlogModel>(blogModel);
 								workingStep = 100;
 							}
 							else

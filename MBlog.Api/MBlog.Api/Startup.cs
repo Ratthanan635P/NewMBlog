@@ -76,7 +76,6 @@ namespace MBlog.Api
             services.AddScoped<ITopicRepository, TopicRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfile));
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

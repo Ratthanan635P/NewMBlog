@@ -22,7 +22,12 @@ namespace MBlog
             DependencyService.Register<BlogService>();
             DependencyService.Register<TopicService>();
             InitializeComponent();
-            MainPage = new NavigationPage(new LoginPage());
+            UserId = 1;
+            Email = "jenggig@gmail.com";
+            FullName = "Ratthanan Poulai";
+            About="คนว่างงาน ที่รวยที่สุดในโลก 5555555+";
+            MainPage = new NavigationPage(new HomePage());
+           // MainPage = new NavigationPage(new LoginPage());
             //MainPage = new AppShell();
         }
 

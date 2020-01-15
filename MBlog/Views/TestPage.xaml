@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:compotent="clr-namespace:MBlog.Components"
+             xmlns:viewmodel="clr-namespace:MBlog.ViewModels"
+             mc:Ignorable="d"
+             x:Class="MBlog.Views.TestPage">
+    <ContentPage.BindingContext>
+        <viewmodel:ListTitleViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<ListView x:Name="MyListView" 
+                  ItemsSource="{Binding ListData}" 
+                  HasUnevenRows="true"                  
+                  >
+                <ListView.ItemTemplate >
+                    <DataTemplate >
+                        <ViewCell>
+                            <compotent:MB_BookmarkBlog ImageTitle="{Binding ImagePath}"
+                                TxTitle="{Binding Title}" 
+                                TxDetail="{Binding Detail}"
+                                BookMarkVisible="{Binding BookMarkVisible}"
+                                TxName="{Binding Owner.FullName}"
+                                TxTimeAgo="{Binding Createtime}"
+                                IsLike="{Binding IsLike}"
+                                IsOn="{Binding IsOn}"
+                                IsOff="{Binding IsOff}"
+                                BookmarkBtn="{Binding BindingContext.BookmakCommand,Source={x:Reference ListTitle}}"
+                                                BookmarkBtnParameter="{Binding .}"                               
+                                     />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+            <Image 
+                x:Name="image"
+                Aspect="AspectFit"
+                />
+            <Button
+                x:Name="testcamara"
+                Text="test" Clicked="Button_Clicked_1"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
