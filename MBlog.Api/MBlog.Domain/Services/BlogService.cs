@@ -63,7 +63,7 @@ namespace MBlog.Domain.Services
 		{
 			var Followings = _followingRepository.GetDataFollowingByUserId(userId);
 			List<ProfileDto> profileDtos = new List<ProfileDto>();
-			Followings = Followings.Where(x => x.IsDelete == false).ToList();
+			Followings = Followings.Where(x => x.Id != userId).ToList();
 			profileDtos = Followings.Select(f => new ProfileDto()
 			{
 				About = f.About,
@@ -72,7 +72,7 @@ namespace MBlog.Domain.Services
 				Id = f.Id,
 				ImageProfile = f.ImageProfile,
 				ImageProfilePath = f.ImageProfilePath,
-				Following = true
+				Following = !f.IsDelete
 			}).ToList();
 
 			return profileDtos;

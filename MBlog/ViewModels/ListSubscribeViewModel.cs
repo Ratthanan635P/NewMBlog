@@ -69,11 +69,10 @@ namespace MBlog.ViewModels
 		}
 		private async void OnSelectedFollowView(ProfileDto data)
         {
-			bool response = await App.Current.MainPage.DisplayAlert("ยืนยัน", "คุณต้องการยกเลิกการติดตาม \n ใช่ หรือ ไม่", "ใช่", "ไม่ใช่");
-			if(response)
-			{
+			//bool response = await App.Current.MainPage.DisplayAlert("ยืนยัน", "คุณต้องการยกเลิกการติดตาม \n ใช่ หรือ ไม่", "ใช่", "ไม่ใช่");
+
 				UnSubscribe(data);
-			}
+
 			//await App.Current.MainPage.Navigation.PushAsync(new FollowPage());
 		}
         async Task RefreshItemsAsync()
@@ -253,8 +252,17 @@ namespace MBlog.ViewModels
 							break;
 						case 10://call api
 							loopcheck++;
-
-							resultUnsub = await BlogService.UnSubscribes(data.Id,App.UserId);
+							if (data.Following)
+							{
+								//UnSubscribe(data);
+								resultUnsub = await BlogService.UnSubscribes(data.Id, App.UserId);
+							}
+							else
+							{
+								//UnSubscribe(data);
+								resultUnsub = await BlogService.Subscribes(data.Id, App.UserId);
+							}
+							
 							if (resultUnsub.StatusCode == Enums.StatusCode.Ok)
 							{
 								//ListSubscr = new ObservableCollection<ProfileDto>(resultUnsub.Success);

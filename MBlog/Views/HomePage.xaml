@@ -245,7 +245,7 @@
                                 <compotent:MB_SubscribeBlog ImageTitle="{Binding Image}"
                                 TxTitle="{Binding Title}"
                                 TxDetail="{Binding Detail}"  
-                                TxButtom="Following"
+                                Following="{Binding Following}"
                                 Padding="-10,0,-10,0"
                           />
                         </DataTemplate>

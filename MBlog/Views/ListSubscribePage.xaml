@@ -42,7 +42,7 @@
                                     <compotent:MB_SubscribeBlog ImageTitle="{Binding ImageProfilePath}"
                                 TxTitle="{Binding FullName}" 
                                 TxDetail="{Binding About}" 
-                                TxButtom="Following"
+                                Following="{Binding Following}"
                                 CommandBtn="{Binding BindingContext.FollowCommand,Source={x:Reference ListTitle}}"
                                 CommandBtnParameter="{Binding .}">
                                         <compotent:MB_SubscribeBlog.GestureRecognizers>

@@ -26,7 +26,7 @@ namespace MBlog
             Email = "jenggig@gmail.com";
             FullName = "Ratthanan Poulai";
             About="คนว่างงาน ที่รวยที่สุดในโลก 5555555+";
-            MainPage = new NavigationPage(new HomePage());
+            MainPage = new NavigationPage(new ListSubscribePage());
            // MainPage = new NavigationPage(new LoginPage());
             //MainPage = new AppShell();
         }

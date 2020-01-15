@@ -104,11 +104,13 @@ namespace MBlog.ViewModels
 		public ICommand RefreshCommand => new Command(async () => await RefreshItemsAsync());
 		public HomeViewModel()
 		{
-			GetYouMightLike();
-			//GetBlogsHot();
+			//Task.WaitAll(
+			//GetYouMightLike(),
+			//GetBlogsHot(),
 			//GetBlogsLatest();
-			//GetBlogsForYou();
-			//GetTopicAll();
+			GetBlogsForYou();
+			GetTopicAll();
+			//); 
 		}
 		async Task RefreshItemsAsync()
 		{
@@ -116,7 +118,7 @@ namespace MBlog.ViewModels
 			GetYouMightLike();
 			IsRefreshing = false;
 		}
-		public async void GetYouMightLike()
+		public async Task GetYouMightLike()
 		{
 			try
 			{
@@ -142,7 +144,7 @@ namespace MBlog.ViewModels
 							}
 							break;
 						case 2://delay
-							await Task.Delay(300);
+							//await Task.Delay(300);
 							workingStep = 3;
 							break;
 						case 3://action result
@@ -185,7 +187,7 @@ namespace MBlog.ViewModels
 							}
 							break;
 						case 11://
-							await Task.Delay(300);
+						//	await Task.Delay(300);
 							workingStep++;
 							break;
 						case 12://
@@ -230,7 +232,7 @@ namespace MBlog.ViewModels
 				//Application.Current.MainPage = new NavigationPage(new LoginPage());
 			}
 		}
-		public async void GetBlogsHot()
+		public async Task GetBlogsHot()
 		{
 			try
 			{
@@ -256,7 +258,7 @@ namespace MBlog.ViewModels
 							}
 							break;
 						case 2://delay
-							await Task.Delay(300);
+							//await Task.Delay(300);
 							workingStep = 3;
 							break;
 						case 3://action result
@@ -375,7 +377,7 @@ namespace MBlog.ViewModels
 							}
 							break;
 						case 2://delay
-							await Task.Delay(300);
+						//	await Task.Delay(300);
 							workingStep = 3;
 							break;
 						case 3://action result
@@ -437,7 +439,7 @@ namespace MBlog.ViewModels
 							}
 							break;
 						case 11://
-							await Task.Delay(300);
+						//	await Task.Delay(300);
 							workingStep++;
 							break;
 						case 12://
@@ -494,7 +496,7 @@ namespace MBlog.ViewModels
 							}
 							break;
 						case 2://delay
-							await Task.Delay(300);
+						//	await Task.Delay(300);
 							workingStep = 3;
 							break;
 						case 3://action result
@@ -556,7 +558,7 @@ namespace MBlog.ViewModels
 							}
 							break;
 						case 11://
-							await Task.Delay(300);
+							//await Task.Delay(300);
 							workingStep++;
 							break;
 						case 12://
@@ -613,7 +615,7 @@ namespace MBlog.ViewModels
 							}
 							break;
 						case 2://delay
-							await Task.Delay(300);
+						//	await Task.Delay(300);
 							workingStep = 3;
 							break;
 						case 3://action result
@@ -659,7 +661,7 @@ namespace MBlog.ViewModels
 							}
 							break;
 						case 11://
-							await Task.Delay(300);
+							//await Task.Delay(300);
 							workingStep++;
 							break;
 						case 12://

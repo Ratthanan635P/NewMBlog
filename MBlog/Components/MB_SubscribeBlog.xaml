@@ -11,6 +11,7 @@
             <Color x:Key="P_NavBartext">#1A6B69</Color>
             <Color x:Key="P_BlackgroudBtn">#1A6B69</Color>
             <Color x:Key="P_Buttomtext">#FFFFFF</Color>
+           
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -53,19 +54,38 @@
                            VerticalOptions="StartAndExpand"/>
                 </StackLayout>
                 <StackLayout  Grid.Column="2"  Padding="5,0,0,0">
-                    <Button    
-                            Margin="0,5,0,0"
-                            Text="{Binding TxButtom}"                             
+                    <Button x:Name="btnFollow"
+                            Text="follow"
+                            Margin="0,5,0,0"                                                     
                             FontSize="12"
                             FontAttributes="Bold"
                             HeightRequest="34"
                             VerticalOptions="StartAndExpand"                           
                             CornerRadius="5"
-                            TextColor="{StaticResource P_Buttomtext}"
-                            BackgroundColor="{StaticResource P_BlackgroudBtn}"                          
+                            TextColor="{StaticResource P_BlackgroudBtn}"
+                            BackgroundColor="White" 
+                            BorderColor="{StaticResource P_BlackgroudBtn}"
                             Command="{Binding CommandBtn}"
+                            BorderWidth="2"
                             CommandParameter="{Binding CommandBtnParameter}"
-                            />
+                            Clicked="btnFollow_Clicked"
+                            >
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button"
+                               Binding="{Binding Source={x:Reference TxFollow},
+                                       Path=IsEnabled}"
+                                  Value="true">
+                                <Setter Property="BackgroundColor" Value="{StaticResource P_BlackgroudBtn}" />
+                                <Setter Property="TextColor" Value="{StaticResource P_Buttomtext}" />
+                                <Setter Property="Text" Value="following" />
+                                <!-- multiple Setters elements are allowed -->
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <Label x:Name="TxFollow"
+                           IsVisible="true"
+                           Text="Follow"
+                           IsEnabled="{Binding Following}"/>
                 </StackLayout>
             </Grid>
         </Frame>
