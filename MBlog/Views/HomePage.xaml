@@ -49,12 +49,14 @@
                              >
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <compotent:MB_BookmarkBlog ImageTitle="{Binding Image}"
+                                <compotent:MB_BookmarkBlog ImageTitle=""
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
-                                BookMarkVisible="{Binding BookmarkShow}"
+                                BookMarkVisible="{Binding BookMarkVisible}"
                                 TxName="{Binding Owner.FullName}"
                                 TxTimeAgo="{Binding Createtime}" 
+                                                           IsOff="{Binding IsOff}"
+                                                           IsOn="{Binding IsOn}"
                                 Padding="-7,-8,-7,0"
                                  />
                             </DataTemplate>
@@ -144,7 +146,7 @@
                     <StackLayout BindableLayout.ItemsSource="{Binding ListBlogLatest}" Spacing="0" Padding="0">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <compotent:MB_Latest ImageTitle="{Binding Image}"
+                            <compotent:MB_Latest ImageTitle=""
                                 TxTitle="{Binding Title}"
                                 TxName="{Binding Owner.FullName}"
                                 TxTimeAgo="{Binding Createtime}"
@@ -196,7 +198,7 @@
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate >
-                                <compotent:MB_HotBlog ImageTitle="{Binding Image}"
+                                <compotent:MB_HotBlog ImageTitle=""
                                 TxTitle="{Binding Title}" 
                                 TxDetail="{Binding Detail}"
                                 BookMarkVisible="{Binding BookmarkShow}"

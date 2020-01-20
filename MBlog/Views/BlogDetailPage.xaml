@@ -3,54 +3,130 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:MBlog.Components"
              mc:Ignorable="d"
              x:Class="MBlog.Views.BlogDetailPage"
              NavigationPage.HasNavigationBar="False">
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="{Binding Contents.Title}"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="20" MaxLines="1" LineBreakMode="TailTruncation"
+                   FontAttributes="Bold"
+                   Margin="0,0,15,0">
+
+            </Label>
+        </Grid>
+    </Shell.TitleView>
+
+
     <ContentPage.Content>
         <StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="10,10,10,0"  Spacing="0">
-            <Label     Text="&#xf060;"
-                                FontSize="Large"
-                                FontFamily="{StaticResource AwesomeSolidFontFamily}"
-                                HorizontalOptions="StartAndExpand" 
-                                VerticalOptions="CenterAndExpand">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <Label Text="Following" 
-                    FontAttributes="Bold"
-                    FontSize="Small"                                                
-                    HeightRequest="30"
-                    WidthRequest="80"
-                    Padding="0" 
-                    MaxLines="1"
-                    LineBreakMode="TailTruncation"
-                    />           
-        </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Frame HeightRequest="50"
-                       WidthRequest="50"
-                       CornerRadius="45"
-                       IsClippedToBounds="True">
-                    <Image 
-                       Source="duck.png"
-                       Aspect="Fill"
-                    />
-                </Frame>
-                <StackLayout HorizontalOptions="StartAndExpand">
-                    <Label Text="DAMRONGDET LALA"
-                           FontSize="Small"/>
-                    <Label Text="9 Jan 2020 10:11 AM"
-                           FontSize="Micro"/>
+            <ScrollView>
+                <StackLayout x:Name="rootPageJaSub" Padding="5">
+
+                    <StackLayout >
+                        <Image Source="{Binding Contents.Thumb}" Aspect="AspectFill" HeightRequest="250" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Padding="5, 0, 0, 0">
+                        <Frame CornerRadius="100" 
+                                   HeightRequest="30" WidthRequest="30" IsClippedToBounds="True" 
+                                   Padding="0" HasShadow="True" BorderColor="LightGray"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="Center">
+                            <Image Source="{Binding Contents.AuthorDetails.Img}" HorizontalOptions="Fill" Aspect="AspectFill"/>
+                        </Frame>
+                        <StackLayout Spacing="1">
+                            <Label Text="{Binding Contents.AuthorFullName}"
+                               FontSize="Small" TextColor="{StaticResource primaryColor}"
+                               FontAttributes="Bold"/>
+
+                            <Label Text="{Binding Contents.CreateDateTime,StringFormat='{0: dd MMM yyyy HH:mm}'}"
+                               FontSize="Micro" TextColor="LightGray"
+                               FontAttributes="Bold"/>
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+
+                    <StackLayout x:Name="postDetailsStack">
+
+
+
+                    </StackLayout>
+
+
+                    <StackLayout >
+                        <components:MB_SubscribeBlog x:Name="ContentList"
+                                               
+                                                >
+
+                            <components:MB_SubscribeBlog.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AuthorTapCommand}"/>
+                            </components:MB_SubscribeBlog.GestureRecognizers>
+
+                        </components:MB_SubscribeBlog>
+
+                    </StackLayout>
+
+                    <Label x:Name="NoContentLabel" Text="No Content" FontSize="Large" TextColor="LightGray" 
+                       HorizontalOptions="CenterAndExpand" IsVisible="False"/>
+                    <StackLayout x:Name="rootPageJa" BindableLayout.ItemsSource="{Binding AuthorContents}">
+
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="LightGray" Padding="5" HasShadow="True">
+                                    <StackLayout>
+
+                                        <!--<components:ContentListL x:Name="ContentList"
+                                                        SourceImg="{Binding Thumb}"
+                                                        TextHeadLine="{Binding Title}"
+                                                        TextDetails="{Binding Headline}"
+                                                        TextAuthor="{Binding AuthorFirstname}"
+                                                        TextTimes="{Binding CreateDateTime, StringFormat='{0:dd MMM yy}'}"
+                                                        IsBookmarked="{Binding IsBookmarked}"
+                                                        BookmarkCommand="{Binding BindingContext.BookmarkCommand, Source={x:Reference rootPageJa}}"
+                                                        BookmarkCommandParameter="{Binding .}"
+                                                        >
+
+                                            <components:ContentListL.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.TapContentCommand, Source={x:Reference rootPageJa}}"
+                                                            CommandParameter="{Binding .}"/>
+                                            </components:ContentListL.GestureRecognizers>
+                                        </components:ContentListL>-->
+
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+
+                    </StackLayout>
+
+
+
                 </StackLayout>
-                <Label Text="Top 10 ES6 Features Every Busy JavaScript
-                       Developer Must Know"
-                       FontSize="Large"
-                       MaxLines="2"
-                       TextColor="Black"/>
-            </StackLayout>
-            
+            </ScrollView>
+            <Frame BorderColor="LightGray">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="&#xf1e0;" FontFamily="{StaticResource AwesomeSolidFontFamily}"
+                           FontSize="Large" HorizontalOptions="StartAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShareCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Label Text="&#xf02e;" FontFamily="{Binding SingleBookmarkFont}"
+                           FontSize="Large" HorizontalOptions="EndAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SingleBookmarkCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Frame>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

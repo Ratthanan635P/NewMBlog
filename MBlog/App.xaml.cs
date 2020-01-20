@@ -26,14 +26,14 @@ namespace MBlog
             Email = "jenggig@gmail.com";
             FullName = "Ratthanan Poulai";
             About="คนว่างงาน ที่รวยที่สุดในโลก 5555555+";
-            MainPage = new NavigationPage(new ListSubscribePage());
-           // MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new ListBookmarkPage());
+            MainPage = new NavigationPage(new LoginPage());
             //MainPage = new AppShell();
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            // Handle when your app startsSS
         }
 
         protected override void OnSleep()

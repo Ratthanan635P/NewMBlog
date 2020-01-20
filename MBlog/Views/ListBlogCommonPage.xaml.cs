@@ -13,10 +13,10 @@ using Xamarin.Forms.Xaml;
 namespace MBlog.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ListBlogCommonPage : ContentPage
+	public partial class ListBookmarkPage : ContentPage
 	{
 		public bool Fristtime { get; set; } = false;
-		public ListBlogCommonPage()
+		public ListBookmarkPage()
 		{
 			InitializeComponent();           
 		}

@@ -31,10 +31,10 @@
         <ShellContent ContentTemplate="{DataTemplate local:HomePage}"/>
         </FlyoutItem>    
         <FlyoutItem Title="SUBSCRIBES"  >
-        <ShellContent ContentTemplate="{DataTemplate local:ListTitlePage}"/>
+        <ShellContent ContentTemplate="{DataTemplate local:ListSubscribePage}"/>
         </FlyoutItem>
         <FlyoutItem Title="BOOKMARKS" >
-        <ShellContent ContentTemplate="{DataTemplate local:ListSubscribePage}"/>
+        <ShellContent ContentTemplate="{DataTemplate local:ListBookmarkPage}"/>
         </FlyoutItem>
     <MenuItem Text="LOG OUT" Clicked="MenuItem_Clicked" >
     </MenuItem>

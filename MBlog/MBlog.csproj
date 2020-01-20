@@ -32,7 +32,13 @@
     <Compile Update="Views\FollowingPage.xaml.cs">
       <DependentUpon>FollowingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ProfilePage.xaml.cs">
+    <Compile Update="Views\ListBlogCommonPage.xaml.cs">
+      <DependentUpon>ListBlogCommonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ListSubscribeCommonPage.xaml.cs">
+      <DependentUpon>ListSubscribeCommonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ProfileViews\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\ListBookmarkPage.xaml.cs">
@@ -41,7 +47,7 @@
     <Compile Update="Views\ListSubscribePage.xaml.cs">
       <DependentUpon>ListSubscribePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\EditProfilePage.xaml.cs">
+    <Compile Update="Views\ProfileViews\EditProfilePage.xaml.cs">
       <DependentUpon>EditProfilePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -51,6 +57,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\BlogDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ListBlogCommonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LogInViews\ForgotPasswordCompletePage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -76,7 +85,7 @@
     <EmbeddedResource Update="Views\FollowingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ProfilePage.xaml">
+    <EmbeddedResource Update="Views\ProfileViews\ProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ListBookmarkPage.xaml">
@@ -85,7 +94,7 @@
     <EmbeddedResource Update="Views\ListSubscribePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditProfilePage.xaml">
+    <EmbeddedResource Update="Views\ProfileViews\EditProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TestPage.xaml">

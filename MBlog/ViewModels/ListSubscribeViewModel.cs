@@ -129,6 +129,7 @@ namespace MBlog.ViewModels
 							if (result.StatusCode == Enums.StatusCode.Ok)
 							{
 								ListSubscr = new ObservableCollection<ProfileDto>(result.Success);
+								GetSubscribe();
 								workingStep = 100;
 							}
 							else

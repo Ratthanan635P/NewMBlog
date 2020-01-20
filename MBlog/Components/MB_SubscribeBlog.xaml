@@ -83,7 +83,7 @@
                         </Button.Triggers>
                     </Button>
                     <Label x:Name="TxFollow"
-                           IsVisible="true"
+                           IsVisible="False"
                            Text="Follow"
                            IsEnabled="{Binding Following}"/>
                 </StackLayout>

@@ -532,8 +532,8 @@ namespace MBlog.ViewModels
 									Title = b.Title,
 									Topic = b.Topic,
 									TopicId = b.TopicId,
-									IsOn = true,
-									IsOff = false
+									IsOn = false,
+									IsOff = true
 								}).ToList();
 								ListBlogsForYou = new ObservableCollection<BlogModel>(blogModel);
 								workingStep = 100;

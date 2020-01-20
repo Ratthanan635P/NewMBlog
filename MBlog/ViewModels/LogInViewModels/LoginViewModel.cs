@@ -13,7 +13,7 @@ using MBlog.Views.LogInViews;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace MBlog.ViewModels
+namespace MBlog.ViewModels.LogInViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
